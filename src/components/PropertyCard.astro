@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  id: number;
+  title: string;
+  location: string;
+  price: number;
+  image: string;
+  featured?: boolean;
+}
+
+const { id, title, location, price, image, featured = true } = Astro.props;
+---
+
+<article
+  class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer group p-2"
+  data-property-id={id}
+>
+  <div class="relative h-48 overflow-hidden rounded-2xl">
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+      loading="lazy"
+    />
+    <!-- Optional: Badge for featured properties -->
+    <div
+      class="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-sm"
+    >
+      Destacada
+    </div>
+  </div>
+
+  <div class="p-4">
+    <h3
+      class="text-lg text-gray-600 mb-1 group-hover:text-primary transition-colors"
+    >
+      {title}
+    </h3>
+    <p class="text-sm text-gray-500 mb-3 flex items-center gap-1">
+      <Icon name="hugeicons:location-03" class="w-4 h-4" />
+      {location}
+    </p>
+    <div class="flex items-center justify-between">
+      <p class="text-lg text-primary">${price.toLocaleString()}</p>
+      <button
+        class="text-gray-400 hover:text-purple-600 transition-colors"
+        aria-label="Add to favorites"
+      >
+        <Icon name="hugeicons:favourite" class="w-6 h-6" />
+      </button>
+    </div>
+  </div>
+</article>

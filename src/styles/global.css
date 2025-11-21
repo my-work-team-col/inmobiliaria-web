@@ -1,8 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
-/* Custom background for hero banner */
-.bg-hero {
-  background-image: url('/bg-hero.jpg');
-  background-size: cover;
-  background-position: center;
+@theme {
+  --font-primary: "Hammersmith One", sans-serif;;
+  --font-secondary: "Inter", sans-serif;
+  --color-primary: #2c42d0;
+  --color-primary-dark: #0e1d37;
+  --color-secondary: #005b9c;
+  --color-secondary-dark: #1a356c;
+  --color-accent: #d52b1e;
+  --color-accent-dark: #981e32;
+  --color-accent-red: #ad0e15;
+  --color-accent-cherry: #7f000f;
+  --color-foreground: #404040;
+  --color-muted: #dedede;
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
+body {
+  color: var(--color-foreground);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+}
+p, cite, span, strong, small {
+  font-family: var(--font-secondary);
 }

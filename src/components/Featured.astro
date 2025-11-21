@@ -1,27 +1,45 @@
 ---
+import PropertyCard from "./PropertyCard.astro";
+import propertiesData from "../data/properties.json";
 
+interface Property {
+  id: number;
+  title: string;
+  location: string;
+  price: number;
+  image: string;
+  featured: boolean;
+}
+
+// Filter featured properties
+const featuredProperties = propertiesData.filter(
+  (property: Property) => property.featured
+);
 ---
 
-<section class="w-full py-6 px-16">
+<section class="w-full py-6 px-16" aria-labelledby="featured-heading">
   <div class="w-full py-16 px-24 bg-gray-50 rounded-3xl">
     <div class="max-w-7xl mx-auto">
       <!-- Section header -->
-      <div class="flex justify-between items-end mb-8">
+      <header class="flex justify-between items-end mb-8">
         <div>
-          <p class="text-purple-600 font-medium mb-1">Come Now!</p>
-          <h2 class="text-4xl font-bold text-gray-800 mb-2">
+          <p class="text-primary font-medium mb-1">Come Now!</p>
+          <h2 id="featured-heading" class="text-4xl text-gray-700 mb-2">
             Live Who You Are.
           </h2>
-          <p class="text-gray-600">Own the Home Meant for You.</p>
+          <p class="text-gray-500">Own the Home Meant for You.</p>
         </div>
         <div class="flex items-center gap-4">
           <div class="flex items-center gap-2">
-            <span class="text-sm text-gray-600">Recently added</span>
+            <label for="sort-select" class="text-sm text-gray-600"
+              >Recently added</label
+            >
             <svg
               class="w-4 h-4 text-gray-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -31,96 +49,44 @@
             </svg>
           </div>
           <a
-            href="#"
-            class="text-purple-600 font-medium hover:text-purple-700 transition-colors"
+            href="/properties"
+            class="bg-primary text-white font-medium hover:bg-secondary transition-colors py-2 px-4 rounded-[11px]"
+            aria-label="View all properties"
           >
             See more
           </a>
         </div>
-      </div>
+      </header>
 
       <!-- Properties grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Property 1 -->
-        <div
-          class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer"
-        >
-          <div class="relative h-48">
-            <img
-              src="https://dummyimage.com/400x300/ededed/3b3b3b"
-              alt="The Grand Estate"
-              class="w-full h-full object-cover"
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        role="list"
+        aria-label="Featured properties"
+      >
+        {
+          featuredProperties.map((property) => (
+            <PropertyCard
+              id={property.id}
+              title={property.title}
+              location={property.location}
+              price={property.price}
+              image={property.image}
+              featured={property.featured}
             />
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800 mb-1">
-              The Grand Estate
-            </h3>
-            <p class="text-sm text-gray-500 mb-3">Moscow, 1218</p>
-            <p class="text-xl font-bold text-purple-600">$521</p>
-          </div>
-        </div>
-
-        <!-- Property 2 -->
-        <div
-          class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer"
-        >
-          <div class="relative h-48">
-            <img
-              src="https://dummyimage.com/400x300/ededed/3b3b3b"
-              alt="Hostel Estate"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800 mb-1">
-              Hostel Estate
-            </h3>
-            <p class="text-sm text-gray-500 mb-3">Moscow, 1218</p>
-            <p class="text-xl font-bold text-purple-600">$412</p>
-          </div>
-        </div>
-
-        <!-- Property 3 -->
-        <div
-          class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer"
-        >
-          <div class="relative h-48">
-            <img
-              src="https://dummyimage.com/400x300/ededed/3b3b3b"
-              alt="The Great Hotel"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800 mb-1">
-              The Great Hotel
-            </h3>
-            <p class="text-sm text-gray-500 mb-3">Moscow, 1218</p>
-            <p class="text-xl font-bold text-purple-600">$261</p>
-          </div>
-        </div>
-
-        <!-- Property 4 -->
-        <div
-          class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer"
-        >
-          <div class="relative h-48">
-            <img
-              src="https://dummyimage.com/400x300/ededed/3b3b3b"
-              alt="Voxy Estate"
-              class="w-full h-full object-cover"
-            />
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800 mb-1">
-              Voxy Estate
-            </h3>
-            <p class="text-sm text-gray-500 mb-3">Moscow, 1218</p>
-            <p class="text-xl font-bold text-purple-600">$652</p>
-          </div>
-        </div>
+          ))
+        }
       </div>
+
+      {
+        featuredProperties.length === 0 && (
+          <div class="text-center py-12">
+            <p class="text-gray-500 text-lg">
+              No featured properties available at the moment.
+            </p>
+          </div>
+        )
+      }
     </div>
   </div>
 </section>
