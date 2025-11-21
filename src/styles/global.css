@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Custom background for hero banner */
+.bg-hero {
+  background-image: url('/bg-hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
