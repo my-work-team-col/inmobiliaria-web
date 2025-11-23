@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-primary: "Hammersmith One", sans-serif;;
+  --font-primary: "Hammersmith One", sans-serif;
   --font-secondary: "Inter", sans-serif;
   --color-primary: #2c42d0;
   --color-primary-dark: #0e1d37;
@@ -15,7 +15,7 @@
   --color-foreground: #404040;
   --color-muted: #dedede;
   --color-white: #ffffff;
-  --color-black: #000000;
+
 }
 
 body {
