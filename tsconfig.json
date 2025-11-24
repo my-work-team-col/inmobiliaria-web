@@ -5,7 +5,6 @@
   "compilerOptions": {
     "ignoreDeprecations": "6.0",
 
-    // Alias para Tailwind y Astro
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

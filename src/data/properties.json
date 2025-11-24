@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "The Grand Estate",
+    "location": "Moscow, 1218",
+    "price": 521,
+    "image": "/images/property-1.jpg",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Hostel Estate",
+    "location": "Moscow, 1218",
+    "price": 412,
+    "image": "/images/property-2.jpg",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "The Great Hotel",
+    "location": "Moscow, 1218",
+    "price": 261,
+    "image": "/images/property-3.jpg",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title": "Voxy Estate",
+    "location": "Moscow, 1218",
+    "price": 652,
+    "image": "/images/property-4.jpg",
+    "featured": true
+  }
+]
