@@ -1,26 +1,21 @@
 {
-  "name": "inmobiliaria-web",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.17",
-<<<<<<< HEAD
-    "astro": "^5.15.8",
-    "tailwindcss": "^4.1.17"
-=======
-    "astro": "^5.16.0",
-    "astro-icon": "^1.1.5",
-    "tailwindcss": "^4.1.17"
-  },
-  "devDependencies": {
-    "@iconify-json/hugeicons": "^1.2.18",
-    "@iconify/json": "^2.2.410"
->>>>>>> yormi
-  }
+    "name": "inmobiliaria-web",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.17",
+        "astro": "^5.16.0",
+        "astro-icon": "^1.1.5",
+        "tailwindcss": "^4.1.17"
+    },
+    "devDependencies": {
+        "@iconify-json/hugeicons": "^1.2.18",
+        "@iconify/json": "^2.2.410"
+    }
 }
