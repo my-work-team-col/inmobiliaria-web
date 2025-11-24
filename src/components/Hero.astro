@@ -1,6 +1,7 @@
 ---
 import bgHero from "@/assets/images/bg-hero.jpg";
 import { Icon } from "astro-icon/components";
+import PropertyFilter from "./PropertyFilter.astro";
 ---
 
 <div class="w-full py-6 px-16">
@@ -21,13 +22,18 @@ import { Icon } from "astro-icon/components";
         <p class="text-2xl text-white mb-8">
           Descubre las mejores propiedades disponibles
         </p>
+        
+        
+        <PropertyFilter />
+        
+
 
         <!-- Search box -->
-        <div class="max-w-2xl mx-auto">
+        <!-- <div class="max-w-2xl mx-auto">
           <div
             class="bg-white rounded-xl shadow-2xl p-2 flex flex-col sm:flex-row gap-2 items-center"
           >
-            <!-- Search input -->
+
             <div class="flex-1 w-full relative">
               <input
                 type="text"
@@ -36,7 +42,6 @@ import { Icon } from "astro-icon/components";
               />
             </div>
 
-            <!-- Search button -->
             <button
               class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-[11px] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm w-full sm:w-auto"
             >
@@ -44,7 +49,7 @@ import { Icon } from "astro-icon/components";
               <span>Buscar</span>
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
