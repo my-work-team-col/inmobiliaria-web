@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { usePopover } from "../composables/usePopover.ts";
+import { usePopover } from "../../composables/usePopover.ts";
 
 const { openPopover, togglePopover, closePopover } = usePopover();
 
