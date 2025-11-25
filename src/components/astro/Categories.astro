@@ -1,9 +1,69 @@
 ---
+import CategoryCard from "./CategoryCard.astro";
 
+const categories = [
+  {
+    id: 1,
+    title: "Apartamentos",
+    description: "Encuentra apartamentos modernos y bien ubicados.",
+    count: 120,
+    image: "/images/property-2.jpg"
+  },
+  {
+    id: 2,
+    title: "Casas",
+    description: "Casas familiares en diferentes zonas de la ciudad.",
+    count: 85,
+    image: "/images/property-2.jpg"
+  },
+  {
+    id: 3,
+    title: "Fincas",
+    description: "Fincas para descanso o inversión rural.",
+    count: 42,
+    image: "/images/property-2.jpg"
+  },
+  // {
+  //   id: 4,
+  //   title: "Vehículos",
+  //   description: "Compra y venta de autos, motos y más.",
+  //   count: 300,
+  //   image: "/images/vehiculos.jpg"
+  // },
+  // {
+  //   id: 5,
+  //   title: "Oficinas",
+  //   description: "Espacios ideales para empresas y freelancers.",
+  //   count: 20,
+  //   image: "/images/oficinas.jpg"
+  // },
+  // {
+  //   id: 6,
+  //   title: "Locales Comerciales",
+  //   description: "Locales en arriendo y venta para tu negocio.",
+  //   count: 18,
+  //   image: "/images/locales.jpg"
+  // },
+  // {
+  //   id: 7,
+  //   title: "Bodegas",
+  //   description: "Espacios amplios para almacenamiento.",
+  //   count: 12,
+  //   image: "/images/bodegas.jpg"
+  // },
+  // {
+  //   id: 8,
+  //   title: "Habitaciones",
+  //   description: "Arriendo de cuartos y estudios amoblados.",
+  //   count: 54,
+  //   image: "/images/habitaciones.jpg"
+  // }
+];
 ---
 
-<section class="w-full py-16 px-24">
-  <div class="max-w-7xl mx-auto">
+
+<section class="w-full py-8 px-8 ">
+  <div class="w-full max-w-8xl mx-auto py-2">
     <!-- Section header -->
     <div class="text-center mb-12">
       <h2 class="text-4xl text-gray-800 mb-2">Move to What Moves You</h2>
@@ -12,8 +72,23 @@
 
     <!-- Categories grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {categories.map(category => (
+    <CategoryCard {...category} />
+  ))}
+  
+
+      
+      <!-- <CategoryCard 
+      id="1"
+      title="Luxury Apartments"
+      description="Find the best apartments around the world."
+      count={42}
+      image="/images/property-2.jpg"
+      bgColor="bg-gradient-to-br from-purple-500 to-pink-500"
+    /> -->
+
       <!-- Category 1 -->
-      <div class="group cursor-pointer">
+      <!-- <div class="group cursor-pointer">
         <div class="overflow-hidden rounded-2xl mb-4">
           <img
             src="https://dummyimage.com/600x600/ededed/3b3b3b"
@@ -25,10 +100,10 @@
           Enjoy the great cold
         </h3>
         <p class="text-gray-500 text-center text-sm">6,872 properties</p>
-      </div>
+      </div> -->
 
       <!-- Category 2 -->
-      <div class="group cursor-pointer">
+      <!-- <div class="group cursor-pointer">
         <div class="overflow-hidden rounded-2xl mb-4">
           <img
             src="https://dummyimage.com/600x600/ededed/3b3b3b"
@@ -40,10 +115,10 @@
           Pick up the earliest sunrise
         </h3>
         <p class="text-gray-500 text-center text-sm">5,672 properties</p>
-      </div>
+      </div> -->
 
       <!-- Category 3 -->
-      <div class="group cursor-pointer">
+      <!-- <div class="group cursor-pointer">
         <div class="overflow-hidden rounded-2xl mb-4">
           <img
             src="https://dummyimage.com/600x600/ededed/3b3b3b"
@@ -53,7 +128,7 @@
         </div>
         <h3 class="text-xl text-gray-800 text-center mb-2">Unique stay</h3>
         <p class="text-gray-500 text-center text-sm">8,672 properties</p>
-      </div>
+      </div> -->
     </div>
 
     <!-- Pagination dots -->
