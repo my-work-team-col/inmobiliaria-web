@@ -68,19 +68,19 @@ inmobiliaria-web/
 
 ### Core
 
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| **Astro** | 4.x | Framework principal (SSR/SSG) |
-| **TypeScript** | 5.x | Type safety y mejor DX |
-| **Tailwind CSS** | 3.x | Estilos utility-first |
-| **pnpm** | 8.x | Gestor de paquetes |
+| Tecnología       | Versión | Propósito                     |
+| ---------------- | ------- | ----------------------------- |
+| **Astro**        | 4.x     | Framework principal (SSR/SSG) |
+| **TypeScript**   | 5.x     | Type safety y mejor DX        |
+| **Tailwind CSS** | 3.x     | Estilos utility-first         |
+| **pnpm**         | 8.x     | Gestor de paquetes            |
 
 ### Futuras Integraciones
 
-| Tecnología | Estado | Propósito |
-|------------|--------|-----------|
+| Tecnología | Estado      | Propósito                |
+| ---------- | ----------- | ------------------------ |
 | **Vue.js** | 🔜 Planeado | Componentes interactivos |
-| **Pinia** | 🔜 Planeado | Gestión de estado |
+| **Pinia**  | 🔜 Planeado | Gestión de estado        |
 
 ---
 
@@ -95,11 +95,13 @@ inmobiliaria-web/
 **Props:** Ninguna
 
 **Características:**
+
 - Navegación responsive
 - Links a secciones principales
 - Botones de autenticación (Login/Signup)
 
 **Uso:**
+
 ```astro
 ---
 import Header from '../components/Header.astro';
@@ -119,12 +121,14 @@ import Header from '../components/Header.astro';
 **Props:** Ninguna
 
 **Características:**
+
 - Imagen de fondo full-width
 - Título y subtítulo
 - Barra de búsqueda con filtros
 - Diseño responsive
 
 **Uso:**
+
 ```astro
 ---
 import Hero from '../components/Hero.astro';
@@ -144,11 +148,13 @@ import Hero from '../components/Hero.astro';
 **Props:** Ninguna
 
 **Características:**
+
 - Grid de categorías
 - Iconos SVG personalizados
 - Hover effects
 
 **Uso:**
+
 ```astro
 ---
 import Categories from '../components/Categories.astro';
@@ -168,6 +174,7 @@ import Categories from '../components/Categories.astro';
 **Props:** Ninguna (consume datos internamente)
 
 **TypeScript Interface:**
+
 ```typescript
 interface Property {
   id: number;
@@ -180,6 +187,7 @@ interface Property {
 ```
 
 **Características:**
+
 - ✅ Consume datos desde `properties.json`
 - ✅ Filtra propiedades con `featured: true`
 - ✅ Usa componente `PropertyCard` para renderizar
@@ -188,6 +196,7 @@ interface Property {
 - ✅ Estado vacío (mensaje cuando no hay propiedades)
 
 **Código:**
+
 ```astro
 ---
 import PropertyCard from './PropertyCard.astro';
@@ -212,7 +221,7 @@ const featuredProperties = propertiesData.filter((property: Property) => propert
         <!-- Header content -->
       </header>
 
-      <div 
+      <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         role="list"
         aria-label="Featured properties"
@@ -233,6 +242,7 @@ const featuredProperties = propertiesData.filter((property: Property) => propert
 ```
 
 **Uso:**
+
 ```astro
 ---
 import Featured from '../components/Featured.astro';
@@ -250,18 +260,20 @@ import Featured from '../components/Featured.astro';
 **Descripción:** Componente reutilizable para mostrar una tarjeta de propiedad individual.
 
 **Props (TypeScript Interface):**
+
 ```typescript
 interface Props {
-  id: number;        // ID único de la propiedad
-  title: string;     // Nombre de la propiedad
-  location: string;  // Ubicación (ciudad, código postal)
-  price: number;     // Precio en USD
-  image: string;     // URL de la imagen
+  id: number; // ID único de la propiedad
+  title: string; // Nombre de la propiedad
+  location: string; // Ubicación (ciudad, código postal)
+  price: number; // Precio en USD
+  image: string; // URL de la imagen
   featured?: boolean; // Opcional: si es destacada
 }
 ```
 
 **Características:**
+
 - ✅ **Semantic HTML**: Usa `<article>` en lugar de `<div>`
 - ✅ **TypeScript**: Props tipadas con interface
 - ✅ **Accesibilidad**:
@@ -277,6 +289,7 @@ interface Props {
 - ✅ **Transiciones suaves**: `transition-all duration-300`
 
 **Código Completo:**
+
 ```astro
 ---
 interface Props {
@@ -306,7 +319,7 @@ const { id, title, location, price, image } = Astro.props;
       Featured
     </div>
   </div>
-  
+
   <div class="p-4">
     <h3 class="text-lg font-semibold text-gray-800 mb-1 group-hover:text-purple-600 transition-colors">
       {title}
@@ -334,6 +347,7 @@ const { id, title, location, price, image } = Astro.props;
 ```
 
 **Uso:**
+
 ```astro
 ---
 import PropertyCard from '../components/PropertyCard.astro';
@@ -349,7 +363,7 @@ const property = {
 ---
 
 <!-- Opción 1: Pasar props individualmente -->
-<PropertyCard 
+<PropertyCard
   id={property.id}
   title={property.title}
   location={property.location}
@@ -370,8 +384,9 @@ const property = {
 **Variantes de Uso:**
 
 1. **Sin badge "Featured":**
+
 ```astro
-<PropertyCard 
+<PropertyCard
   id={1}
   title="Modern Apartment"
   location="New York, NY"
@@ -381,8 +396,9 @@ const property = {
 ```
 
 2. **Con badge "Featured":**
+
 ```astro
-<PropertyCard 
+<PropertyCard
   id={2}
   title="Luxury Villa"
   location="Miami, FL"
@@ -403,6 +419,7 @@ const property = {
 **Descripción:** Base de datos en formato JSON que almacena todas las propiedades del sitio.
 
 **Estructura:**
+
 ```json
 [
   {
@@ -426,14 +443,14 @@ const property = {
 
 **Campos:**
 
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| `id` | `number` | ✅ | Identificador único de la propiedad |
-| `title` | `string` | ✅ | Nombre/título de la propiedad |
-| `location` | `string` | ✅ | Ubicación (ciudad, código postal) |
-| `price` | `number` | ✅ | Precio en USD (sin símbolo $) |
-| `image` | `string` | ✅ | URL de la imagen principal |
-| `featured` | `boolean` | ✅ | Si la propiedad es destacada |
+| Campo      | Tipo      | Requerido | Descripción                         |
+| ---------- | --------- | --------- | ----------------------------------- |
+| `id`       | `number`  | ✅        | Identificador único de la propiedad |
+| `title`    | `string`  | ✅        | Nombre/título de la propiedad       |
+| `location` | `string`  | ✅        | Ubicación (ciudad, código postal)   |
+| `price`    | `number`  | ✅        | Precio en USD (sin símbolo $)       |
+| `image`    | `string`  | ✅        | URL de la imagen principal          |
+| `featured` | `boolean` | ✅        | Si la propiedad es destacada        |
 
 **Cómo Agregar una Nueva Propiedad:**
 
@@ -481,6 +498,7 @@ const sortedByPrice = [...propertiesData].sort((a, b) => a.price - b.price);
 ### ¿Por qué TypeScript?
 
 TypeScript nos proporciona:
+
 - ✅ **Type Safety**: Detecta errores en tiempo de desarrollo
 - ✅ **Autocompletado**: Mejor experiencia de desarrollo
 - ✅ **Documentación**: Las interfaces sirven como documentación
@@ -547,6 +565,7 @@ const { id, title, location, price, image, featured = false } = Astro.props;
 ```
 
 **Ventajas:**
+
 - ✅ Autocompletado al usar el componente
 - ✅ Errores si faltan props requeridas
 - ✅ Errores si el tipo de prop es incorrecto
@@ -578,11 +597,12 @@ export interface User {
   id: number;
   name: string;
   email: string;
-  role: 'admin' | 'user';
+  role: "admin" | "user";
 }
 ```
 
 **Uso:**
+
 ```astro
 ---
 import type { Property, Category } from '../types';
@@ -599,11 +619,13 @@ const categories: Category[] = categoriesData;
 ### Cómo Agregar un Nuevo Componente
 
 1. **Crear el archivo:**
+
    ```bash
    touch src/components/NuevoComponente.astro
    ```
 
 2. **Definir la estructura:**
+
    ```astro
    ---
    interface Props {
@@ -626,6 +648,7 @@ const categories: Category[] = categoriesData;
    ```
 
 3. **Importar y usar:**
+
    ```astro
    ---
    import NuevoComponente from '../components/NuevoComponente.astro';
@@ -637,6 +660,7 @@ const categories: Category[] = categoriesData;
 ### Cómo Modificar Estilos
 
 **Opción 1: Tailwind CSS (Recomendado)**
+
 ```astro
 <div class="bg-purple-600 text-white p-4 rounded-lg hover:bg-purple-700">
   Contenido
@@ -644,6 +668,7 @@ const categories: Category[] = categoriesData;
 ```
 
 **Opción 2: CSS Scoped**
+
 ```astro
 <div class="custom-box">
   Contenido
@@ -659,6 +684,7 @@ const categories: Category[] = categoriesData;
 ```
 
 **Opción 3: CSS Global**
+
 ```css
 /* src/styles/global.css */
 .custom-button {
@@ -698,6 +724,7 @@ try {
 ### 1. Componentes
 
 ✅ **DO:**
+
 - Mantén componentes pequeños y enfocados (Single Responsibility)
 - Usa TypeScript para todas las props
 - Usa semantic HTML (`<article>`, `<section>`, `<header>`, etc.)
@@ -705,6 +732,7 @@ try {
 - Usa `loading="lazy"` en imágenes
 
 ❌ **DON'T:**
+
 - No crees componentes gigantes con múltiples responsabilidades
 - No uses `<div>` cuando hay un elemento semántico apropiado
 - No olvides la accesibilidad
@@ -712,47 +740,55 @@ try {
 ### 2. TypeScript
 
 ✅ **DO:**
+
 - Define interfaces para todas las props
 - Usa tipos explícitos en funciones
 - Crea un archivo `types/index.ts` para tipos compartidos
 - Usa `?` para props opcionales
 
 ❌ **DON'T:**
+
 - No uses `any` (usa `unknown` si es necesario)
 - No ignores errores de TypeScript
 
 ### 3. Datos
 
 ✅ **DO:**
+
 - Usa JSON para datos estáticos
 - Valida datos antes de usarlos
 - Maneja estados vacíos (ej: `properties.length === 0`)
 
 ❌ **DON'T:**
+
 - No hardcodees datos en componentes
 - No asumas que los datos siempre existen
 
 ### 4. Estilos
 
 ✅ **DO:**
+
 - Usa Tailwind CSS para consistencia
 - Usa clases utilitarias de Tailwind
 - Agrupa clases relacionadas
 - Usa `hover:`, `focus:`, `active:` para estados
 
 ❌ **DON'T:**
+
 - No uses estilos inline (`style=""`)
 - No dupliques estilos (crea componentes reutilizables)
 
 ### 5. Performance
 
 ✅ **DO:**
+
 - Usa `loading="lazy"` en imágenes
 - Optimiza imágenes antes de subirlas
 - Usa formatos modernos (WebP, AVIF)
 - Minimiza el uso de JavaScript
 
 ❌ **DON'T:**
+
 - No cargues todas las imágenes al inicio
 - No uses imágenes sin optimizar
 
@@ -791,12 +827,15 @@ pnpm format
 ## 🆘 Troubleshooting
 
 ### Error: "Cannot find module"
+
 ```bash
 pnpm install
 ```
 
 ### Error: TypeScript no reconoce las props
+
 Asegúrate de definir la interface `Props`:
+
 ```astro
 ---
 interface Props {
@@ -806,6 +845,7 @@ interface Props {
 ```
 
 ### Error: Tailwind classes no funcionan
+
 1. Verifica que `tailwind.config.mjs` incluya tus archivos
 2. Importa Tailwind en `src/styles/global.css`
 3. Reinicia el servidor de desarrollo

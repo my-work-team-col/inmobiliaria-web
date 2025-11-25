@@ -35,6 +35,7 @@ public/
 ## 📝 Cómo Funciona
 
 ### En `Featured.astro`
+
 ```astro
 ---
 import propertiesData from "../data/properties.json";
@@ -47,6 +48,7 @@ const featuredProperties = propertiesData.filter(
 ```
 
 ### En `PropertyCard.astro`
+
 ```astro
 ---
 interface Props {
@@ -76,12 +78,15 @@ interface Props {
 ## 📦 Cómo Agregar Nuevas Imágenes
 
 ### Paso 1: Agregar la imagen
+
 Copia tu imagen a `public/images/`:
+
 ```
 public/images/property-5.jpg
 ```
 
 ### Paso 2: Actualizar `properties.json`
+
 ```json
 {
   "id": 5,
@@ -102,6 +107,7 @@ public/images/property-5.jpg
 Para que las imágenes funcionen, necesitas:
 
 1. **Crear la carpeta** (si no existe):
+
    ```bash
    mkdir public/images
    ```

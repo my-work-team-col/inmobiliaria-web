@@ -1,15 +1,8 @@
 ---
-import PropertyCard from "./PropertyCard.astro";
-import propertiesData from "../../data/properties.json";
 
-interface Property {
-  id: number;
-  title: string;
-  location: string;
-  price: number;
-  image: string;
-  featured: boolean;
-}
+import PropertyCard from "@/components/astro/PropertyCard.astro";
+import propertiesData from "@/data/properties.json";
+import type { Property } from "@/types";
 
 // Filter featured properties
 const featuredProperties = propertiesData.filter(

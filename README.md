@@ -12,7 +12,7 @@
 
 ### Prerequisitos
 
-- Node.js 18+ 
+- Node.js 18+
 - pnpm 8+
 
 ### Instalación
@@ -85,7 +85,7 @@ Componente reutilizable para mostrar tarjetas de propiedades.
 import PropertyCard from './components/PropertyCard.astro';
 ---
 
-<PropertyCard 
+<PropertyCard
   id={1}
   title="The Grand Estate"
   location="Moscow, 1218"
@@ -130,11 +130,11 @@ Para agregar una nueva propiedad, simplemente agrega un nuevo objeto al array en
 
 ## 🛠️ Comandos
 
-| Comando | Descripción |
-|---------|-------------|
-| `pnpm dev` | Inicia servidor de desarrollo en `localhost:4321` |
-| `pnpm build` | Construye el sitio para producción en `./dist/` |
-| `pnpm preview` | Preview del build de producción localmente |
+| Comando        | Descripción                                       |
+| -------------- | ------------------------------------------------- |
+| `pnpm dev`     | Inicia servidor de desarrollo en `localhost:4321` |
+| `pnpm build`   | Construye el sitio para producción en `./dist/`   |
+| `pnpm preview` | Preview del build de producción localmente        |
 
 ---
 

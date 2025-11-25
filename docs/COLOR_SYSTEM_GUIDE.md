@@ -8,28 +8,28 @@ Esta guía te muestra cómo usar las variables de color CSS que hemos configurad
 
 ### Colores Primarios
 
-| Color | Variable CSS | Hex | Uso Recomendado |
-|-------|--------------|-----|-----------------|
-| **Azul** | `--color-azul` | `#2C42D0` | Botones principales, enlaces, elementos destacados |
-| **Azul Oscuro** | `--color-azul-oscuro` | `#0E1D37` | Encabezados, textos importantes, fondos oscuros |
-| **Rojo** | `--color-rojo` | `#D52B1E` | Botones de acción, alertas, elementos de llamado |
-| **Rojo Oscuro** | `--color-rojo-oscuro` | `#981E32` | Hover states, acentos secundarios |
+| Color           | Variable CSS          | Hex       | Uso Recomendado                                    |
+| --------------- | --------------------- | --------- | -------------------------------------------------- |
+| **Azul**        | `--color-azul`        | `#2C42D0` | Botones principales, enlaces, elementos destacados |
+| **Azul Oscuro** | `--color-azul-oscuro` | `#0E1D37` | Encabezados, textos importantes, fondos oscuros    |
+| **Rojo**        | `--color-rojo`        | `#D52B1E` | Botones de acción, alertas, elementos de llamado   |
+| **Rojo Oscuro** | `--color-rojo-oscuro` | `#981E32` | Hover states, acentos secundarios                  |
 
 ### Colores de Texto
 
-| Color | Variable CSS | Hex | Uso Recomendado |
-|-------|--------------|-----|-----------------|
-| **Texto** | `--color-texto` | `#404040` | Textos principales, párrafos |
+| Color          | Variable CSS         | Hex       | Uso Recomendado                    |
+| -------------- | -------------------- | --------- | ---------------------------------- |
+| **Texto**      | `--color-texto`      | `#404040` | Textos principales, párrafos       |
 | **Gris Claro** | `--color-gris-claro` | `#DEDEDE` | Textos secundarios, fondos sutiles |
 
 ### Colores Secundarios
 
-| Color | Variable CSS | Hex |
-|-------|--------------|-----|
+| Color               | Variable CSS              | Hex       |
+| ------------------- | ------------------------- | --------- |
 | **Azul Oscuro Sec** | `--color-azul-oscuro-sec` | `#1A356C` |
-| **Azul Sec** | `--color-azul-sec` | `#005B9C` |
-| **Rojo Sec** | `--color-rojo-sec` | `#AD0E15` |
-| **Rojo Cereza** | `--color-rojo-cereza` | `#7F000F` |
+| **Azul Sec**        | `--color-azul-sec`        | `#005B9C` |
+| **Rojo Sec**        | `--color-rojo-sec`        | `#AD0E15` |
+| **Rojo Cereza**     | `--color-rojo-cereza`     | `#7F000F` |
 
 ---
 
@@ -40,6 +40,7 @@ Esta guía te muestra cómo usar las variables de color CSS que hemos configurad
 Las clases más comunes ya están creadas en `global.css`:
 
 #### Backgrounds
+
 ```html
 <div class="bg-azul">Fondo azul</div>
 <div class="bg-azul-oscuro">Fondo azul oscuro</div>
@@ -49,6 +50,7 @@ Las clases más comunes ya están creadas en `global.css`:
 ```
 
 #### Textos
+
 ```html
 <h1 class="text-azul">Título azul</h1>
 <h2 class="text-azul-oscuro">Título azul oscuro</h2>
@@ -57,19 +59,17 @@ Las clases más comunes ya están creadas en `global.css`:
 ```
 
 #### Bordes
+
 ```html
 <div class="border-2 border-azul">Con borde azul</div>
 <div class="border border-rojo">Con borde rojo</div>
 ```
 
 #### Hover States
+
 ```html
-<button class="bg-azul hover:bg-azul-oscuro">
-  Botón con hover
-</button>
-<a class="text-azul hover:text-rojo">
-  Enlace con hover
-</a>
+<button class="bg-azul hover:bg-azul-oscuro">Botón con hover</button>
+<a class="text-azul hover:text-rojo"> Enlace con hover </a>
 ```
 
 ---
@@ -89,7 +89,7 @@ Puedes usar las variables CSS directamente en estilos inline o en bloques `<styl
     border: 2px solid var(--color-rojo);
     color: white;
   }
-  
+
   .mi-clase-custom:hover {
     background-color: var(--color-azul-oscuro);
   }
@@ -101,25 +101,19 @@ Puedes usar las variables CSS directamente en estilos inline o en bloques `<styl
 ### 3. Clases Especiales
 
 #### Gradientes
-```html
-<div class="gradient-azul p-8 text-white">
-  Gradiente de azul a azul oscuro
-</div>
 
-<div class="gradient-rojo p-8 text-white">
-  Gradiente de rojo a rojo oscuro
-</div>
+```html
+<div class="gradient-azul p-8 text-white">Gradiente de azul a azul oscuro</div>
+
+<div class="gradient-rojo p-8 text-white">Gradiente de rojo a rojo oscuro</div>
 ```
 
 #### Sombras con Color
-```html
-<div class="bg-white shadow-azul p-6">
-  Tarjeta con sombra azul
-</div>
 
-<div class="bg-white shadow-rojo p-6">
-  Tarjeta con sombra roja
-</div>
+```html
+<div class="bg-white shadow-azul p-6">Tarjeta con sombra azul</div>
+
+<div class="bg-white shadow-rojo p-6">Tarjeta con sombra roja</div>
 ```
 
 ---
@@ -127,6 +121,7 @@ Puedes usar las variables CSS directamente en estilos inline o en bloques `<styl
 ## 📝 Ejemplos Prácticos
 
 ### Botón Principal (Azul)
+
 ```astro
 <button class="bg-azul hover:bg-azul-oscuro text-white px-6 py-3 rounded-lg transition-colors">
   Buscar Propiedades
@@ -134,6 +129,7 @@ Puedes usar las variables CSS directamente en estilos inline o en bloques `<styl
 ```
 
 ### Botón de Acción (Rojo)
+
 ```astro
 <button class="bg-rojo hover:bg-rojo-oscuro text-white px-6 py-3 rounded-lg transition-colors">
   Contactar Ahora
@@ -141,6 +137,7 @@ Puedes usar las variables CSS directamente en estilos inline o en bloques `<styl
 ```
 
 ### Tarjeta con Colores de Marca
+
 ```astro
 <article class="bg-white border-2 border-azul rounded-xl p-6 shadow-azul">
   <h3 class="text-azul-oscuro text-xl font-bold mb-2">
@@ -156,6 +153,7 @@ Puedes usar las variables CSS directamente en estilos inline o en bloques `<styl
 ```
 
 ### Badge/Etiqueta
+
 ```astro
 <span class="bg-azul text-white text-xs font-semibold px-3 py-1 rounded-sm">
   Destacado
@@ -167,6 +165,7 @@ Puedes usar las variables CSS directamente en estilos inline o en bloques `<styl
 ```
 
 ### Header con Gradiente
+
 ```astro
 <header class="gradient-azul text-white p-6">
   <h1 class="text-3xl font-bold">Mi Inmobiliaria</h1>
@@ -214,6 +213,7 @@ Puedes usar las variables CSS directamente en estilos inline o en bloques `<styl
 Si tienes componentes usando `purple-600`, aquí está cómo migrarlos:
 
 ### Antes (Purple)
+
 ```astro
 <button class="bg-purple-600 hover:bg-purple-700 text-white">
   Buscar
@@ -221,6 +221,7 @@ Si tienes componentes usando `purple-600`, aquí está cómo migrarlos:
 ```
 
 ### Después (Azul de Marca)
+
 ```astro
 <button class="bg-azul hover:bg-azul-oscuro text-white">
   Buscar
@@ -228,6 +229,7 @@ Si tienes componentes usando `purple-600`, aquí está cómo migrarlos:
 ```
 
 ### Antes (Purple para badges)
+
 ```astro
 <span class="bg-purple-600 text-white px-3 py-1 rounded-full">
   Featured
@@ -235,6 +237,7 @@ Si tienes componentes usando `purple-600`, aquí está cómo migrarlos:
 ```
 
 ### Después (Rojo para badges destacados)
+
 ```astro
 <span class="bg-rojo text-white px-3 py-1 rounded-sm">
   Featured
@@ -246,6 +249,7 @@ Si tienes componentes usando `purple-600`, aquí está cómo migrarlos:
 ## 🎨 Combinaciones Recomendadas
 
 ### Combinación 1: Profesional
+
 ```astro
 <div class="bg-azul-oscuro text-white">
   <h2 class="text-2xl">Título</h2>
@@ -256,6 +260,7 @@ Si tienes componentes usando `purple-600`, aquí está cómo migrarlos:
 ```
 
 ### Combinación 2: Limpia
+
 ```astro
 <div class="bg-white border-2 border-azul">
   <h3 class="text-azul-oscuro">Título</h3>
@@ -264,6 +269,7 @@ Si tienes componentes usando `purple-600`, aquí está cómo migrarlos:
 ```
 
 ### Combinación 3: Llamativa
+
 ```astro
 <div class="gradient-rojo text-white p-8">
   <h2 class="text-3xl font-bold">¡Oferta Especial!</h2>
@@ -293,12 +299,16 @@ Si necesitas crear más variantes, puedes agregar en `global.css`:
 ```css
 /* Ejemplo: Versión clara del azul */
 :root {
-  --color-azul-claro: #5A6FE8;
+  --color-azul-claro: #5a6fe8;
   --color-azul-claro-rgb: 90, 111, 232;
 }
 
-.bg-azul-claro { background-color: var(--color-azul-claro); }
-.text-azul-claro { color: var(--color-azul-claro); }
+.bg-azul-claro {
+  background-color: var(--color-azul-claro);
+}
+.text-azul-claro {
+  color: var(--color-azul-claro);
+}
 ```
 
 ---

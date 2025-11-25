@@ -26,8 +26,8 @@ pnpm add -D @astrojs/vue
 Edita `astro.config.mjs`:
 
 ```javascript
-import { defineConfig } from 'astro/config';
-import vue from '@astrojs/vue';
+import { defineConfig } from "astro/config";
+import vue from "@astrojs/vue";
 
 export default defineConfig({
   integrations: [vue()],
@@ -49,6 +49,7 @@ Astro permite controlar cuándo se hidrata un componente Vue:
 - `client:only="vue"` - Solo renderiza en el cliente (no SSR)
 
 **Ejemplo:**
+
 ```astro
 <PropertyCard client:visible {...property} />
 ```
@@ -60,6 +61,7 @@ Astro permite controlar cuándo se hidrata un componente Vue:
 ### 🎯 Componente Objetivo: `PropertyCard`
 
 Este componente es ideal para migrar a Vue porque:
+
 - ✅ Es reutilizable
 - ✅ Tendrá interactividad (favoritos, modal, etc.)
 - ✅ Maneja estado local
@@ -95,7 +97,7 @@ Crea `src/components/PropertyCard.vue`:
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from "vue";
 
 interface Props {
   id: number;
@@ -120,7 +122,7 @@ const toggleFavorite = () => {
 
 // Función para abrir modal de detalles
 const openDetails = () => {
-  console.log('Opening details for property:', props.id);
+  console.log("Opening details for property:", props.id);
   // Emitir evento o navegar a página de detalles
 };
 </script>
@@ -147,13 +149,30 @@ const openDetails = () => {
     </div>
 
     <div class="p-4">
-      <h3 class="text-lg font-semibold text-gray-800 mb-1 group-hover:text-purple-600 transition-colors">
+      <h3
+        class="text-lg font-semibold text-gray-800 mb-1 group-hover:text-purple-600 transition-colors"
+      >
         {{ title }}
       </h3>
       <p class="text-sm text-gray-500 mb-3 flex items-center gap-1">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+          ></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+          ></path>
         </svg>
         {{ location }}
       </p>
@@ -164,11 +183,25 @@ const openDetails = () => {
         <button
           @click.stop="toggleFavorite"
           class="transition-colors"
-          :class="isFavorite ? 'text-red-500' : 'text-gray-400 hover:text-purple-600'"
-          :aria-label="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
+          :class="
+            isFavorite ? 'text-red-500' : 'text-gray-400 hover:text-purple-600'
+          "
+          :aria-label="
+            isFavorite ? 'Remove from favorites' : 'Add to favorites'
+          "
         >
-          <svg class="w-6 h-6" :fill="isFavorite ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          <svg
+            class="w-6 h-6"
+            :fill="isFavorite ? 'currentColor' : 'none'"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            ></path>
           </svg>
         </button>
       </div>
@@ -189,12 +222,12 @@ const featuredProperties = propertiesData.filter(property => property.featured);
 
 <section class="w-full py-6 px-16" aria-labelledby="featured-heading">
   <!-- ... header ... -->
-  
+
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
     {featuredProperties.map((property) => (
-      <PropertyCard 
+      <PropertyCard
         client:visible
-        {...property} 
+        {...property}
       />
     ))}
   </div>
@@ -215,22 +248,22 @@ pnpm add pinia
 
 ```typescript
 // src/stores/properties.ts
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { defineStore } from "pinia";
+import { ref } from "vue";
 
-export const usePropertiesStore = defineStore('properties', () => {
+export const usePropertiesStore = defineStore("properties", () => {
   const favorites = ref<number[]>([]);
 
   const addFavorite = (id: number) => {
     if (!favorites.value.includes(id)) {
       favorites.value.push(id);
-      localStorage.setItem('favorites', JSON.stringify(favorites.value));
+      localStorage.setItem("favorites", JSON.stringify(favorites.value));
     }
   };
 
   const removeFavorite = (id: number) => {
-    favorites.value = favorites.value.filter(fav => fav !== id);
-    localStorage.setItem('favorites', JSON.stringify(favorites.value));
+    favorites.value = favorites.value.filter((fav) => fav !== id);
+    localStorage.setItem("favorites", JSON.stringify(favorites.value));
   };
 
   const isFavorite = (id: number) => {
@@ -245,7 +278,7 @@ export const usePropertiesStore = defineStore('properties', () => {
 
 ```vue
 <script setup lang="ts">
-import { usePropertiesStore } from '../stores/properties';
+import { usePropertiesStore } from "../stores/properties";
 
 const props = defineProps<Props>();
 const store = usePropertiesStore();
@@ -264,7 +297,7 @@ const toggleFavorite = () => {
 
 ```typescript
 // src/composables/useFavorites.ts
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const favorites = ref<number[]>([]);
 
@@ -276,7 +309,7 @@ export function useFavorites() {
   };
 
   const removeFavorite = (id: number) => {
-    favorites.value = favorites.value.filter(fav => fav !== id);
+    favorites.value = favorites.value.filter((fav) => fav !== id);
   };
 
   const isFavorite = (id: number) => {
@@ -294,6 +327,7 @@ export function useFavorites() {
 ### ✅ DO's
 
 1. **Usa `client:visible` para componentes below the fold**
+
    ```astro
    <PropertyCard client:visible {...property} />
    ```
@@ -302,14 +336,15 @@ export function useFavorites() {
    - Un componente = Una responsabilidad
 
 3. **Usa TypeScript para props**
+
    ```typescript
    defineProps<Props>();
    ```
 
 4. **Emite eventos para comunicación padre-hijo**
+
    ```vue
-   const emit = defineEmits<{
-     favoriteToggled: [id: number, isFavorite: boolean]
+   const emit = defineEmits<{ favoriteToggled: [id: number, isFavorite: boolean]
    }>();
    ```
 
@@ -331,23 +366,27 @@ export function useFavorites() {
 ## 🎯 Plan de Migración Sugerido
 
 ### Fase 1: Setup (1 día)
+
 - [ ] Instalar Vue y configurar Astro
 - [ ] Crear estructura de carpetas para Vue
 - [ ] Configurar TypeScript
 
 ### Fase 2: Componentes Interactivos (1 semana)
+
 - [ ] Migrar `PropertyCard.astro` → `PropertyCard.vue`
 - [ ] Agregar funcionalidad de favoritos
 - [ ] Crear modal de detalles
 - [ ] Migrar otros componentes interactivos
 
 ### Fase 3: Estado Global (3 días)
+
 - [ ] Instalar y configurar Pinia
 - [ ] Crear store de propiedades
 - [ ] Crear store de favoritos
 - [ ] Crear store de búsqueda/filtros
 
 ### Fase 4: Optimización (2 días)
+
 - [ ] Optimizar directivas `client:*`
 - [ ] Lazy loading de componentes
 - [ ] Testing de componentes Vue
@@ -365,17 +404,21 @@ export function useFavorites() {
 ## 🆘 Troubleshooting
 
 ### Error: "Cannot find module '@astrojs/vue'"
+
 ```bash
 pnpm add -D @astrojs/vue
 ```
 
 ### Error: "Vue component not hydrating"
+
 Asegúrate de usar una directiva `client:*`:
+
 ```astro
 <PropertyCard client:visible {...props} />
 ```
 
 ### Performance issues
+
 - Usa `client:idle` o `client:visible` en lugar de `client:load`
 - Implementa lazy loading para componentes pesados
 
