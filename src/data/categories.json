@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "Apartamentos",
+        "description": "Encuentra apartamentos modernos y bien ubicados.",
+        "count": 120,
+        "image": "/images/property-2.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Casas",
+        "description": "Casas familiares en diferentes zonas de la ciudad.",
+        "count": 85,
+        "image": "/images/property-2.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Fincas",
+        "description": "Fincas para descanso o inversión rural.",
+        "count": 42,
+        "image": "/images/property-2.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Vehículos",
+        "description": "Compra y venta de autos, motos y más.",
+        "count": 300,
+        "image": "/images/vehiculos.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Oficinas",
+        "description": "Espacios ideales para empresas y freelancers.",
+        "count": 20,
+        "image": "/images/oficinas.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Locales Comerciales",
+        "description": "Locales en arriendo y venta para tu negocio.",
+        "count": 18,
+        "image": "/images/locales.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Bodegas",
+        "description": "Espacios amplios para almacenamiento.",
+        "count": 12,
+        "image": "/images/bodegas.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Habitaciones",
+        "description": "Arriendo de cuartos y estudios amoblados.",
+        "count": 54,
+        "image": "/images/habitaciones.jpg"
+    }
+]

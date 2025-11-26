@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
+/* swiper */
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+@import "swiper/css/scrollbar";
+
 @theme {
   --font-primary: "Hammersmith One", sans-serif;
   --font-secondary: "Inter", sans-serif;

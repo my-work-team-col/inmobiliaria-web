@@ -7,3 +7,5 @@ export interface CategoryCardProps {
   icon?: string;
   bgColor?: string;
 }
+
+export interface Category extends CategoryCardProps {}
