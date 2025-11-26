@@ -12,17 +12,17 @@ const props = defineProps<CategoryCardProps>();
 </script>
 
 <template>
-  <div class="group w-full">
+  <div class="group w-full ">
     <div
-      class="flex flex-col lg:flex-row items-center gap-4 lg:gap-4 bg-white rounded-2xl p-0 lg:p-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
+      class="flex  flex-col lg:flex-row items-center gap-4 lg:gap-4 bg-white rounded-2xl p-0 lg:p-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
     >
       <!-- Content -->
       <div class="flex-1 w-full">
-        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+        <h2 class="text-3xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
           {{ props.title }}
         </h2>
 
-        <p v-if="props.description" class="text-gray-600 text-lg mb-6 line-clamp-3">
+        <p v-if="props.description" class="text-gray-600 text-md mb-6 line-clamp-3">
           {{ props.description }}
         </p>
 
@@ -54,7 +54,7 @@ const props = defineProps<CategoryCardProps>();
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div
-            class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="absolute inset-0 bg-linear-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           ></div>
         </div>
       </div>

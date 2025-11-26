@@ -15,8 +15,8 @@ const { data } = useCategories();
   :slides-per-view="1.2"
   :space-between="20"
   :breakpoints="{
-    768: { slidesPerView: 2.2 },
-    1024: { slidesPerView: 3.2 }
+    768: { slidesPerView: 2},
+    1024: { slidesPerView: 3 }
   }"
   navigation
   pagination    
@@ -24,7 +24,7 @@ const { data } = useCategories();
     <SwiperSlide
       v-for="category in data"
       :key="category.id"
-      class="pb-10"
+      class="p-2"
     >
       <CategoryCard v-bind="category" />
     </SwiperSlide>

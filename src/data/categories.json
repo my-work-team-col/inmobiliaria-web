@@ -25,34 +25,34 @@
         "title": "Vehículos",
         "description": "Compra y venta de autos, motos y más.",
         "count": 300,
-        "image": "/images/vehiculos.jpg"
+        "image": "/images/property-3.jpg"
     },
     {
         "id": 5,
         "title": "Oficinas",
         "description": "Espacios ideales para empresas y freelancers.",
         "count": 20,
-        "image": "/images/oficinas.jpg"
+        "image": "/images/property-3.jpg"
     },
     {
         "id": 6,
         "title": "Locales Comerciales",
         "description": "Locales en arriendo y venta para tu negocio.",
         "count": 18,
-        "image": "/images/locales.jpg"
+        "image": "/images/property-4.jpg"
     },
     {
         "id": 7,
         "title": "Bodegas",
         "description": "Espacios amplios para almacenamiento.",
         "count": 12,
-        "image": "/images/bodegas.jpg"
+        "image": "/images/property-1.jpg"
     },
     {
         "id": 8,
         "title": "Habitaciones",
         "description": "Arriendo de cuartos y estudios amoblados.",
         "count": 54,
-        "image": "/images/habitaciones.jpg"
+        "image": "/images/property-2.jpg"
     }
 ]
