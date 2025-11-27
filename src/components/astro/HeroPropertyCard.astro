@@ -1,0 +1,30 @@
+---
+const {
+  title = "Apartamento Moderno",
+  price = "$2.400.000",
+  details = "6% • 2 años",
+  image = "/images/property-2.jpg",
+} = Astro.props;
+---
+
+<div class="w-72 bg-white rounded-2xl shadow-xl p-4 space-y-3 group cursor-pointer hover:shadow-2xl transition">
+  <img
+    src={image}
+    alt={title}
+    class="w-full h-36 object-cover rounded-xl group-hover:scale-[1.03] transition-transform duration-300"
+  />
+
+  <div class="space-y-1">
+    <h3 class="text-lg font-bold text-gray-900">{title}</h3>
+
+    <p class="text-gray-700 font-semibold">{price}</p>
+    <p class="text-sm text-gray-500">{details}</p>
+  </div>
+
+  <button class="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded-xl font-medium transition flex items-center justify-center gap-2">
+    Ver detalles
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+</div>
