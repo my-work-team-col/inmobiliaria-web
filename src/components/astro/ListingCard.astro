@@ -1,0 +1,122 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  id: number;
+  title: string;
+  city: string;
+  neighborhood: string;
+  code: string;
+  area: number;
+  bedrooms: number;
+  bathrooms: number;
+  parking: number;
+  price: number;
+  participation: string;
+  featured?: boolean;
+  gallery: string[];
+}
+
+const {
+  id,
+  title,
+  city,
+  neighborhood,
+  code,
+  area,
+  bedrooms,
+  bathrooms,
+  parking,
+  price,
+  participation,
+  featured = false,
+  gallery
+} = Astro.props;
+
+const image = gallery?.[0] ?? "/images/default.jpg";
+---
+
+<article
+  class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
+  data-id={id}
+>
+
+  <!-- Imagen -->
+  <div class="relative h-48 overflow-hidden rounded-t-2xl">
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+      loading="lazy"
+    />
+
+    <!-- Badge destacado -->
+    {featured && (
+      <div
+        class="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md"
+      >
+        Destacado
+      </div>
+    )}
+
+    <!-- Ícono en la esquina -->
+    <div class="absolute top-3 left-3 bg-primary rounded-md p-1.5">
+      <Icon name="bathroom" class="text-white w-4 h-4" />
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="p-4">
+
+    <!-- Precio -->
+    <h3 class="text-xl font-bold text-gray-900 mb-1">
+      ${price.toLocaleString("es-CO")}
+    </h3>
+
+    <!-- Ubicación + Código -->
+    <p class="text-sm text-gray-500 mb-3">
+      {city} - {neighborhood} | {code}
+    </p>
+
+    <!-- Datos principales -->
+    <div class="flex items-center gap-6 text-gray-600 text-sm mb-3">
+
+      <span class="flex items-center gap-1">
+        <Icon name="ruler" class="w-4 h-4" />
+        {area} m²
+      </span>
+
+      <span class="flex items-center gap-1">
+        <Icon name="bedroom" class="w-4 h-4" />
+        {bedrooms} Ha.
+      </span>
+
+      <span class="flex items-center gap-1">
+        <Icon name="bathroom" class="w-4 h-4" />
+        {bathrooms} Ba.
+      </span>
+    </div>
+
+    <!-- Participación + Vistas -->
+    <div class="flex justify-between items-center text-sm text-gray-600">
+      <span>Participación: <strong>{participation}</strong></span>
+
+      <span class="flex items-center gap-1">
+        <Icon name="eye" class="w-4 h-4" />
+        174
+      </span>
+    </div>
+
+    <!-- Botón -->
+    <div class="mt-4">
+      <a
+        href={`/listing/${id}`}
+        class="block border border-primary text-primary font-semibold py-2 rounded-xl text-center hover:bg-primary hover:text-white transition-colors"
+      >
+        Ver más
+      </a>
+    </div>
+
+  </div>
+
+</article>

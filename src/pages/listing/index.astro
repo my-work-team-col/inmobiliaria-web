@@ -1,0 +1,15 @@
+---
+import ListingCard from '@/components/astro/ListingCard.astro';
+import listings from '@/data/listings.json';  
+import ListingLayout from '@/layouts/ListingLayout.astro';
+---
+
+
+<ListingLayout>
+  
+  <div class=" w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {listings.map(item => (
+        <ListingCard {...item} />
+      ))}
+</div>
+</ListingLayout> 
