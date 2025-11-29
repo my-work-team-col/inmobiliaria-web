@@ -1,0 +1,243 @@
+---
+
+import DetailLayout from '@/layouts/DetailLayout.astro';
+// Define la interfaz de la propiedad para tipado
+interface Property {
+    id: number;
+    title: string;
+    slug: string;
+    categories: string[];
+    isActive: boolean;
+    featured: boolean;
+    gallery: string[];
+    location: string;
+    city: string;
+    neighborhood: string;
+    code: string;
+    description: string;
+    area: number;
+    bedrooms: number;
+    bathrooms: number;
+    parking: number;
+    price: number;
+    participation: string;
+    address: string;
+    observations: string;
+}
+
+const { property } = Astro.props as { property: Property };
+
+// Formateo del precio para la etiqueta de "Best Price"
+const formattedPrice = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+}).format(property.price);
+
+// Datos para la nueva sección de "General Features" al estilo de la Imagen 2
+const generalFeatures = [
+    { label: "Apartamento", icon: 'apartment-icon-svg' }, // Reemplazar con SVG real
+    { label: "Venta", icon: 'tag-icon-svg' }, // Reemplazar con SVG real
+    { label: "Activo", icon: 'check-icon-svg' }, // Reemplazar con SVG real
+    { label: "Destacado", icon: 'star-icon-svg' }, // Reemplazar con SVG real
+];
+
+// Helper para secciones de datos clave-valor como "Interior"
+const interiorData = [
+    { label: "Living area", value: `${property.area} m²`, icon: '📏' },
+    { label: "Bedrooms", value: property.bedrooms, icon: '🛏️' },
+    { label: "Bathrooms", value: property.bathrooms, icon: '🚿' },
+    { label: "Parking", value: property.parking, icon: '🅿️' },
+    { label: "Code", value: property.code, icon: '🏷️' },
+];
+
+const financialData = [
+    { label: "Asking price", value: formattedPrice, icon: '💰' },
+    { label: "Participation", value: property.participation, icon: '📊' },
+];
+---
+
+<DetailLayout>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-10">
+
+        <a href="/propiedades" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium mb-4 inline-block">
+            ← Back to search
+        </a>
+
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                {property.title}
+            </h1>
+            <div class="mt-2 md:mt-0 text-right">
+                <p class="text-sm text-gray-500">Best Price</p>
+                <p class="text-3xl font-bold text-gray-900">{formattedPrice}</p>
+                <button class="text-sm text-indigo-600 hover:underline">Simulate mu loan</button>
+            </div>
+        </div>
+
+        <section class="relative mb-10">
+            <img 
+                src={property.gallery[0] || 'https://via.placeholder.com/1200x600?text=Property+Image'} 
+                alt={property.title}
+                class="w-full h-96 object-cover rounded-xl shadow-lg"
+            />
+            
+            <div class="absolute top-4 left-4 flex space-x-2">
+                <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Save</span>
+                </button>
+                <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2A9 9 0 111 12a9 9 0 0118 0z"></path></svg>
+                    <span>Share</span>
+                </button>
+                <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span>Map</span>
+                </button>
+            </div>
+            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/70 rounded-full shadow-md text-gray-800 hover:bg-white transition">❮</button>
+            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/70 rounded-full shadow-md text-gray-800 hover:bg-white transition">❯</button>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+            <div class="lg:col-span-2 space-y-10">
+                
+                {/* Nueva sección al estilo de la Imagen 2 */}
+                <section class="p-6 bg-white rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-2xl font-bold text-gray-800">
+                            Overview & description
+                        </h2>
+                        {/* Podemos añadir el precio aquí también si queremos replicar exactamente Image 2 */}
+                        {/* <p class="text-2xl font-bold text-gray-900">{formattedPrice}</p> */}
+                    </div>
+                    
+                    {/* Sección de características principales al estilo de Image 2 */}
+                    <div class="grid grid-cols-3 gap-x-4 gap-y-2 mb-6">
+                        <div class="flex flex-col items-center">
+                            <svg class="w-7 h-7 text-indigo-500 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m0 0l7 7m-7-7v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> {/* Cama */}
+                            <p class="text-lg font-bold text-gray-800">{property.bedrooms}</p>
+                            <p class="text-xs text-gray-500">Beds</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <svg class="w-7 h-7 text-indigo-500 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg> {/* Ducha */}
+                            <p class="text-lg font-bold text-gray-800">{property.bathrooms}</p>
+                            <p class="text-xs text-gray-500">Baths</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <svg class="w-7 h-7 text-indigo-500 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v6m-4-6h8m-4 0V3"></path></svg> {/* Cuadrado/Área */}
+                            <p class="text-lg font-bold text-gray-800">{property.area}</p>
+                            <p class="text-xs text-gray-500">m²</p>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 text-base leading-relaxed mb-4">
+                        {property.description}
+                    </p>
+                    <button class="text-indigo-600 text-sm font-medium hover:underline">
+                        Read More
+                    </button>
+                    
+                    {/* Grid de etiquetas con iconos al estilo de la imagen 2 */}
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
+                        {property.categories.map(cat => (
+                            <div class="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">
+                                {/* Icono placeholder. Reemplazar con SVG real según la categoría */}
+                                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
+                                <span>{cat.charAt(0).toUpperCase() + cat.slice(1)}</span>
+                            </div>
+                        ))}
+                        {property.isActive && (
+                            <div class="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">
+                                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Activo</span>
+                            </div>
+                        )}
+                        {property.featured && (
+                            <div class="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">
+                                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.329 1.176l1.519 4.674c.3.921-.755 1.688-1.539 1.176l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.512-1.838-.255-1.539-1.176l1.519-4.674a1 1 0 00-.329-1.176l-3.976-2.888c-.784-.57-.381-1.81.588-1.81h4.915a1 1 0 00.95-.69l1.519-4.674z"></path></svg>
+                                <span>Destacado</span>
+                            </div>
+                        )}
+                        <div class="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">
+                            <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Construido en 2024</span> {/* Dato dummy */}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Sección Interior rediseñada */}
+                <section class="p-6 bg-white rounded-xl shadow-sm border border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Interior</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-6">
+                        {interiorData.map(item => (
+                            <div class="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">
+                                <span class="text-indigo-500">{item.icon}</span> {/* Usamos el icono directamente */}
+                                <span>{item.label}: <span class="font-semibold text-gray-800">{item.value}</span></span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+                
+                {/* Sección Financial rediseñada */}
+                <section class="p-6 bg-white rounded-xl shadow-sm border border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Financial</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-6">
+                        {financialData.map(item => (
+                            <div class="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">
+                                <span class="text-indigo-500">{item.icon}</span> {/* Usamos el icono directamente */}
+                                <span>{item.label}: <span class="font-semibold text-gray-800">{item.value}</span></span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+
+                <section class="space-y-4">
+                    <h2 class="text-2xl font-bold text-gray-800">Location</h2>
+                    <div class="h-80 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 border border-dashed">
+                                                <p>Mapa de **{property.location}** (Componente Vue)</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="lg:col-span-1 space-y-8">
+                
+                <div class="sticky top-6 p-6 border rounded-2xl shadow-lg bg-white">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-yellow-400 rounded-full flex-shrink-0"></div>
+                        <div>
+                            <p class="font-bold text-gray-800">Robert Fox</p>
+                            <p class="text-xs text-gray-500">Owner / Firstkey Homes</p>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-2 justify-between">
+                        <button class="flex-1 py-2 border border-indigo-600 text-indigo-600 rounded-xl font-medium text-sm hover:bg-indigo-50 transition">Call</button>
+                        <button class="flex-1 py-2 border border-gray-300 text-gray-700 rounded-xl font-medium text-sm hover:bg-gray-50 transition">Message</button>
+                        <button class="p-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition">Report</button>
+                    </div>
+                </div>
+
+                <div class="p-6 border rounded-2xl shadow-lg bg-white">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">Special Offer</h3>
+                    
+                    {/* Se puede iterar sobre un array de propiedades destacadas aquí */}
+                    <div class="space-y-4">
+                        <div class="flex space-x-3 items-center hover:bg-gray-50 p-2 rounded-lg transition">
+                            <img src="/images/property-2.jpg" alt="Trending property" class="w-16 h-16 object-cover rounded-md" />
+                            <div>
+                                <p class="text-sm font-semibold text-gray-800">Trending Properties</p>
+                                <p class="text-xs text-gray-500 line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                            </div>
+                        </div>
+                        {/* Más elementos aquí... */}
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+</DetailLayout>

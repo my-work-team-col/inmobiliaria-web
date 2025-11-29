@@ -1,8 +1,23 @@
 ---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import listings from '@/data/listings.json';  
+import PropertyDetails from "@/components/astro/PropertyDetails.astro";
 
+// retrieve all listings from the json data
+export const getStaticPaths: GetStaticPaths = async () => {
+  return listings.map((listing) => ({
+    params: { slug: listing.slug },
+    props: { listing },
+  }));
+};  
+
+// Desestructura la propiedad individual
+const { listing } = Astro.props;
 ---
 
 <div>
 
   <h1>listing inner page</h1>
+  <PropertyDetails property={listing} />
 </div>
