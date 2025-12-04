@@ -4,11 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 import vue from "@astrojs/vue";
 import icon from "astro-icon";
 
+import db from "@astrojs/db";
+
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), icon()],
-
-
+    integrations: [vue(), icon(), db()],
+    adapter: cloudflare(),
 
   vite: {
     plugins: [tailwindcss()],
@@ -19,4 +22,5 @@ export default defineConfig({
       },
     },
   },
+
 });

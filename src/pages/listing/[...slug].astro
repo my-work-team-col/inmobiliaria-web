@@ -1,4 +1,30 @@
 ---
+import PropertyDetails from "@/components/astro/PropertyDetails.astro";
+import { db, Properties, eq } from "astro:db";
+
+export async function getStaticPaths() {
+  // obtener todos los slugs desde Astro DB
+  const all = await db.select().from(Properties);
+
+  return all.map((p) => ({
+    params: { slug: p.slug },
+    props: { property: p }, // se envía al componente
+  }));
+}
+
+const { property } = Astro.props;
+---
+<div>
+  <PropertyDetails property={property} />
+</div>
+
+
+
+
+
+<!-- SSG -->
+
+<!-- ---
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import listings from '@/data/listings.json';  
@@ -19,4 +45,4 @@ const { listing } = Astro.props;
 <div>
 
   <PropertyDetails property={listing} />
-</div>
+</div> -->

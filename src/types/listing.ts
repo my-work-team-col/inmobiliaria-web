@@ -1,4 +1,4 @@
-export interface TopLevel {
+export interface Listing {
     id:            number;
     title:         string;
     slug:          string;
