@@ -34,7 +34,7 @@ public/
 
 ## 📝 Cómo Funciona
 
-### En `Featured.astro`
+### En `ListingSection.astro`
 
 ```astro
 ---

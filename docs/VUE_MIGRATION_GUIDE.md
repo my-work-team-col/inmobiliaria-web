@@ -210,7 +210,7 @@ const openDetails = () => {
 </template>
 ```
 
-#### **Actualizar Featured.astro**
+#### **Actualizar ListingSection.astro**
 
 ```astro
 ---

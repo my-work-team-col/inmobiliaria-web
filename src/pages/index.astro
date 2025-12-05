@@ -1,19 +1,29 @@
 ---
-import Hero from "../components/astro/Hero.astro";
+import Layout from "@/layouts/Layout.astro";
 import Categories from "../components/astro/Categories.astro";
-import Featured from "../components/astro/Featured.astro";
-import Layout from "../layouts/Layout.astro";
 import HeroSection from "@/components/astro/HeroSection.astro";
+import PageHeader from "@/components/astro/PageHeader.astro";
+import SearchFilter from "@/components/vue/SearchFilter.vue";
+import ListingSection from "@/components/astro/ListingSection.astro";
+import bgHeader from "@/assets/images/bg-hero.jpg";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-  <Hero />
+ <PageHeader
+  image={bgHeader.src}
+  title="Encuentra tu hogar"
+  subtitle="Descubre las mejores propiedades disponibles"
+>
+  <!-- Todo lo que pongas aquí reemplaza el slot -->
+  <SearchFilter client:load />
+</PageHeader>
   <Categories />
-  <Featured />
+  <ListingSection />
   <HeroSection />
-  <Featured />
+  <ListingSection  limit={8}  />
+  <!-- <Featured /> -->
   
 </Layout>

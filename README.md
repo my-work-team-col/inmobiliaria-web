@@ -47,7 +47,7 @@ inmobiliaria-web/
 │   │   ├── Header.astro
 │   │   ├── Hero.astro
 │   │   ├── Categories.astro
-│   │   ├── Featured.astro
+│   │   ├── ListingSection.astro
 │   │   └── PropertyCard.astro    # ⭐ Componente reutilizable
 │   ├── data/                      # 📊 Datos JSON
 │   │   └── properties.json
@@ -101,7 +101,7 @@ Sección que muestra propiedades destacadas desde JSON.
 
 ```astro
 ---
-import Featured from './components/Featured.astro';
+import Featured from './components/ListingSection.astro';
 ---
 
 <Featured />

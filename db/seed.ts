@@ -1,5 +1,5 @@
 import { db, Properties } from 'astro:db';
-import data from '@/data/listings.json'; // si tu JSON está en otro path, solo cámbialo
+import data from '@/data/properties.json'; // si tu JSON está en otro path, solo cámbialo
 
 export default async function () {
   // Insertar todos los registros del JSON

@@ -1,0 +1,42 @@
+---
+interface Props {
+  image?: string;     // URL de la imagen
+  title: string;
+  subtitle?: string;
+}
+
+const { image, title, subtitle } = Astro.props;
+---
+
+<div class="w-full py-6 px-2 lg:px-20">
+  <div class="relative w-full h-[600px] px-4 lg:px-40">
+
+    <!-- Imagen -->
+    <img
+      src={image}
+      alt={title}
+      class="absolute inset-0 w-full h-full object-cover rounded-3xl"
+    />
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/40 rounded-3xl"></div>
+
+    <!-- Content -->
+    <div class="relative h-full flex flex-col items-center justify-center text-center">
+
+      <h2 class="text-6xl text-white mb-4">
+        {title}
+      </h2>
+
+      {subtitle && (
+        <p class="text-2xl text-white mb-8">
+          {subtitle}
+        </p>
+      )}
+
+      <!-- Slot para el contenido dinámico (ej: SearchFilter) -->
+      <slot />
+
+    </div>
+  </div>
+</div>

@@ -46,7 +46,7 @@ inmobiliaria-web/
 │   │   ├── Header.astro          # Navegación principal
 │   │   ├── Hero.astro            # Sección hero con búsqueda
 │   │   ├── Categories.astro      # Categorías de propiedades
-│   │   ├── Featured.astro        # Sección de propiedades destacadas
+│   │   ├── ListingSection.astro        # Sección de propiedades destacadas
 │   │   └── PropertyCard.astro    # Tarjeta de propiedad (reutilizable)
 │   ├── data/                      # Datos en JSON
 │   │   └── properties.json       # Base de datos de propiedades
@@ -165,9 +165,9 @@ import Categories from '../components/Categories.astro';
 
 ---
 
-### 4. Featured.astro
+### 4. ListingSection.astro
 
-**Ubicación:** `src/components/Featured.astro`
+**Ubicación:** `src/components/ListingSection.astro`
 
 **Descripción:** Sección que muestra las propiedades destacadas consumiendo datos desde JSON.
 
@@ -245,7 +245,7 @@ const featuredProperties = propertiesData.filter((property: Property) => propert
 
 ```astro
 ---
-import Featured from '../components/Featured.astro';
+import Featured from '../components/ListingSection.astro';
 ---
 
 <Featured />
@@ -469,7 +469,7 @@ const property = {
 ```
 
 3. Guarda el archivo
-4. El componente `Featured.astro` automáticamente mostrará la nueva propiedad
+4. El componente `ListingSection.astro` automáticamente mostrará la nueva propiedad
 
 **Cómo Consumir los Datos:**
 
