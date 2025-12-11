@@ -1,582 +1,582 @@
 [
-    {
-        "id": 1,
-        "title": "Apartamento en Santa Bárbara Central",
-        "slug": "apartamento-santa-barbara-central",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Santa Bárbara Central",
-        "code": "00000001857",
-        "description": "Sala, comedor, estudio, baño social, 3 habitaciones...",
-        "area": 183,
-        "bedrooms": 3,
-        "bathrooms": 3,
-        "parking": 3,
-        "price": 899000000,
-        "participation": "100%",
-        "address": "CL 119 11 B - 83...",
-        "observations": "Apartamento 102 Estrella - Santa Bárbara"
-    },
-    {
-        "id": 2,
-        "title": "Apartamento en Cedritos",
-        "slug": "apartamento-cedritos",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Cedritos",
-        "code": "00000001858",
-        "description": "Amplio apartamento con excelente iluminación...",
-        "area": 95,
-        "bedrooms": 2,
-        "bathrooms": 2,
-        "parking": 1,
-        "price": 520000000,
-        "participation": "100%",
-        "address": "CL 147 15 - 22...",
-        "observations": "Apartamento remodelado parcialmente"
-    },
-    {
-        "id": 3,
-        "title": "Apartamento en Chico Norte",
-        "slug": "apartamento-chico-norte",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Chicó Norte",
-        "code": "00000001859",
-        "description": "Apartamento moderno con acabados premium...",
-        "area": 110,
-        "bedrooms": 2,
-        "bathrooms": 3,
-        "parking": 2,
-        "price": 780000000,
-        "participation": "100%",
-        "address": "CR 11 92 - 15...",
-        "observations": "Vista exterior hacia parque"
-    },
-    {
-        "id": 4,
-        "title": "Casa en Rosales",
-        "slug": "casa-rosales",
-        "categories": [
-            "casa",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Rosales",
-        "code": "00000001860",
-        "description": "Casa amplia con terraza y zonas verdes...",
-        "area": 260,
-        "bedrooms": 4,
-        "bathrooms": 4,
-        "parking": 2,
-        "price": 1900000000,
-        "participation": "100%",
-        "address": "CR 2 72 - 48...",
-        "observations": "Remodelación reciente"
-    },
-    {
-        "id": 5,
-        "title": "Apartamento en Usaquén",
-        "slug": "apartamento-usaquen",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": false,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Usaquén",
-        "code": "00000001861",
-        "description": "Apartamento familiar cerca al centro comercial...",
-        "area": 120,
-        "bedrooms": 3,
-        "bathrooms": 2,
-        "parking": 1,
-        "price": 630000000,
-        "participation": "100%",
-        "address": "CL 119 22 - 40...",
-        "observations": "Incluye depósito"
-    },
-    {
-        "id": 6,
-        "title": "Casa en Suba",
-        "slug": "casa-suba",
-        "categories": [
-            "casa",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Suba",
-        "code": "00000001862",
-        "description": "Casa esquinera con patio interior...",
-        "area": 150,
-        "bedrooms": 4,
-        "bathrooms": 3,
-        "parking": 1,
-        "price": 480000000,
-        "participation": "100%",
-        "address": "CR 89 145 - 12...",
-        "observations": "Sector residencial tranquilo"
-    },
-    {
-        "id": 7,
-        "title": "Apartamento en La Carolina",
-        "slug": "apartamento-la-carolina",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "La Carolina",
-        "code": "00000001863",
-        "description": "Apartamento con vista a zonas verdes...",
-        "area": 140,
-        "bedrooms": 3,
-        "bathrooms": 3,
-        "parking": 2,
-        "price": 860000000,
-        "participation": "100%",
-        "address": "CR 15 123 - 55...",
-        "observations": "Excelente iluminación natural"
-    },
-    {
-        "id": 8,
-        "title": "Apartamento en Modelia",
-        "slug": "apartamento-modelia",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": false,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Modelia",
-        "code": "00000001864",
-        "description": "Apartamento remodelado recientemente...",
-        "area": 78,
-        "bedrooms": 2,
-        "bathrooms": 2,
-        "parking": 1,
-        "price": 420000000,
-        "participation": "100%",
-        "address": "CL 24 75 - 18...",
-        "observations": "Pisos nuevos en madera laminada"
-    },
-    {
-        "id": 9,
-        "title": "Casa en Normandía",
-        "slug": "casa-normandia",
-        "categories": [
-            "casa",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Normandía",
-        "code": "00000001865",
-        "description": "Casa con amplios espacios y jardín delantero...",
-        "area": 210,
-        "bedrooms": 4,
-        "bathrooms": 3,
-        "parking": 2,
-        "price": 720000000,
-        "participation": "100%",
-        "address": "CR 70 53 - 10...",
-        "observations": "Cercana a parques y comercio"
-    },
-    {
-        "id": 10,
-        "title": "Apartamento en Colina Campestre",
-        "slug": "apartamento-colina-campestre",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Colina Campestre",
-        "code": "00000001866",
-        "description": "Apartamento en conjunto cerrado con zonas comunes...",
-        "area": 105,
-        "bedrooms": 3,
-        "bathrooms": 2,
-        "parking": 1,
-        "price": 510000000,
-        "participation": "100%",
-        "address": "CL 138 58 - 22...",
-        "observations": "Incluye depósito"
-    },
-    {
-        "id": 11,
-        "title": "Apartamento en Pontevedra",
-        "slug": "apartamento-pontevedra",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Pontevedra",
-        "code": "00000001867",
-        "description": "Apartamento moderno cerca al centro comercial...",
-        "area": 92,
-        "bedrooms": 3,
-        "bathrooms": 2,
-        "parking": 1,
-        "price": 470000000,
-        "participation": "100%",
-        "address": "CL 116 72 - 55...",
-        "observations": "Vista a zonas verdes"
-    },
-    {
-        "id": 12,
-        "title": "Casa en El Batán",
-        "slug": "casa-el-batan",
-        "categories": [
-            "casa",
-            "venta"
-        ],
-        "isActive": false,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "El Batán",
-        "code": "00000001868",
-        "description": "Casa acogedora con excelente distribución...",
-        "area": 190,
-        "bedrooms": 4,
-        "bathrooms": 3,
-        "parking": 2,
-        "price": 890000000,
-        "participation": "100%",
-        "address": "CL 126 54 - 18...",
-        "observations": "Remodelada parcialmente"
-    },
-    {
-        "id": 13,
-        "title": "Apartamento en Castilla",
-        "slug": "apartamento-castilla",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Castilla",
-        "code": "00000001869",
-        "description": "Apartamento con excelente iluminación...",
-        "area": 75,
-        "bedrooms": 2,
-        "bathrooms": 2,
-        "parking": 1,
-        "price": 380000000,
-        "participation": "100%",
-        "address": "CL 8 78 - 21...",
-        "observations": "Conjunto cerrado"
-    },
-    {
-        "id": 14,
-        "title": "Apartamento en Galerías",
-        "slug": "apartamento-galerias",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Galerías",
-        "code": "00000001870",
-        "description": "Apartamento amplio ideal para inversión...",
-        "area": 88,
-        "bedrooms": 2,
-        "bathrooms": 2,
-        "parking": 1,
-        "price": 450000000,
-        "participation": "100%",
-        "address": "CL 53 27 - 19...",
-        "observations": "Cerca a comercio"
-    },
-    {
-        "id": 15,
-        "title": "Casa en Pasadena",
-        "slug": "casa-pasadena",
-        "categories": [
-            "casa",
-            "venta"
-        ],
-        "isActive": false,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Pasadena",
-        "code": "00000001871",
-        "description": "Casa con diseño clásico y gran iluminación...",
-        "area": 230,
-        "bedrooms": 4,
-        "bathrooms": 4,
-        "parking": 2,
-        "price": 980000000,
-        "participation": "100%",
-        "address": "CR 49 104 - 33...",
-        "observations": "Cerca a vías principales"
-    },
-    {
-        "id": 16,
-        "title": "Apartamento en Teusaquillo",
-        "slug": "apartamento-teusaquillo",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Teusaquillo",
-        "code": "00000001872",
-        "description": "Apartamento en zona tradicional con amplios espacios...",
-        "area": 112,
-        "bedrooms": 3,
-        "bathrooms": 2,
-        "parking": 1,
-        "price": 610000000,
-        "participation": "100%",
-        "address": "CL 39 23 - 44...",
-        "observations": "Edificio clásico"
-    },
-    {
-        "id": 17,
-        "title": "Casa en Chapinero Alto",
-        "slug": "casa-chapinero-alto",
-        "categories": [
-            "casa",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Chapinero Alto",
-        "code": "00000001873",
-        "description": "Casa moderna con vista panorámica...",
-        "area": 280,
-        "bedrooms": 4,
-        "bathrooms": 5,
-        "parking": 2,
-        "price": 2100000000,
-        "participation": "100%",
-        "address": "CR 3 62 - 15...",
-        "observations": "Ubicación exclusiva"
-    },
-    {
-        "id": 18,
-        "title": "Apartamento en Centro Internacional",
-        "slug": "apartamento-centro-internacional",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": false,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Centro Internacional",
-        "code": "00000001874",
-        "description": "Apartamento con vista panorámica al centro...",
-        "area": 65,
-        "bedrooms": 1,
-        "bathrooms": 1,
-        "parking": 1,
-        "price": 350000000,
-        "participation": "100%",
-        "address": "CL 28 13 - 65...",
-        "observations": "Ideal para arrendamiento"
-    },
-    {
-        "id": 19,
-        "title": "Casa en Villa del Prado",
-        "slug": "casa-villa-del-prado",
-        "categories": [
-            "casa",
-            "venta"
-        ],
-        "isActive": false,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Villa del Prado",
-        "code": "00000001875",
-        "description": "Casa amplia en zona residencial tranquila...",
-        "area": 200,
-        "bedrooms": 4,
-        "bathrooms": 4,
-        "parking": 2,
-        "price": 640000000,
-        "participation": "100%",
-        "address": "CL 175 27 - 19...",
-        "observations": "Buena iluminación"
-    },
-    {
-        "id": 20,
-        "title": "Apartamento en Niza Norte",
-        "slug": "apartamento-niza-norte",
-        "categories": [
-            "apartamento",
-            "venta"
-        ],
-        "isActive": true,
-        "featured": true,
-        "gallery": [
-            "/images/property-2.jpg",
-            "/images/property-2.jpg",
-            "/images/property-2.jpg"
-        ],
-        "location": "Bogotá, Colombia",
-        "city": "Bogotá",
-        "neighborhood": "Niza Norte",
-        "code": "00000001876",
-        "description": "Apartamento con amplios espacios y vista exterior...",
-        "area": 130,
-        "bedrooms": 3,
-        "bathrooms": 3,
-        "parking": 2,
-        "price": 730000000,
-        "participation": "100%",
-        "address": "CL 127 58 - 33...",
-        "observations": "Sector exclusivo y tranquilo"
-    }
+  {
+    "id": 1,
+    "title": "Apartamento en Santa Bárbara Central",
+    "slug": "apartamento-santa-barbara-central",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-1-1.jpg",
+      "/images/properties/property-1-2.jpg",
+      "/images/properties/property-1-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Santa Bárbara Central",
+    "code": "00000001857",
+    "description": "Sala, comedor, estudio, baño social, 3 habitaciones...",
+    "area": 183,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "parking": 3,
+    "price": 899000000,
+    "participation": "100%",
+    "address": "CL 119 11 B - 83...",
+    "observations": "Apartamento 102 Estrella - Santa Bárbara"
+  },
+  {
+    "id": 2,
+    "title": "Apartamento en Cedritos",
+    "slug": "apartamento-cedritos",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-2-1.jpg",
+      "/images/properties/property-2-2.jpg",
+      "/images/properties/property-2-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Cedritos",
+    "code": "00000001858",
+    "description": "Amplio apartamento con excelente iluminación...",
+    "area": 95,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "parking": 1,
+    "price": 520000000,
+    "participation": "100%",
+    "address": "CL 147 15 - 22...",
+    "observations": "Apartamento remodelado parcialmente"
+  },
+  {
+    "id": 3,
+    "title": "Apartamento en Chico Norte",
+    "slug": "apartamento-chico-norte",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-3-1.jpg",
+      "/images/properties/property-3-2.jpg",
+      "/images/properties/property-3-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Chicó Norte",
+    "code": "00000001859",
+    "description": "Apartamento moderno con acabados premium...",
+    "area": 110,
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "parking": 2,
+    "price": 780000000,
+    "participation": "100%",
+    "address": "CR 11 92 - 15...",
+    "observations": "Vista exterior hacia parque"
+  },
+  {
+    "id": 4,
+    "title": "Casa en Rosales",
+    "slug": "casa-rosales",
+    "categories": [
+      "casa",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-4-1.jpg",
+      "/images/properties/property-4-2.jpg",
+      "/images/properties/property-4-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Rosales",
+    "code": "00000001860",
+    "description": "Casa amplia con terraza y zonas verdes...",
+    "area": 260,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "parking": 2,
+    "price": 1900000000,
+    "participation": "100%",
+    "address": "CR 2 72 - 48...",
+    "observations": "Remodelación reciente"
+  },
+  {
+    "id": 5,
+    "title": "Apartamento en Usaquén",
+    "slug": "apartamento-usaquen",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": false,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-5-1.jpg",
+      "/images/properties/property-5-2.jpg",
+      "/images/properties/property-5-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Usaquén",
+    "code": "00000001861",
+    "description": "Apartamento familiar cerca al centro comercial...",
+    "area": 120,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "parking": 1,
+    "price": 630000000,
+    "participation": "100%",
+    "address": "CL 119 22 - 40...",
+    "observations": "Incluye depósito"
+  },
+  {
+    "id": 6,
+    "title": "Casa en Suba",
+    "slug": "casa-suba",
+    "categories": [
+      "casa",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-6-1.jpg",
+      "/images/properties/property-6-2.jpg",
+      "/images/properties/property-6-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Suba",
+    "code": "00000001862",
+    "description": "Casa esquinera con patio interior...",
+    "area": 150,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "parking": 1,
+    "price": 480000000,
+    "participation": "100%",
+    "address": "CR 89 145 - 12...",
+    "observations": "Sector residencial tranquilo"
+  },
+  {
+    "id": 7,
+    "title": "Apartamento en La Carolina",
+    "slug": "apartamento-la-carolina",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-7-1.jpg",
+      "/images/properties/property-7-2.jpg",
+      "/images/properties/property-7-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "La Carolina",
+    "code": "00000001863",
+    "description": "Apartamento con vista a zonas verdes...",
+    "area": 140,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "parking": 2,
+    "price": 860000000,
+    "participation": "100%",
+    "address": "CR 15 123 - 55...",
+    "observations": "Excelente iluminación natural"
+  },
+  {
+    "id": 8,
+    "title": "Apartamento en Modelia",
+    "slug": "apartamento-modelia",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": false,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-8-1.jpg",
+      "/images/properties/property-8-2.jpg",
+      "/images/properties/property-8-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Modelia",
+    "code": "00000001864",
+    "description": "Apartamento remodelado recientemente...",
+    "area": 78,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "parking": 1,
+    "price": 420000000,
+    "participation": "100%",
+    "address": "CL 24 75 - 18...",
+    "observations": "Pisos nuevos en madera laminada"
+  },
+  {
+    "id": 9,
+    "title": "Casa en Normandía",
+    "slug": "casa-normandia",
+    "categories": [
+      "casa",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-9-1.jpg",
+      "/images/properties/property-9-2.jpg",
+      "/images/properties/property-9-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Normandía",
+    "code": "00000001865",
+    "description": "Casa con amplios espacios y jardín delantero...",
+    "area": 210,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "parking": 2,
+    "price": 720000000,
+    "participation": "100%",
+    "address": "CR 70 53 - 10...",
+    "observations": "Cercana a parques y comercio"
+  },
+  {
+    "id": 10,
+    "title": "Apartamento en Colina Campestre",
+    "slug": "apartamento-colina-campestre",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-10-1.jpg",
+      "/images/properties/property-10-2.jpg",
+      "/images/properties/property-10-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Colina Campestre",
+    "code": "00000001866",
+    "description": "Apartamento en conjunto cerrado con zonas comunes...",
+    "area": 105,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "parking": 1,
+    "price": 510000000,
+    "participation": "100%",
+    "address": "CL 138 58 - 22...",
+    "observations": "Incluye depósito"
+  },
+  {
+    "id": 11,
+    "title": "Apartamento en Pontevedra",
+    "slug": "apartamento-pontevedra",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-11-1.jpg",
+      "/images/properties/property-11-2.jpg",
+      "/images/properties/property-11-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Pontevedra",
+    "code": "00000001867",
+    "description": "Apartamento moderno cerca al centro comercial...",
+    "area": 92,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "parking": 1,
+    "price": 470000000,
+    "participation": "100%",
+    "address": "CL 116 72 - 55...",
+    "observations": "Vista a zonas verdes"
+  },
+  {
+    "id": 12,
+    "title": "Casa en El Batán",
+    "slug": "casa-el-batan",
+    "categories": [
+      "casa",
+      "venta"
+    ],
+    "isActive": false,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-12-1.jpg",
+      "/images/properties/property-12-2.jpg",
+      "/images/properties/property-12-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "El Batán",
+    "code": "00000001868",
+    "description": "Casa acogedora con excelente distribución...",
+    "area": 190,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "parking": 2,
+    "price": 890000000,
+    "participation": "100%",
+    "address": "CL 126 54 - 18...",
+    "observations": "Remodelada parcialmente"
+  },
+  {
+    "id": 13,
+    "title": "Apartamento en Castilla",
+    "slug": "apartamento-castilla",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-13-1.jpg",
+      "/images/properties/property-13-2.jpg",
+      "/images/properties/property-13-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Castilla",
+    "code": "00000001869",
+    "description": "Apartamento con excelente iluminación...",
+    "area": 75,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "parking": 1,
+    "price": 380000000,
+    "participation": "100%",
+    "address": "CL 8 78 - 21...",
+    "observations": "Conjunto cerrado"
+  },
+  {
+    "id": 14,
+    "title": "Apartamento en Galerías",
+    "slug": "apartamento-galerias",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-14-1.jpg",
+      "/images/properties/property-14-2.jpg",
+      "/images/properties/property-14-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Galerías",
+    "code": "00000001870",
+    "description": "Apartamento amplio ideal para inversión...",
+    "area": 88,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "parking": 1,
+    "price": 450000000,
+    "participation": "100%",
+    "address": "CL 53 27 - 19...",
+    "observations": "Cerca a comercio"
+  },
+  {
+    "id": 15,
+    "title": "Casa en Pasadena",
+    "slug": "casa-pasadena",
+    "categories": [
+      "casa",
+      "venta"
+    ],
+    "isActive": false,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-15-1.jpg",
+      "/images/properties/property-15-2.jpg",
+      "/images/properties/property-15-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Pasadena",
+    "code": "00000001871",
+    "description": "Casa con diseño clásico y gran iluminación...",
+    "area": 230,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "parking": 2,
+    "price": 980000000,
+    "participation": "100%",
+    "address": "CR 49 104 - 33...",
+    "observations": "Cerca a vías principales"
+  },
+  {
+    "id": 16,
+    "title": "Apartamento en Teusaquillo",
+    "slug": "apartamento-teusaquillo",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-16-1.jpg",
+      "/images/properties/property-16-2.jpg",
+      "/images/properties/property-16-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Teusaquillo",
+    "code": "00000001872",
+    "description": "Apartamento en zona tradicional con amplios espacios...",
+    "area": 112,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "parking": 1,
+    "price": 610000000,
+    "participation": "100%",
+    "address": "CL 39 23 - 44...",
+    "observations": "Edificio clásico"
+  },
+  {
+    "id": 17,
+    "title": "Casa en Chapinero Alto",
+    "slug": "casa-chapinero-alto",
+    "categories": [
+      "casa",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-17-1.jpg",
+      "/images/properties/property-17-2.jpg",
+      "/images/properties/property-17-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Chapinero Alto",
+    "code": "00000001873",
+    "description": "Casa moderna con vista panorámica...",
+    "area": 280,
+    "bedrooms": 4,
+    "bathrooms": 5,
+    "parking": 2,
+    "price": 2100000000,
+    "participation": "100%",
+    "address": "CR 3 62 - 15...",
+    "observations": "Ubicación exclusiva"
+  },
+  {
+    "id": 18,
+    "title": "Apartamento en Centro Internacional",
+    "slug": "apartamento-centro-internacional",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": false,
+    "gallery": [
+      "/images/properties/property-18-1.jpg",
+      "/images/properties/property-18-2.jpg",
+      "/images/properties/property-18-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Centro Internacional",
+    "code": "00000001874",
+    "description": "Apartamento con vista panorámica al centro...",
+    "area": 65,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "parking": 1,
+    "price": 350000000,
+    "participation": "100%",
+    "address": "CL 28 13 - 65...",
+    "observations": "Ideal para arrendamiento"
+  },
+  {
+    "id": 19,
+    "title": "Casa en Villa del Prado",
+    "slug": "casa-villa-del-prado",
+    "categories": [
+      "casa",
+      "venta"
+    ],
+    "isActive": false,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-19-1.jpg",
+      "/images/properties/property-19-2.jpg",
+      "/images/properties/property-19-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Villa del Prado",
+    "code": "00000001875",
+    "description": "Casa amplia en zona residencial tranquila...",
+    "area": 200,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "parking": 2,
+    "price": 640000000,
+    "participation": "100%",
+    "address": "CL 175 27 - 19...",
+    "observations": "Buena iluminación"
+  },
+  {
+    "id": 20,
+    "title": "Apartamento en Niza Norte",
+    "slug": "apartamento-niza-norte",
+    "categories": [
+      "apartamento",
+      "venta"
+    ],
+    "isActive": true,
+    "featured": true,
+    "gallery": [
+      "/images/properties/property-20-1.jpg",
+      "/images/properties/property-20-2.jpg",
+      "/images/properties/property-20-3.jpg"
+    ],
+    "location": "Bogotá, Colombia",
+    "city": "Bogotá",
+    "neighborhood": "Niza Norte",
+    "code": "00000001876",
+    "description": "Apartamento con amplios espacios y vista exterior...",
+    "area": 130,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "parking": 2,
+    "price": 730000000,
+    "participation": "100%",
+    "address": "CL 127 58 - 33...",
+    "observations": "Sector exclusivo y tranquilo"
+  }
 ]
