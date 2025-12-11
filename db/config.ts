@@ -2,7 +2,7 @@ import { defineDb, defineTable, column } from 'astro:db';
 
   const Properties = defineTable({
     columns: {
-      id: column.number({ primaryKey: true, unique: true,  }),
+      id: column.text({ primaryKey: true, unique: true,  }),
       title: column.text(),
       slug: column.text({ unique: true }),
       categories: column.json(),     // array de strings
@@ -29,8 +29,8 @@ import { defineDb, defineTable, column } from 'astro:db';
 
   const PropertiesImages = defineTable({
     columns: {
-      id: column.number({ primaryKey: true, unique: true,  }),
-      propertyId: column.number({ references: () => Properties.columns.id }),
+      id: column.text({ primaryKey: true, unique: true,  }),
+      propertyId: column.text({ references: () => Properties.columns.id }),
       image: column.text(),
     },
   }); 
