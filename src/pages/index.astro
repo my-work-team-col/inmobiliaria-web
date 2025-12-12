@@ -6,6 +6,19 @@ import PageHeader from "@/components/astro/PageHeader.astro";
 import SearchFilter from "@/components/vue/SearchFilter.vue";
 import ListingSection from "@/components/astro/ListingSection.astro";
 import bgHeader from "@/assets/images/bg-hero.jpg";
+import { actions } from "astro:actions";
+import { astroCalledServerError } from "astro:actions";
+
+// test properties
+
+const {data:properties, error}= await Astro.callAction(actions.getPropertiesByPage, { limit: 4 });
+
+if(error){
+  console.log("Error fetching properties:", error);
+} else {
+  console.log("Fetched properties:", properties);
+}
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
