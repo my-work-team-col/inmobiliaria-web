@@ -21,7 +21,7 @@ export const getPropertiesByPage = defineAction({
     const offset = (page - 1) * limit;
 
     
-        // pagina permitida 
+    // pagina permitida 
     const properties = await db
     .select()
     .from(Properties)
