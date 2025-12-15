@@ -13,7 +13,7 @@
 
 1. [Estado Actual de la Base de Datos](#estado-actual)
 2. [Análisis del Schema](#análisis-del-schema)
-3. [Análisis del Seed](#análisis-del-seed)
+3. [Análisis del Seed](#análisis-del-seed)|
 4. [Análisis de los Endpoints API](#análisis-de-endpoints)
 5. [Problemas Críticos Identificados](#problemas-críticos)
 6. [Mejores Prácticas Recomendadas](#mejores-prácticas)
