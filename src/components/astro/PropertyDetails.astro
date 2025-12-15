@@ -9,7 +9,7 @@ interface Property {
     categories: string[];
     isActive: boolean;
     featured: boolean;
-    gallery: string[];
+    images?: Array<{ image: string; order: number; isPrimary: boolean; alt?: string }>;
     location: string;
     city: string;
     neighborhood: string;
@@ -78,8 +78,8 @@ const financialData = [
 
         <section class="relative mb-10">
             <img 
-                src={property.gallery[0] || 'https://via.placeholder.com/1200x600?text=Property+Image'} 
-                alt={property.title}
+                src={property.images?.[0]?.image || 'https://via.placeholder.com/1200x600?text=Property+Image'} 
+                alt={property.images?.[0]?.alt || property.title}
                 class="w-full h-96 object-cover rounded-xl shadow-lg"
             />
             

@@ -15,7 +15,7 @@ interface Props {
   price: number;
   participation: string;
   featured?: boolean;
-  gallery: string[];
+  images?: Array<{ image: string; order: number; isPrimary: boolean; alt?: string }>;
 }
 
 const {
@@ -32,11 +32,12 @@ const {
   price,
   participation,
   featured = false,
-  gallery
+  images = []
 } = Astro.props;
 
-// set default image 
-const image = gallery?.[0] ?? "/images/default.jpg";
+// Get primary image or first image, fallback to default
+const primaryImage = images.find(img => img.isPrimary);
+const image = primaryImage?.image || images[0]?.image || "/images/default.jpg";
 ---
 
 <article
