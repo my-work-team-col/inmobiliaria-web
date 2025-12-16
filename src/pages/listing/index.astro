@@ -7,8 +7,9 @@ type PropertiesResponse = {
   properties: Listing[];
 };
 
-// 1. Llamas tu API interna (usando URL relativa)
-const res = await fetch("/api/properties");
+// 1. Llamas tu API interna (usando Astro.url para SSR)
+const apiUrl = new URL("/api/properties", Astro.url.origin);
+const res = await fetch(apiUrl);
 const data = await res.json() as PropertiesResponse;
 
 // 2. Ahora SI tiene tipo Listing[]

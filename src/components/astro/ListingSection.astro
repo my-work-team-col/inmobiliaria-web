@@ -13,8 +13,9 @@ type PropertiesResponse = {
   properties: Listing[];
 };
 
-// 1. Fetch desde tu API real (usando URL relativa)
-const res = await fetch("/api/properties");
+// 1. Fetch desde tu API real (usando Astro.url para SSR)
+const apiUrl = new URL("/api/properties", Astro.url.origin);
+const res = await fetch(apiUrl);
 const data = await res.json() as PropertiesResponse;
 
 const allProperties = data.properties;
