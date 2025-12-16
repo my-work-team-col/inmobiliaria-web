@@ -1,14 +1,35 @@
 ---
 import PropertyDetails from "@/components/astro/PropertyDetails.astro";
-import { db, Properties, eq } from "astro:db";
+import { db, Properties, PropertiesImages, asc } from "astro:db";
 
 export async function getStaticPaths() {
-  // obtener todos los slugs desde Astro DB
-  const all = await db.select().from(Properties);
+  // Obtener todas las propiedades
+  const allProperties = await db.select().from(Properties);
+  
+  // Obtener todas las imágenes
+  const allImages = await db
+    .select()
+    .from(PropertiesImages)
+    .orderBy(asc(PropertiesImages.order));
 
-  return all.map((p) => ({
+  // Agrupar imágenes por propertyId
+  const imagesByProperty = allImages.reduce((acc, img) => {
+    if (!acc[img.propertyId]) {
+      acc[img.propertyId] = [];
+    }
+    acc[img.propertyId].push(img);
+    return acc;
+  }, {} as Record<string, typeof allImages>);
+
+  // Crear paths con propiedades e imágenes
+  return allProperties.map((p) => ({
     params: { slug: p.slug },
-    props: { property: p }, // se envía al componente
+    props: { 
+      property: {
+        ...p,
+        images: imagesByProperty[p.id] || []
+      }
+    },
   }));
 }
 
