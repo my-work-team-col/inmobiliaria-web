@@ -37,7 +37,12 @@ const {
 
 // Get primary image or first image, fallback to default
 const primaryImage = images.find(img => img.isPrimary);
-const image = primaryImage?.image || images[0]?.image || "/images/default.jpg";
+const galleryImage = primaryImage?.image || images[0]?.image || "/images/default.jpg";
+
+// Auto-resize para cards: 1200x500 → 600x400 si es dummyimage
+const image = galleryImage.includes('dummyimage.com') 
+  ? galleryImage.replace('1200x500', '600x400')
+  : galleryImage;
 ---
 
 <article
