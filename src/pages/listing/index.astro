@@ -7,8 +7,8 @@ type PropertiesResponse = {
   properties: Listing[];
 };
 
-// 1. Llamas tu API interna
-const res = await fetch("http://localhost:4321/api/properties");
+// 1. Llamas tu API interna (usando URL relativa)
+const res = await fetch("/api/properties");
 const data = await res.json() as PropertiesResponse;
 
 // 2. Ahora SI tiene tipo Listing[]

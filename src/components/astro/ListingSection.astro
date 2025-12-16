@@ -13,8 +13,8 @@ type PropertiesResponse = {
   properties: Listing[];
 };
 
-// 1. Fetch desde tu API real
-const res = await fetch("http://localhost:4321/api/properties");
+// 1. Fetch desde tu API real (usando URL relativa)
+const res = await fetch("/api/properties");
 const data = await res.json() as PropertiesResponse;
 
 const allProperties = data.properties;
