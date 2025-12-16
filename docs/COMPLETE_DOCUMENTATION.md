@@ -475,6 +475,165 @@ export async function getStaticPaths() {
 
 ---
 
+## 📸 Almacenamiento de Imágenes
+
+### ❌ Astro DB NO tiene storage de archivos
+
+**Importante:** Astro DB solo almacena datos estructurados (texto, números, JSON), NO archivos binarios como imágenes.
+
+### ✅ Nuestra Implementación (Correcta)
+
+Almacenamos **URLs**, no archivos:
+
+```typescript
+// ✅ CORRECTO - Solo URLs
+PropertiesImages {
+  id: string
+  propertyId: string
+  image: "https://dummyimage.com/1200x500/..."  // ← URL string
+  order: number
+  isPrimary: boolean
+  alt: string
+}
+
+// ❌ INCORRECTO - No hacemos esto
+PropertiesImages {
+  image: BLOB  // ← Archivo binario
+}
+```
+
+### 🏗️ Arquitectura Recomendada
+
+```
+Astro DB (Turso/D1)          Storage Externo (R2/Cloudinary)
+├── Properties               ├── /properties/
+│   ├── id                   │   ├── prop-1-img-1.jpg
+│   ├── title                │   ├── prop-1-img-2.jpg
+│   └── ...                  │   └── prop-2-img-1.jpg
+└── PropertiesImages         
+    ├── id                   
+    ├── propertyId           
+    ├── image: "https://r2.example.com/properties/prop-1-img-1.jpg"
+    ├── order                
+    └── isPrimary            
+```
+
+### 🎯 Opciones de Storage para Producción
+
+#### Opción 1: Cloudflare R2 ⭐ (Recomendado)
+
+**Por qué:**
+- ✅ Compatible con adapter Cloudflare
+- ✅ $0.015/GB almacenado
+- ✅ **$0 transferencia** (importante para inmobiliaria)
+- ✅ S3-compatible
+- ✅ CDN global incluido
+
+**Configuración:**
+```typescript
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+
+const s3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: process.env.R2_ACCESS_KEY,
+    secretAccessKey: process.env.R2_SECRET_KEY,
+  },
+});
+
+// Subir imagen
+await s3.send(new PutObjectCommand({
+  Bucket: "inmobiliaria-images",
+  Key: `properties/${propertyId}/${imageId}.jpg`,
+  Body: imageBuffer,
+  ContentType: "image/jpeg",
+}));
+
+// URL resultante
+const imageUrl = `https://images.tudominio.com/properties/${propertyId}/${imageId}.jpg`;
+
+// Guardar en DB
+await db.insert(PropertiesImages).values({
+  image: imageUrl,  // ← Solo la URL
+});
+```
+
+#### Opción 2: Cloudinary
+
+**Por qué:**
+- ✅ Plan gratuito: 25GB + 25GB transferencia/mes
+- ✅ Transformaciones automáticas (resize, crop, optimize)
+- ✅ Dashboard visual
+- ✅ Fácil de empezar
+
+**Configuración:**
+```typescript
+import { v2 as cloudinary } from 'cloudinary';
+
+cloudinary.config({
+  cloud_name: 'tu-cloud',
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+const result = await cloudinary.uploader.upload(imageFile, {
+  folder: 'properties',
+  public_id: `${propertyId}-${imageId}`,
+});
+
+// URL con transformaciones
+const imageUrl = cloudinary.url(result.public_id, {
+  width: 1200,
+  height: 500,
+  crop: 'fill',
+  quality: 'auto',
+  fetch_format: 'auto',
+});
+```
+
+#### Comparación de Opciones
+
+| Servicio | Costo | CDN | Transformaciones | Mejor para |
+|----------|-------|-----|------------------|------------|
+| **Cloudflare R2** | $0.015/GB | ✅ | ❌ Manual | Escala grande |
+| **Cloudinary** | Gratis 25GB | ✅ | ✅ Automáticas | Empezar rápido |
+| **Vercel Blob** | $0.15/GB | ✅ | ❌ Manual | Solo Vercel |
+| **Supabase** | Gratis 1GB | ✅ | ⚠️ Limitadas | Open source |
+
+### 🔄 Migración a Producción
+
+**Paso 1: Subir imágenes**
+```bash
+# Ejemplo con R2
+upload property-1-img-1.jpg → R2
+# Resultado: https://images.tudominio.com/properties/property-1-img-1.jpg
+```
+
+**Paso 2: Actualizar URLs en DB**
+```typescript
+// Cambiar de dummy a real
+await db.update(PropertiesImages)
+  .set({ 
+    image: "https://images.tudominio.com/properties/property-1-img-1.jpg" 
+  })
+  .where(eq(PropertiesImages.id, "uuid-1"));
+```
+
+**Paso 3: ¡Listo!**
+- ✅ Sin cambiar componentes
+- ✅ Sin cambiar API
+- ✅ Sin cambiar slider
+- ✅ Solo cambias las URLs
+
+### 💡 Recomendación por Fase
+
+1. **Desarrollo (Actual):** dummyimage.com ✅
+2. **Staging:** Cloudinary (plan gratuito)
+3. **Producción:** Cloudflare R2 (escala + ahorro)
+
+---
+
 ## 🚀 Próximos Pasos
 
 ### Phase 2: Mejoras Importantes
