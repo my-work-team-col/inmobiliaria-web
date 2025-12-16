@@ -1,6 +1,8 @@
 ---
 
 import DetailLayout from '@/layouts/DetailLayout.astro';
+import PropertyImageSlider from '@/components/vue/PropertyImageSlider.vue';
+
 // Define la interfaz de la propiedad para tipado
 interface Property {
     id: number;
@@ -9,7 +11,7 @@ interface Property {
     categories: string[];
     isActive: boolean;
     featured: boolean;
-    images?: Array<{ image: string; order: number; isPrimary: boolean; alt?: string }>;
+    images?: Array<{ id: string; image: string; order: number; isPrimary: boolean; alt?: string }>;
     location: string;
     city: string;
     neighborhood: string;
@@ -76,14 +78,23 @@ const financialData = [
             </div>
         </div>
 
+        <!-- Image Slider Section -->
         <section class="relative mb-10">
-            <img 
-                src={property.images?.[0]?.image || 'https://via.placeholder.com/1200x600?text=Property+Image'} 
-                alt={property.images?.[0]?.alt || property.title}
-                class="w-full h-96 object-cover rounded-xl shadow-lg"
-            />
+            {property.images && property.images.length > 0 ? (
+                <PropertyImageSlider 
+                    images={property.images} 
+                    propertyTitle={property.title}
+                    client:load
+                />
+            ) : (
+                <img 
+                    src="https://via.placeholder.com/1200x600?text=No+Images+Available" 
+                    alt={property.title}
+                    class="w-full h-96 object-cover rounded-xl shadow-lg"
+                />
+            )}
             
-            <div class="absolute top-4 left-4 flex space-x-2">
+            <div class="absolute top-4 left-4 flex space-x-2 z-20">
                 <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     <span>Save</span>
@@ -97,8 +108,6 @@ const financialData = [
                     <span>Map</span>
                 </button>
             </div>
-            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/70 rounded-full shadow-md text-gray-800 hover:bg-white transition">❮</button>
-            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/70 rounded-full shadow-md text-gray-800 hover:bg-white transition">❯</button>
         </section>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
