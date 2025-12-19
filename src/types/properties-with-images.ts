@@ -3,8 +3,8 @@ export interface PropertiesWithImages {
     title: string;
     slug: string;
     categories:string[],
-    isActive: number;
-    featured: number;
+    isActive: boolean;
+    featured: boolean;
     location: string;
     city: string;
     neighborhood: string;
@@ -12,11 +12,11 @@ export interface PropertiesWithImages {
     description: string;
     area: number;
     bedrooms: number;
-    bathrooms: 4;
+    bathrooms: number;
     parking: number;
     price: number;
     participation: string;
     address: string;
     observations: string;
-    images: string[] | null;
+    images: string[] | null; // 👈 YA NORMALIZADO
 }

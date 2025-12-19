@@ -1,7 +1,9 @@
-import type { PropertiesWithImages } from "@/types";
-import { defineAction } from "astro:actions";
 import { z } from "astro:content";
+import { defineAction } from "astro:actions";
 import { count, db , Properties, PropertiesImages, sql} from "astro:db";
+import type { PropertiesWithImages , PropertyRow } from "@/types";
+import { mapPropertyRow } from "@/mappers/property.mapper";
+
 
 export const getPropertiesByPage = defineAction({
   accept: "json",
@@ -51,11 +53,22 @@ export const getPropertiesByPage = defineAction({
 
 
   const {rows}= await db.run(propertiesQuery);
-  // console.log(rows); 
+  // testing fetch data from 2 tables into 1 object 
+  // console.log("RAW ROW:", rows[0]);
+
+   // 🔴 puente inevitable en Astro DB
+    const typedRows = rows as unknown as PropertyRow[];
+
+    // ✅ dominio limpio
+    const properties = typedRows.map(mapPropertyRow);
+    // testing mapped data [Aquí confirmamos:JSON parseado, Booleans correctos, Shape final para el front]
+    // console.log("MAPPED PROPERTY:", properties[0]);
+  
     
     return{
       // relaciones | agrego el típado estricto para las propiedades con imágenes
-      properties: rows as unknown as PropertiesWithImages[],
+      // properties: rows as unknown as PropertiesWithImages[],
+      properties: properties,
       totalPages,
       currentPage: page,
       totalRecords: totalRecords.count  

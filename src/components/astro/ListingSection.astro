@@ -1,29 +1,31 @@
 ---
 import ListingCard from "@/components/astro/ListingCard.astro";
-import type { Listing } from "@/types";
+import type { Listing, PropertiesWithImages } from "@/types";
 
 // ⭐ Permite controlar cuántas propiedades mostrar
 interface Props {
   limit?: number;
+  propertiesData: PropertiesWithImages[];
 }
 
-const { limit = 4 } = Astro.props;
+const { propertiesData ,limit = 4 } = Astro.props;
 
-type PropertiesResponse = {
-  properties: Listing[];
-};
+// *** eso se usaba con el mock de datos y usa y el json de ejemplo con una sola db de propiedad sin img la img se consumen del json***
+// type PropertiesResponse = {
+//   properties: Listing[];
+// };
 
-// 1. Fetch desde tu API real
-const res = await fetch("http://localhost:4321/api/properties");
-const data = await res.json() as PropertiesResponse;
+// // 1. Fetch desde tu API real
+// const res = await fetch("http://localhost:4321/api/properties");
+// const data = await res.json() as PropertiesResponse;
 
-const allProperties = data.properties;
+// const allProperties = data.properties;
 
-// 2. Filtrar destacadas
-let featuredProperties = allProperties.filter((p) => p.featured);
+// // 2. Filtrar destacadas
+// let featuredProperties = allProperties.filter((p) => p.featured);
 
-// 3. Aplicar límite
-featuredProperties = featuredProperties.slice(0, limit);
+// // 3. Aplicar límite
+// featuredProperties = featuredProperties.slice(0, limit);
 ---
 
 <section class="w-full py-6 px-4 md:px-8 lg:px-16" aria-labelledby="featured-heading">
@@ -53,9 +55,9 @@ featuredProperties = featuredProperties.slice(0, limit);
 
       <!-- Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featuredProperties.length > 0 ? (
-          featuredProperties.map((item) => (
-            <ListingCard {...item} />
+        {propertiesData.length > 0 ? (
+          propertiesData.map((item) => (
+            <ListingCard property={item}/>
           ))
         ) : (
           <div class="col-span-full text-center py-12">

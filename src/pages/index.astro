@@ -10,7 +10,9 @@ import { actions } from "astro:actions";
 import { astroCalledServerError } from "astro:actions";
 
 // test properties
-const {data:properties, error}= await Astro.callAction(actions.getPropertiesByPage, { limit: 4 });
+const {data, error}= await Astro.callAction(actions.getPropertiesByPage, { limit: 4 });
+
+const properties = data?.properties ?? [];
 
 if(error){
   console.log("Error fetching properties:", error);
@@ -35,7 +37,7 @@ if(error){
   <Categories />
   <ListingSection propertiesData={properties}/>
   <HeroSection />
-  <ListingSection  propertiesData={properties}limit={8}  />
+  <ListingSection  propertiesData={properties} limit={8}  />
   <!-- <Featured /> -->
   
 </Layout>

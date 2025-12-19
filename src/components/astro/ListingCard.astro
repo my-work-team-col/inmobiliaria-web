@@ -1,42 +1,45 @@
 ---
 import { Icon } from "astro-icon/components";
+import type { PropertiesWithImages } from "@/types";
 
 interface Props {
-  id: number;
-  title: string;
-  slug: string;
-  city: string;
-  neighborhood: string;
-  code: string;
-  area: number;
-  bedrooms: number;
-  bathrooms: number;
-  parking: number;
-  price: number;
-  participation: string;
-  featured?: boolean;
-  gallery: string[];
+  property: PropertiesWithImages;
 }
 
 const {
   id,
   title,
-  slug, 
+  slug,
+  isActive,
+  featured,
+  location,
   city,
   neighborhood,
-  code,
+  description,
   area,
   bedrooms,
   bathrooms,
   parking,
   price,
   participation,
-  featured = false,
-  gallery
-} = Astro.props;
+  address,
+  observations,
+  images,
+  code,
+} = Astro.props.property;
 
+// parsear imágenes SQL devuelve esto: images: "[\"/images/properties/property-4-1.jpg\",\"/images/properties/property-4-2.jpg\"]"
+// esto significa images[0] === "["   // primer carácter del string | resultado <img src="[" />
+//  error consola ➡️ El navegador intenta cargar /[➡️ Astro log:[404] /[ not found
+
+// TODO: Optimizar crear un mapper, pero en la acción los row no permiten mapear directamente
+// const parsedImages = Array.isArray(images)
+//   ? images
+//   : JSON.parse(images ?? "[]");
+
+// const image = parsedImages[0] ?? "/images/default.jpg";
 // set default image 
-const image = gallery?.[0] ?? "/images/default.jpg";
+const image = images?.[0] ?? "/images/default.jpg";
 ---
 
 <article
