@@ -2,7 +2,7 @@ export interface Listing {
     id:            number;
     title:         string;
     slug:          string;
-    categories:    Category[];
+    // categories:    Category[];
     isActive:      boolean;
     featured:      boolean;
     gallery:       Gallery[];
@@ -21,11 +21,11 @@ export interface Listing {
     observations:  string;
 }
 
-export enum Category {
-    Apartamento = "apartamento",
-    Casa = "casa",
-    Venta = "venta",
-}
+// export enum Category {
+//     Apartamento = "apartamento",
+//     Casa = "casa",
+//     Venta = "venta",
+// }
 
 export enum City {
     Bogotá = "Bogotá",

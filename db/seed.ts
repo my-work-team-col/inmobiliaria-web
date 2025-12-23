@@ -85,5 +85,4 @@ data.forEach((item) => {
 await db.batch(queries);
 
 // console.log("✔ Seed de imágenes insertado correctamente");
-
 }
