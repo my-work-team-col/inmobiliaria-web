@@ -424,5 +424,5 @@ Asegúrate de usar una directiva `client:*`:
 
 ---
 
-**Última actualización:** 2025-11-21  
+**Última actualización:** 2025-12-23  
 **Versión:** 1.0.0
