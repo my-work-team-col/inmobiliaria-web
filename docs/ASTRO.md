@@ -2,8 +2,8 @@
 
 > Documentación completa de Astro Framework, SSR, arquitectura, componentes, estructura del proyecto y mejores prácticas.
 
-**Última actualización:** 2025-12-23  
-**Versión:** 1.0.0
+**Última actualización:** 2025-12-28  
+**Versión:** 1.1.0
 
 ---
 
@@ -253,6 +253,131 @@ const image = property.images[0] ?? "/images/default.jpg";
     </p>
   </div>
 </article>
+```
+
+#### PropertyDetails.astro
+**Ubicación:** `src/components/astro/PropertyDetails.astro`
+
+**Props:**
+```typescript
+interface Props {
+  property: Property;
+  categories: Category[];
+}
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  icon: string;
+}
+```
+
+**Características:**
+- ✅ Recibe categorías como prop separada (datos relacionales)
+- ✅ Muestra emojis de categorías
+- ✅ Galería de imágenes
+- ✅ Detalles completos de propiedad
+
+**Patrón de uso (página dinámica):**
+```astro
+---
+// src/pages/listing/[...slug].astro
+import { db, Properties, Categories, PropertyCategories, eq } from 'astro:db';
+import PropertyDetails from '@/components/astro/PropertyDetails.astro';
+
+const { slug } = Astro.params;
+
+// 1. Query de la propiedad
+const property = await db
+  .select()
+  .from(Properties)
+  .where(eq(Properties.slug, slug))
+  .get();
+
+// 2. Query de categorías (JOIN con tabla relacional)
+const propertyCategories = await db
+  .select({
+    id: Categories.id,
+    name: Categories.name,
+    slug: Categories.slug,
+    icon: Categories.icon,
+  })
+  .from(PropertyCategories)
+  .innerJoin(Categories, eq(PropertyCategories.categoryId, Categories.id))
+  .where(eq(PropertyCategories.propertyId, property.id))
+  .all();
+---
+
+<!-- 3. Pasar ambos como props -->
+<PropertyDetails property={property} categories={propertyCategories} />
+```
+
+**Código del componente:**
+```astro
+---
+interface Props {
+  property: Property;
+  categories?: Category[];
+}
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  icon: string;
+}
+
+const { property, categories = [] } = Astro.props;
+---
+
+<div class="property-details">
+  <!-- Categorías con emojis -->
+  {categories.length > 0 && (
+    <div class="flex flex-wrap gap-2 mb-4">
+      {categories.map(cat => (
+        <div class="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg">
+          <span class="text-lg">{cat.icon}</span>
+          <span>{cat.name}</span>
+        </div>
+      ))}
+    </div>
+  )}
+
+  <!-- Resto del componente -->
+  <h1>{property.title}</h1>
+  <p>{property.description}</p>
+  <!-- ... -->
+</div>
+```
+
+**⚠️ Importante - Migración a Base de Datos Relacional:**
+
+Antes (datos en JSON):
+```typescript
+// ❌ OBSOLETO
+interface Property {
+  categories: string[]; // Categorías como array en el objeto
+}
+
+{property.categories.map(cat => <span>{cat}</span>)}
+```
+
+Ahora (datos relacionales):
+```typescript
+// ✅ CORRECTO
+// 1. Categories en tabla separada
+// 2. PropertyCategories como tabla de relación (many-to-many)
+// 3. Query con JOIN en la página
+// 4. Pasar como prop al componente
+
+const categories = await db
+  .select({...})
+  .from(PropertyCategories)
+  .innerJoin(Categories, ...)
+  .where(eq(PropertyCategories.propertyId, propertyId));
+
+<PropertyDetails property={property} categories={categories} />
 ```
 
 ---

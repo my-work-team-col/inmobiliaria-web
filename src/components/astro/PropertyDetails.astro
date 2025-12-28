@@ -1,15 +1,15 @@
 ---
 
 import DetailLayout from '@/layouts/DetailLayout.astro';
+
 // Define la interfaz de la propiedad para tipado
 interface Property {
-    id: number;
+    id: string;
     title: string;
     slug: string;
-    categories: string[];
     isActive: boolean;
     featured: boolean;
-    gallery: string[];
+    gallery: string;
     location: string;
     city: string;
     neighborhood: string;
@@ -25,7 +25,17 @@ interface Property {
     observations: string;
 }
 
-const { property } = Astro.props as { property: Property };
+interface Category {
+    id: string;
+    name: string;
+    slug: string;
+    icon: string;
+}
+
+const { property, categories = [] } = Astro.props as { 
+    property: Property; 
+    categories: Category[];
+};
 
 // Formateo del precio para la etiqueta de "Best Price"
 const formattedPrice = new Intl.NumberFormat('es-CO', {
@@ -143,11 +153,10 @@ const financialData = [
                     
                     {/* Grid de etiquetas con iconos al estilo de la imagen 2 */}
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
-                        {property.categories.map(cat => (
+                        {categories.map(cat => (
                             <div class="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm">
-                                {/* Icono placeholder. Reemplazar con SVG real según la categoría */}
-                                <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
-                                <span>{cat.charAt(0).toUpperCase() + cat.slice(1)}</span>
+                                <span class="text-lg">{cat.icon}</span>
+                                <span>{cat.name}</span>
                             </div>
                         ))}
                         {property.isActive && (

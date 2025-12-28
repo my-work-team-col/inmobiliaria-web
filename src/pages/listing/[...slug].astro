@@ -1,6 +1,6 @@
 ---
 import PropertyDetails from "@/components/astro/PropertyDetails.astro";
-import { db, Properties, eq } from "astro:db";
+import { db, Properties, Categories, PropertyCategories, eq } from "astro:db";
 
 export async function getStaticPaths() {
   // obtener todos los slugs desde Astro DB
@@ -13,9 +13,22 @@ export async function getStaticPaths() {
 }
 
 const { property } = Astro.props;
+
+// Obtener categorías de la propiedad
+const propertyCategories = await db
+  .select({
+    id: Categories.id,
+    name: Categories.name,
+    slug: Categories.slug,
+    icon: Categories.icon,
+  })
+  .from(PropertyCategories)
+  .innerJoin(Categories, eq(PropertyCategories.categoryId, Categories.id))
+  .where(eq(PropertyCategories.propertyId, property.id))
+  .all();
 ---
 <div>
-  <PropertyDetails property={property} />
+  <PropertyDetails property={property} categories={propertyCategories} />
 </div>
 
 

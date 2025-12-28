@@ -762,6 +762,45 @@ export async function countPropertiesByCategory(categoryId: string)
 - Validar máximo 2 niveles
 - Verificar si es padre/hija
 
+### Patrón de Query en Páginas Dinámicas
+
+**Ejemplo: Obtener categorías de una propiedad en página de detalle**
+
+```typescript
+// src/pages/listing/[...slug].astro
+import { db, Properties, Categories, PropertyCategories, eq } from 'astro:db';
+
+// 1. Obtener la propiedad
+const property = await db
+  .select()
+  .from(Properties)
+  .where(eq(Properties.slug, slug))
+  .get();
+
+// 2. Obtener categorías relacionadas (JOIN)
+const propertyCategories = await db
+  .select({
+    id: Categories.id,
+    name: Categories.name,
+    slug: Categories.slug,
+    icon: Categories.icon,
+  })
+  .from(PropertyCategories)
+  .innerJoin(Categories, eq(PropertyCategories.categoryId, Categories.id))
+  .where(eq(PropertyCategories.propertyId, property.id))
+  .all();
+
+// 3. Pasar a componente
+<PropertyDetails property={property} categories={propertyCategories} />
+```
+
+**Ventajas de este patrón:**
+- ✅ Separación de responsabilidades (query en página, display en componente)
+- ✅ Type-safe con Drizzle ORM
+- ✅ JOIN eficiente en una sola query
+- ✅ Reutilizable en múltiples páginas
+- ✅ Fácil de testear y mantener
+
 ### Plan de Implementación Futuro
 
 #### Fase 2: Tags (3-4 días) - Prioridad Alta
@@ -1169,12 +1208,14 @@ pnpm astro db push --remote  # Aplicar a producción
 - ✅ **11 categorías en producción (3 padre + 8 hijas)** ⭐
 - ✅ **Queries helper para categorías** ⭐
 - ✅ **Validaciones de jerarquía** ⭐
+- ✅ **PropertyDetails.astro migrado a categorías relacionales** ⭐
+- ✅ **Patrón de query relacional en páginas dinámicas** ⭐
 - ✅ Astro Actions para paginación
 - ✅ Mapeador de datos
 - ✅ Seed transaccional
 
 ### 🚧 En Progreso
-- 🚧 Componentes frontend para categorías
+- 🚧 Componentes frontend adicionales (CategoryBadge, CategoryTree)
 
 ### ⏳ Pendiente
 

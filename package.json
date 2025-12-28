@@ -6,7 +6,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "db:push": "astro db push --force-reset",
+    "db:studio": "astro db studio",
+    "db:change-category": "tsx db/scripts/change-category.ts",
+    "db:search-change": "tsx db/scripts/search-and-change.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
@@ -22,7 +26,9 @@
     "vue": "^3.5.25"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
     "@iconify-json/hugeicons": "^1.2.18",
-    "@iconify/json": "^2.2.410"
+    "@iconify/json": "^2.2.410",
+    "tsx": "^4.21.0"
   }
 }
