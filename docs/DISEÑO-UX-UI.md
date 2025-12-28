@@ -329,4 +329,4 @@
 
 **Última actualización:** 2025-12-23  
 **Versión:** 1.0.0  
-**Mantenido por:** Yorrmi Altamiranda & Didier Méndez
+**Mantenido por:** Yormi Altamiranda & Didier Méndez

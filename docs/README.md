@@ -2,7 +2,7 @@
 
 > Documentación completa del proyecto de sitio web inmobiliario construido con Astro, TypeScript, Astro DB y Tailwind CSS.
 
-**Última actualización:** 2025-12-23  
+**Última actualización:** 28 de diciembre de 2025  
 **Versión del Proyecto:** 1.0.0
 
 ---
@@ -13,7 +13,7 @@ Si eres nuevo en el proyecto, empieza por aquí:
 
 1. **[ESTRUCTURA.md](ESTRUCTURA.md)** - Visión completa del proyecto, objetivos, stack y cronograma
 2. **[ASTRO.md](ASTRO.md)** - Framework Astro, SSR, componentes e Islands
-3. **[BASE-DE-DATOS.md](BASE-DE-DATOS.md)** - Astro DB, schema, migraciones y Astro Actions
+3. **[BASE-DE-DATOS.md](BASE-DE-DATOS.md)** ⭐ - Astro DB, schema, taxonomía, migraciones y Astro Actions
 4. **[DISEÑO-UX-UI.md](DISEÑO-UX-UI.md)** - Sistema de colores, componentes y accesibilidad
 5. **[VUE.md](VUE.md)** - Integración de Vue.js con Astro Islands
 
@@ -52,18 +52,25 @@ Si eres nuevo en el proyecto, empieza por aquí:
 
 | Documento | Descripción |
 |-----------|-------------|
-| **[BASE-DE-DATOS.md](BASE-DE-DATOS.md)** | Schema de Astro DB, migraciones, Astro Actions, sistema de imágenes y mejores prácticas |
+| **[BASE-DE-DATOS.md](BASE-DE-DATOS.md)** ⭐ | Documentación completa del sistema de base de datos, schema, taxonomía y mejores prácticas |
 
 **Temas cubiertos:**
-- Schema de Astro DB (Properties, PropertiesImages)
+- Schema completo de Astro DB (7 tablas)
 - Migración de JSON a Astro DB
 - UUIDs como primary keys
-- Relaciones 1:N
+- Relaciones 1:N y Many-to-Many
+- Sistema de categorías jerárquicas (2 niveles) ✅
+- Sistema de Tags, Attributes y Brands ⏳
 - Astro Actions (getPropertiesByPage)
 - Sistema de imágenes con mapeador
-- Normalización de datos
-- Queries eficientes
+- Queries helper y validaciones
 - Mejores prácticas de BD
+
+**Sistema de Taxonomía (Implementación Gradual):**
+- ✅ **Categories**: Implementado (2 niveles: padre-hija, 11 categorías en producción)
+- ⏳ **Tags**: Pendiente (amenidades, características, condiciones)
+- ⏳ **Attributes**: Pendiente (campos dinámicos por categoría)
+- ⏳ **Brands**: Pendiente (constructoras/inmobiliarias)
 
 ---
 
@@ -104,6 +111,13 @@ Si eres nuevo en el proyecto, empieza por aquí:
 
 ## 🔍 Buscar por Tema
 
+### Categorías y Taxonomía
+- **Sistema de Taxonomía completo**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Sistema de Taxonomía"
+- **Categories (implementado)**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Categories"
+- **Tags (pendiente)**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Tags"
+- **Attributes (pendiente)**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Attributes"
+- **Brands (pendiente)**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Brands"
+
 ### Framework
 - **Astro SSR**: [ASTRO.md](ASTRO.md) - Sección "Migración SSG → SSR"
 - **Estructura del proyecto**: [ASTRO.md](ASTRO.md) - Sección "Estructura del Proyecto"
@@ -111,7 +125,7 @@ Si eres nuevo en el proyecto, empieza por aquí:
 - **TypeScript**: [ASTRO.md](ASTRO.md) - Sección "TypeScript"
 
 ### Base de Datos
-- **Schema**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Schema de Base de Datos"
+- **Schema completo**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Schema Completo"
 - **Migraciones**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Migración y Refactor"
 - **UUIDs**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Migración y Refactor"
 - **Astro Actions**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Astro Actions"
@@ -127,15 +141,9 @@ Si eres nuevo en el proyecto, empieza por aquí:
 - **Instalación**: [VUE.md](VUE.md) - Sección "Instalación de Vue"
 - **Migración de componentes**: [VUE.md](VUE.md) - Sección "Migración de Componentes"
 - **Pinia**: [VUE.md](VUE.md) - Sección "Gestión de Estado"
-
----
-
-## 📊 Estado del Proyecto
-
-### ✅ Completado
-- ✅ Migración de JSON a Astro DB
-- ✅ Implementación de UUIDs
-- ✅ Sistema de imágenes relacional
+**Sistema de categorías con jerarquía (2 niveles)** ⭐ NUEVO
+- ✅ **11 categorías creadas (3 padre + 8 hijas)** ⭐ NUEVO
+- ✅ **Queries helper para categorías** ⭐ NUEVO
 - ✅ Astro Actions para paginación
 - ✅ Mapeador de datos (PropertyRow → PropertiesWithImages)
 - ✅ SSR habilitado
@@ -143,6 +151,18 @@ Si eres nuevo en el proyecto, empieza por aquí:
 - ✅ Sistema de colores implementado
 - ✅ Componentes Astro básicos
 
+### 🚧 En Progreso
+- 🚧 Componentes frontend para categorías
+- 🚧 Integración completa con Vue.js
+- 🚧 Gestión de estado con Pinia
+- 🚧 Optimización de queries
+
+### 📋 Pendiente
+- 📋 Sistema de Tags (amenidades, características)
+- 📋 Sistema de Attributes (campos dinámicos)
+- 📋 Sistema de Brands (constructoras/inmobiliarias)
+- 📋 Eliminar campo `gallery` del schema
+- 📋 Agregar índices adicional
 ### 🚧 En Progreso
 - 🚧 Integración completa con Vue.js
 - 🚧 Gestión de estado con Pinia
@@ -230,7 +250,7 @@ Si eres nuevo en el proyecto, empieza por aquí:
 
 ### Equipo de Desarrollo
 
-**Yorrmi Altamiranda**
+**Yormi Altamiranda**
 - Email: yormian@gmail.com
 - Rol: Desarrollador Full Stack
 
@@ -247,6 +267,6 @@ Para preguntas sobre la documentación o el proyecto:
 
 ---
 
-**Mantenido por:** Yorrmi Altamiranda & Didier Méndez  
+**Mantenido por:** Yormi Altamiranda & Didier Méndez  
 **Repositorio:** inmobiliaria-web  
 **Última revisión completa:** 2025-12-23

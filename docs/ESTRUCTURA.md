@@ -22,7 +22,7 @@
 | Nombre | Email | Rol |
 |--------|-------|-----|
 | **Didier Méndez** | didierm.com@gmail.com | Desarrollador Full Stack |
-| **Yorrmi Altamiranda** | yormian@gmail.com | Desarrollador Full Stack |
+| **Yormi Altamiranda** | yormian@gmail.com | Desarrollador Full Stack |
 
 ### Enlaces
 
@@ -601,7 +601,7 @@ El proyecto **Inmobiliaria** ha completado exitosamente las fases de análisis, 
 - Email: didierm.com@gmail.com
 - Rol: Desarrollador Full Stack
 
-∫**Yorrmi Altamiranda**
+∫**Yormi Altamiranda**
 - Email: yormian@gmail.com
 - Rol: Desarrollador Full Stack
 
@@ -618,4 +618,4 @@ Para preguntas sobre el proyecto:
 **Documento creado:** 2025-12-23  
 **Última actualización:** 2025-12-23  
 **Versión:** 1.0.0  
-**Mantenido por:** Didier Méndez & Yorrmi Altamiranda
+**Mantenido por:** Didier Méndez & Yormi Altamiranda

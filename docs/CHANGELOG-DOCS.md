@@ -1,7 +1,40 @@
 # 📝 Registro de Cambios en la Documentación
 
-**Fecha de reorganización:** 2025-12-23  
+**Última actualización:** 28 de diciembre de 2025  
 **Responsable:** Equipo de Desarrollo
+
+---
+
+## 📅 Cambios Recientes
+
+### **28 de diciembre de 2025** - Sistema de Taxonomía Implementado y Consolidado
+
+#### ✅ Consolidación Final: BASE-DE-DATOS.md v2.0.0
+- **Propósito:** Integración completa del sistema de taxonomía en la documentación de base de datos
+- **Integra:** PLAN-TAXONOMIA.md + RECOMENDACIONES-TAXONOMIA.md + TAXONOMIA-SISTEMA.md
+- **Contenido actualizado en BASE-DE-DATOS.md:**
+  - ✅ Schema completo de 7 tablas (4 implementadas, 3 pendientes)
+  - ✅ Sistema de Taxonomía documentado (Categories implementado, Tags/Attributes/Brands pendientes)
+  - ✅ Queries helper y validaciones
+  - ✅ Plan de implementación futuro por fases
+  - ✅ Tabla de contenidos expandida con 8 secciones principales
+
+#### 📋 Archivos Eliminados (contenido integrado en BASE-DE-DATOS.md)
+- ❌ `PLAN-TAXONOMIA.md` (obsoleto)
+- ❌ `RECOMENDACIONES-TAXONOMIA.md` (obsoleto)
+- ❌ `TAXONOMIA-SISTEMA.md` (integrado en BASE-DE-DATOS.md)
+
+**Razón:** Consolidar toda la documentación de base de datos en un solo lugar, eliminando redundancias y mejorando la navegabilidad
+
+#### 🔄 README.md Actualizado
+- Actualizada sección "Base de Datos" apuntando a BASE-DE-DATOS.md
+- Actualizada sección "Buscar por Tema" con referencias correctas
+- Actualizado estado del proyecto con Categories implementado
+- Marcadas fases pendientes (Tags: 3-4 días, Attributes: 2-3 días, Brands: 1-2 días)
+
+---
+
+### **2025-12-23** - Reorganización Inicial
 
 ---
 
