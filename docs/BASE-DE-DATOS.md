@@ -120,6 +120,168 @@ Para desplegar tu aplicación en producción (Vercel, Cloudflare, etc.), necesit
 
 ---
 
+## 🎲 Cómo Funciona Faker + Astro DB
+
+### Conceptos Clave
+
+Es común confundir los roles de cada componente. Aquí está la explicación clara:
+
+**Astro DB** NO es una base de datos en sí, es una **capa de abstracción** que:
+- Define el schema (estructura de tablas)
+- Maneja diferentes backends según el entorno (SQLite local o Turso remoto)
+- Provee una API única para queries
+
+**Faker.js** NO es una base de datos, es un **generador de datos falsos** que:
+- Crea datos de prueba realistas (nombres, direcciones, precios, etc.)
+- Se usa SOLO en `db/seed.ts` para poblar la base de datos inicial
+- NO se consulta en runtime (solo genera datos una vez)
+
+### Flujo Completo
+
+#### 1. Defines el Schema (`db/config.ts`)
+```typescript
+// Defines la ESTRUCTURA de las tablas
+const Properties = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    title: column.text(),
+    price: column.number(),
+    // ...
+  }
+});
+```
+
+#### 2. Generas Datos con Faker (`db/seed.ts`)
+```typescript
+import { faker } from '@faker-js/faker';
+import { db, Properties } from 'astro:db';
+
+// Faker GENERA datos falsos (NO es una BD)
+const property = {
+  id: randomUUID(),
+  title: faker.location.city(), // "Bogotá"
+  price: faker.number.int({ min: 100000000 }), // 450000000
+};
+
+// Los INSERTAS en Astro DB (SQLite o Turso)
+await db.insert(Properties).values(property);
+```
+
+**Faker solo genera datos**, luego los guardas en la BD real (SQLite o Turso).
+
+#### 3. Tu Código Consulta la Base de Datos
+```typescript
+// src/pages/listing/index.astro
+
+// ✅ CORRECTO: Consulta a SQLite (local) o Turso (producción)
+const listings = await db.select().from(Properties).all();
+//                     ↑
+//                Consulta a la BD donde YA ESTÁN los datos
+//                que Faker generó al ejecutar el seed
+
+// ❌ INCORRECTO: NO haces esto
+const listings = faker.helpers.multiple(() => ({...}));
+```
+
+### Diagrama del Flujo
+
+```
+┌───────────────────────────────────────────────────────┐
+│                    db/seed.ts                         │
+│  Faker.js genera datos → Se insertan en BD           │
+│  (Solo se ejecuta UNA VEZ al inicializar)            │
+└───────────────────────────────────────────────────────┘
+                          ↓
+            ┌─────────────┴─────────────┐
+            │                           │
+      DESARROLLO                   PRODUCCIÓN
+            ↓                           ↓
+  ┌─────────────────┐         ┌─────────────────┐
+  │ .astro/         │         │ Turso Cloud     │
+  │ content.db      │         │ (SQLite remoto) │
+  │ (SQLite local)  │         │                 │
+  │ 60 propiedades  │         │ 60 propiedades  │
+  └─────────────────┘         └─────────────────┘
+            ↓                           ↓
+  ┌───────────────────────────────────────────────┐
+  │     Tu Código Astro consulta aquí:           │
+  │   await db.select().from(Properties)         │
+  │                                               │
+  │   (NUNCA consulta a Faker directamente)      │
+  └───────────────────────────────────────────────┘
+```
+
+### Tabla de Roles
+
+| Componente | Rol | Cuándo se usa |
+|------------|-----|---------------|
+| **Faker.js** | Generador de datos falsos | Solo en `db/seed.ts` |
+| **`db/seed.ts`** | Script que PUEBLA la BD | Una vez al inicio |
+| **SQLite local** | Base de datos real (desarrollo) | `pnpm dev` |
+| **Turso** | Base de datos real (producción) | Deploy a hosting |
+| **Astro DB** | Capa de abstracción | Siempre (conecta a SQLite o Turso) |
+| **Tu código** | Queries a la BD | Siempre (lee de SQLite/Turso) |
+
+### Analogía de la Fábrica
+
+Piensa en esto como una **fábrica de productos**:
+
+1. **Faker** = Máquina que fabrica productos (datos falsos)
+2. **Seed** = Trabajador que toma productos y los pone en el almacén
+3. **SQLite/Turso** = Almacén donde se guardan los productos
+4. **Tu código** = Vendedor que saca productos del almacén para mostrarlos
+
+**La máquina (Faker) solo trabaja UNA VEZ al inicio.**  
+Después, el vendedor (tu código) SIEMPRE saca productos del almacén (BD), nunca de la máquina.
+
+### Qué NO hace Faker
+
+❌ NO es una base de datos  
+❌ NO almacena datos  
+❌ NO se consulta en runtime  
+❌ NO existe en producción (solo se usó para el seed)
+
+### Ejemplo Práctico
+
+**Desarrollo Local:**
+```bash
+# 1. Ejecutas el dev server
+pnpm dev
+
+# 2. Astro DB:
+#    - Crea .astro/content.db (SQLite local)
+#    - Ejecuta db/seed.ts automáticamente
+#    - Faker genera 60 propiedades
+#    - Se insertan en content.db
+
+# 3. Tu código lee de content.db
+#    (NO de Faker)
+```
+
+**Producción (Turso):**
+```bash
+# 1. Creas base de datos en Turso
+turso db create inmobiliaria-web
+
+# 2. Push del schema
+pnpm astro db push --remote
+
+# 3. Ejecutas seed remoto
+pnpm astro db seed --remote
+#    - Faker genera 60 propiedades
+#    - Se insertan en Turso cloud
+
+# 4. Tu código en producción lee de Turso
+#    (NO de Faker)
+```
+
+**Resultado:**
+- Desarrollo: 60 propiedades en `.astro/content.db`
+- Producción: 60 propiedades en `Turso cloud`
+- Faker: Ya NO existe en ningún lado (solo generó los datos una vez)
+
+---
+
 ## 🚀 Deployment a Producción con Turso
 
 Esta guía te muestra cómo configurar Turso para desplegar tu aplicación en producción en diferentes plataformas de hosting.
