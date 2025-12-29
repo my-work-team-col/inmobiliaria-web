@@ -253,6 +253,7 @@ export default async function seed() {
       parking,
       price: faker.number.int({ min: 100_000_000, max: 1_500_000_000 }),
       participation: faker.helpers.arrayElement(['Venta', 'Arriendo', 'Venta o Arriendo']),
+      transactionType: faker.helpers.arrayElement(['sale', 'rent', 'both']),
       address: faker.location.streetAddress(),
       observations: faker.lorem.sentence(),
       featured: faker.datatype.boolean(0.2), // 20% destacadas

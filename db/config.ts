@@ -53,6 +53,7 @@ const Properties = defineTable({
     parking: column.number(),
     price: column.number(),
     participation: column.text(),  // Ej: "100%"
+    transactionType: column.text(), // 'sale' | 'rent' | 'both'
     address: column.text(),
     observations: column.text(),
   },

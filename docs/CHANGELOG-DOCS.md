@@ -1,11 +1,86 @@
 # 📝 Registro de Cambios en la Documentación
 
-**Última actualización:** 28 de diciembre de 2025  
+**Última actualización:** 28 de enero de 2025  
 **Responsable:** Equipo de Desarrollo
 
 ---
 
 ## 📅 Cambios Recientes
+
+### **28 de enero de 2025** - Sistema de Filtros Consolidado en SidebarFilter.vue
+
+#### ✅ Consolidación Total en Un Solo Componente
+- **Propósito:** Unificar TODOS los filtros en un único archivo Vue
+- **Nombre final:** `SidebarFilter.vue` (PascalCase)
+- **Arquitectura:** 1 componente con 5 filtros inline (sin sub-componentes)
+
+**Componentes eliminados (consolidados en sidebar-filter.vue):**
+- ❌ `PropertyFilters.vue`
+- ❌ `CategoryFilter.vue`
+- ❌ `RoomsFilter.vue`
+- ❌ `TransactionTypeFilter.vue`
+- ❌ `PriceRangeFilter.vue`
+
+**Archivos finales del sistema:**
+- ✅ `SidebarFilter.vue` (330 líneas - TODOS los filtros)
+- ✅ `PropertyListingWithFilters.vue` (container)
+- ✅ `PropertyGrid.vue` (grid de resultados)
+- ✅ `PropertyCard.vue` (tarjeta individual)
+1. CategoryFilter (8 categorías con iconos)
+2. RoomsFilter (Habitaciones 1-6)
+3. BathroomFilter (Baños 1-5)
+4. TransactionTypeFilter (Venta/Arriendo/Ambos)
+5. PriceRangeFilter (Slider $0-$2B con presets)
+
+#### 📊 Ventajas de la Consolidación
+- ✅ Menos archivos (5→1 componente)
+- ✅ Más fácil de mantener
+- ✅ Props y eventos simplificados
+- ✅ No más props drilling
+- ✅ Código más legible
+
+#### 📝 VUE.md Actualizado (v1.2.0)
+- Nueva sección "7. Implementación Consolidada"
+- Documentada arquitectura final
+- Agregados ejemplos de uso
+- Incluido checklist completo (100% ✅)
+- Métricas de implementación
+- Pruebas realizadas
+
+#### 🧪 Testing Completado
+- ✅ Todos los filtros funcionando
+- ✅ Mobile drawer operativo
+- ✅ URL sync funcionando
+- ✅ Servidor dev sin errores
+- ✅ 60 propiedades con transactionType
+- ✅ Performance instantánea (<16ms)
+
+**Estado actual:** ✅ SISTEMA COMPLETAMENTE FUNCIONAL
+
+#### 🎨 Ajustes de Layout y UX (29 de diciembre de 2025)
+
+**Problema identificado:** Espacios inconsistentes entre banner y contenido
+
+**Cambios realizados:**
+1. **ListingLayout.astro** - Alineación de padding con PageHeader
+   - Cambio: `px-4 md:px-20` → `px-2 lg:px-0` + `px-4 lg:px-40`
+   - Resultado: Contenido con mismo ancho que el banner
+   - Eliminado: Grid con sidebar oculto que causaba espacios extras
+
+2. **Header.astro** - Sistema de sombra condicional
+   - Agregado: Prop `shadow?: boolean` (default: true)
+   - Desktop: `shadow-sm` solo cuando se necesita
+   - Listing: `<Header shadow={false} />` sin sombra
+   - z-index: `z-[100]` para asegurar visibilidad
+   - Posición: `relative` (flujo normal del documento)
+
+**Resultado final:**
+- ✅ Ancho consistente en toda la página
+- ✅ Header sin sombra en listing (limpio)
+- ✅ Header con sombra en otras páginas (definido)
+- ✅ Sin espacios laterales inesperados
+
+---
 
 ### **28 de diciembre de 2025** - Sistema de Taxonomía Implementado y Consolidado
 

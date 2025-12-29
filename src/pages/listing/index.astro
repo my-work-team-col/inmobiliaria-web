@@ -1,21 +1,28 @@
 ---
 import ListingLayout from '@/layouts/ListingLayout.astro';
-import ListingCard from '@/components/astro/ListingCard.astro';
-import { db, Properties, PropertiesImages, eq, sql } from 'astro:db';
+import PropertyListingWithFilters from '@/components/vue/PropertyListingWithFilters.vue';
+import { db, Properties, PropertiesImages, PropertyCategories, Categories, eq, sql } from 'astro:db';
 import type { PropertiesWithImages } from '@/types';
 
-// Query directa a Astro DB con JOIN para obtener imágenes agrupadas
+// Query directa a Astro DB con JOIN para obtener imágenes y categorías agrupadas
 const propertiesQuery = sql`
   SELECT 
     p.*,
     json_group_array(
-      json_object(
-        'id', pi.id,
-        'image', pi.image
+      DISTINCT json_object('id', pi.id, 'image', pi.image)
+    ) FILTER (WHERE pi.id IS NOT NULL) as images,
+    json_group_array(
+      DISTINCT json_object(
+        'id', c.id, 
+        'name', c.name, 
+        'slug', c.slug, 
+        'icon', c.icon
       )
-    ) FILTER (WHERE pi.id IS NOT NULL) as images
+    ) FILTER (WHERE c.id IS NOT NULL) as categories
   FROM ${Properties} p
   LEFT JOIN ${PropertiesImages} pi ON p.id = pi.propertyId
+  LEFT JOIN ${PropertyCategories} pc ON p.id = pc.propertyId
+  LEFT JOIN ${Categories} c ON pc.categoryId = c.id
   WHERE p.isActive = 1
   GROUP BY p.id
   ORDER BY p.featured DESC, p.title ASC
@@ -27,38 +34,26 @@ const { rows } = await db.run(propertiesQuery);
 const listings = rows.map((row: any) => ({
   ...row,
   images: JSON.parse(row.images || '[]').map((img: any) => img.image),
+  categories: JSON.parse(row.categories || '[]'),
   featured: Boolean(row.featured),
   isActive: Boolean(row.isActive),
 })) as PropertiesWithImages[];
 ---
 
 <ListingLayout>
-  <div class="container mx-auto px-4 py-8">
-    
-    <!-- Header -->
-    <header class="mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-        Todas las Propiedades
-      </h1>
-      <p class="text-gray-600">
-        {listings.length} propiedades disponibles
-      </p>
-    </header>
+  <!-- Header -->
+  <header class="mb-8">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+      Todas las Propiedades
+    </h1>
+    <p class="text-gray-600">
+      Explora nuestro catálogo completo de {listings.length} propiedades
+    </p>
+  </header>
 
-    <!-- Grid de propiedades -->
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {listings.length > 0 ? (
-        listings.map(item => (
-          <ListingCard property={item} />
-        ))
-      ) : (
-        <div class="col-span-full text-center py-12">
-          <p class="text-gray-500 text-lg">
-            No hay propiedades disponibles en este momento.
-          </p>
-        </div>
-      )}
-    </div>
-
-  </div>
+  <!-- Sistema de filtros Vue - Ahora incluye sidebar móvil + grid -->
+  <PropertyListingWithFilters 
+    client:load 
+    properties={listings}
+  />
 </ListingLayout>

@@ -108,7 +108,9 @@ src/
 │   │   ├── ListingSection.astro
 │   │   └── ListingCard.astro
 │   │
-│   ├── vue/                   # Componentes Vue (NO islands)
+│   ├── vue/                   # Componentes Vue (interactivos)
+│   │   ├── SidebarFilter.vue      # 📖 Ver VUE.md sección 7
+│   │   ├── PropertyListingWithFilters.vue
 │   │   ├── SearchFilters.vue
 │   │   ├── Modal.vue
 │   │   └── Dropdown.vue
@@ -280,6 +282,9 @@ interface Category {
 - ✅ Detalles completos de propiedad
 
 **Patrón de uso (página dinámica):**
+
+> 📖 **Base de Datos:** Consulta [BASE-DE-DATOS.md](BASE-DE-DATOS.md) para ver el esquema completo de tablas y relaciones.
+
 ```astro
 ---
 // src/pages/listing/[...slug].astro
@@ -384,6 +389,8 @@ const categories = await db
 
 ## 🏝️ Astro Islands
 
+> 📖 **Ver también:** [VUE.md - Sistema de Filtros](VUE.md#7--implementación-consolidada-enero-2025) para un ejemplo completo de Vue integrado con Astro.
+
 ### ¿Qué son las Islands?
 
 Astro Islands es un patrón de arquitectura que permite:
@@ -402,6 +409,8 @@ Astro Islands es un patrón de arquitectura que permite:
 | `client:only="vue"` | Solo en cliente (no SSR) | Componentes con window/document |
 
 ### Ejemplo de Island
+
+> 💡 **Componentes Vue:** Para crear componentes interactivos en Vue, consulta [VUE.md - Migración de Componentes](VUE.md#3-migración-de-componentes).
 
 ```astro
 ---
@@ -587,9 +596,15 @@ export default defineConfig({
 
 ## 📚 Recursos Adicionales
 
+**Documentación del Proyecto:**
+- [VUE.md](VUE.md) - Integración de Vue.js con Astro
+- [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Esquema de base de datos
+
+**Documentación Oficial:**
 - [Astro Documentation](https://docs.astro.build)
 - [Astro DB Documentation](https://docs.astro.build/en/guides/astro-db/)
 - [Astro Islands](https://docs.astro.build/en/concepts/islands/)
+- [Astro + Vue Integration](https://docs.astro.build/en/guides/integrations-guide/vue/)
 - [TypeScript in Astro](https://docs.astro.build/en/guides/typescript/)
 
 ---
