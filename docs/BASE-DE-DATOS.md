@@ -11,6 +11,7 @@
 
 1. [Tecnología y Configuración](#-tecnología-y-configuración)
    - [Entorno Local vs Producción](#entorno-local-vs-producción)
+   - [Cómo Funciona Faker + Astro DB](#-cómo-funciona-faker--astro-db)
 2. [Deployment a Producción con Turso](#-deployment-a-producción-con-turso)
    - [Configuración de Turso](#1-configuración-de-turso)
    - [Deployment en Vercel](#2-deployment-en-vercel)
@@ -657,7 +658,7 @@ const Properties = defineTable({
   columns: {
     id: column.text({ primaryKey: true, unique: true }),
     title: column.text(),
-    slug: column.text({ unique: true }),
+    slug: column.text({ unique: true }), 
     // ✅ ELIMINADO: categories: column.json()
     isActive: column.boolean(),
     featured: column.boolean(),
