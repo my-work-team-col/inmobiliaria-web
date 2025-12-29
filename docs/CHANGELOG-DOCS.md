@@ -1,11 +1,198 @@
 # 📝 Registro de Cambios en la Documentación
 
-**Última actualización:** 28 de enero de 2025  
+**Última actualización:** 29 de diciembre de 2025  
 **Responsable:** Equipo de Desarrollo
 
 ---
 
 ## 📅 Cambios Recientes
+
+### **29 de diciembre de 2025** - Sistema de Iconos Unificado con Iconify
+
+#### 🎨 Migración Completa: Emojis → Iconos SVG Profesionales
+
+**Problema identificado:** 
+- Emojis inconsistentes entre sistemas operativos
+- Falta de personalización (color, tamaño)
+- SVG inline repetitivos y difíciles de mantener
+- Múltiples dependencias de iconos sin uso
+
+**Solución implementada:**
+Sistema unificado con **Iconify + Hugeicons** para toda la aplicación
+
+#### 📦 Configuración Final de Dependencias
+
+**Instaladas:**
+```json
+{
+  "dependencies": {
+    "astro-icon": "^1.1.5",          // Para componentes .astro
+    "@iconify/vue": "^5.0.0"         // Para componentes .vue
+  },
+  "devDependencies": {
+    "@iconify-json/hugeicons": "^1.2.18"  // Set de iconos (compartido)
+  }
+}
+```
+
+**Eliminadas:**
+- ❌ `@iconify/json` (2.2GB) - Reemplazado por hugeicons específico
+
+#### 🔧 Implementación por Tipo de Archivo
+
+**1. Componentes Astro (.astro)**
+```astro
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<Icon name="hugeicons:home-01" class="w-6 h-6" />
+<Icon name="hugeicons:menu-02" class="w-6 h-6" />
+```
+
+**Archivos modificados:**
+- ✅ `Header.astro` - Logo y menú móvil
+- ✅ `PropertyDetails.astro` - Iconos de acciones (save, share, map, bed, bath)
+
+**2. Componentes Vue (.vue)**
+```vue
+<script setup>
+import { Icon, addCollection } from '@iconify/vue';
+import hugeiconsData from '@iconify-json/hugeicons/icons.json';
+
+// Carga offline de iconos
+addCollection(hugeiconsData);
+</script>
+
+<template>
+  <Icon :icon="'hugeicons:building-03'" class="w-5 h-5" />
+</template>
+```
+
+**Archivos modificados:**
+- ✅ `SidebarFilter.vue` - 11 iconos (8 categorías + 3 tipos de transacción)
+
+#### 🎯 Iconos Implementados
+
+**Categorías de Propiedades (8):**
+- 🏢 Apartamento → `hugeicons:building-03`
+- 🏡 Casa → `hugeicons:home-01`
+- 🌳 Finca → `hugeicons:tree-02`
+- 🏪 Local Comercial → `hugeicons:store-01`
+- 🏢 Oficina → `hugeicons:office`
+- 📦 Bodega → `hugeicons:package`
+- 📐 Lote → `hugeicons:grid`
+- 🌾 Terreno Rural → `hugeicons:plant-02`
+
+**Tipos de Transacción (3):**
+- 🏷️ Venta → `hugeicons:tag-01`
+- 🔑 Arriendo → `hugeicons:key-01`
+- 🔄 Cualquiera → `hugeicons:refresh`
+
+**Navegación:**
+- 🏠 Logo → `hugeicons:home-01`
+- ☰ Menú → `hugeicons:menu-02`
+
+**Acciones de Propiedad:**
+- 🔖 Save → `hugeicons:bookmark-01`
+- 📤 Share → `hugeicons:share-08`
+- 📍 Map → `hugeicons:location-01`
+- 🛏️ Beds → `hugeicons:bed-01`
+- 🛁 Baths → `hugeicons:bath-tub-01`
+
+#### ✅ Ventajas del Sistema Unificado
+
+**Performance:**
+- ✅ Iconos cargados offline (sin peticiones HTTP)
+- ✅ SVG optimizados (menor tamaño que emojis Unicode)
+- ✅ Caché local automático
+
+**Consistencia:**
+- ✅ Mismo estilo visual en todos los dispositivos
+- ✅ Un solo set de iconos (Hugeicons)
+- ✅ Personalizable (color, tamaño, stroke)
+
+**Mantenibilidad:**
+- ✅ Cambiar icono = cambiar string
+- ✅ No más SVG inline repetitivo
+- ✅ Documentación clara de nombres
+
+**Escalabilidad:**
+- ✅ +2,000 iconos disponibles en Hugeicons
+- ✅ Fácil agregar nuevos iconos
+- ✅ Compatible con SSR/SSG de Astro
+
+#### 🐛 Resolución de Problemas
+
+**Error encontrado:**
+```
+InvalidComponentArgs: Invalid arguments passed to <Icon> component
+```
+
+**Causa:** 
+Intentar usar componente Astro (`astro-icon`) en archivos Vue
+
+**Solución:**
+- Archivos `.astro` → `astro-icon/components`
+- Archivos `.vue` → `@iconify/vue`
+
+**Error encontrado 2:**
+```
+Cannot find module '@iconify/vue'
+```
+
+**Causa:**
+Se eliminó accidentalmente al desinstalar `@iconify/json`
+
+**Solución:**
+```bash
+pnpm add @iconify/vue
+```
+
+#### 📝 Documentación Actualizada
+
+**Archivos modificados:**
+- ✅ `ASTRO.md` - Agregada sección de iconos en componentes
+- ✅ `VUE.md` - Ejemplo de uso de @iconify/vue
+- ✅ `CHANGELOG-DOCS.md` - Esta entrada completa
+
+**Links cruzados agregados:**
+- VUE.md ↔️ ASTRO.md (navegación fluida)
+- Referencias a BASE-DE-DATOS.md
+
+#### 🧪 Testing Realizado
+
+- ✅ Servidor dev sin errores
+- ✅ Iconos visibles en Header.astro
+- ✅ Iconos visibles en PropertyDetails.astro
+- ✅ Iconos visibles en SidebarFilter.vue (11 iconos)
+- ✅ Responsive: Mobile + Desktop
+- ✅ Carga offline funcionando
+- ✅ No errores en consola del navegador
+
+#### 📊 Resumen de Cambios
+
+**Antes:**
+- Emojis Unicode (🏢, 🏡, 🏞️)
+- SVG inline en Header/PropertyDetails
+- 3 dependencias de iconos diferentes
+- Inconsistencias visuales entre OS
+
+**Ahora:**
+- Iconos SVG profesionales (Hugeicons)
+- Sistema unificado Iconify
+- 2 librerías + 1 set de iconos
+- Consistencia total multiplataforma
+
+**Impacto:**
+- 🎨 UI más profesional
+- ⚡ Mejor performance
+- 🔧 Más fácil de mantener
+- 📱 Consistente en todos los dispositivos
+
+**Estado actual:** ✅ SISTEMA DE ICONOS COMPLETAMENTE FUNCIONAL
+
+---
 
 ### **28 de enero de 2025** - Sistema de Filtros Consolidado en SidebarFilter.vue
 

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { Icon, addCollection } from '@iconify/vue';
 import type { Filters } from '@/composables/usePropertyFilters';
+
+// Cargar colección hugeicons offline
+import hugeiconsData from '@iconify-json/hugeicons/icons.json';
+addCollection(hugeiconsData);
 
 const filters = defineModel<Filters>({ required: true });
 
@@ -15,14 +20,14 @@ const emit = defineEmits<{
 }>();
 
 const categories = [
-  { slug: 'apartamento', name: 'Apartamento', icon: '🏢' },
-  { slug: 'casa', name: 'Casa', icon: '🏡' },
-  { slug: 'finca', name: 'Finca', icon: '🏞️' },
-  { slug: 'local-comercial', name: 'Local Comercial', icon: '🏪' },
-  { slug: 'oficina', name: 'Oficina', icon: '🏢' },
-  { slug: 'bodega', name: 'Bodega', icon: '📦' },
-  { slug: 'lote', name: 'Lote', icon: '📐' },
-  { slug: 'terreno-rural', name: 'Terreno Rural', icon: '🌾' },
+  { slug: 'apartamento', name: 'Apartamento', icon: 'hugeicons:building-03' },
+  { slug: 'casa', name: 'Casa', icon: 'hugeicons:home-01' },
+  { slug: 'finca', name: 'Finca', icon: 'hugeicons:tree-02' },
+  { slug: 'local-comercial', name: 'Local Comercial', icon: 'hugeicons:store-01' },
+  { slug: 'oficina', name: 'Oficina', icon: 'hugeicons:office' },
+  { slug: 'bodega', name: 'Bodega', icon: 'hugeicons:package' },
+  { slug: 'lote', name: 'Lote', icon: 'hugeicons:grid' },
+  { slug: 'terreno-rural', name: 'Terreno Rural', icon: 'hugeicons:plant-02' },
 ];
 
 const pricePresets = [
@@ -33,9 +38,9 @@ const pricePresets = [
 ];
 
 const transactionTypes = [
-  { value: 'sale', label: 'Venta', icon: '🏷️' },
-  { value: 'rent', label: 'Arriendo', icon: '🔑' },
-  { value: null, label: 'Cualquiera', icon: '🔄' },
+  { value: 'sale', label: 'Venta', icon: 'hugeicons:tag-01' },
+  { value: 'rent', label: 'Arriendo', icon: 'hugeicons:key-01' },
+  { value: null, label: 'Cualquiera', icon: 'hugeicons:refresh' },
 ];
 
 const minPrice = ref(filters.value.priceRange[0]);
@@ -103,7 +108,7 @@ onMounted(() => {
               v-model="filters.categories"
               class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300"
             />
-            <span class="text-2xl">{{ cat.icon }}</span>
+            <Icon :icon="cat.icon" class="w-5 h-5 text-gray-600 group-hover:text-primary transition" />
             <span class="flex-1 text-sm group-hover:text-primary transition">{{ cat.name }}</span>
             <span class="text-xs text-gray-400">({{ getCategoryCount(cat.slug) }})</span>
           </label>
@@ -168,7 +173,7 @@ onMounted(() => {
               v-model="filters.transactionType"
               class="w-4 h-4 text-primary focus:ring-primary border-gray-300"
             />
-            <span class="text-xl">{{ type.icon }}</span>
+            <Icon :icon="type.icon" class="w-5 h-5 text-gray-600 group-hover:text-primary transition" />
             <span class="font-medium text-sm group-hover:text-primary transition">{{ type.label }}</span>
           </label>
         </div>
