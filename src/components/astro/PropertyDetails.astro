@@ -1,7 +1,7 @@
 ---
 
 import DetailLayout from '@/layouts/DetailLayout.astro';
-import { Icon } from 'astro-icon/components';
+import { Icon } from '@iconify/vue';
 
 // Define la interfaz de la propiedad para tipado
 interface Property {
@@ -96,15 +96,15 @@ const financialData = [
             
             <div class="absolute top-4 left-4 flex space-x-2">
                 <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
-                    <Icon name="hugeicons:bookmark-01" class="w-5 h-5" />
+                    <Icon icon="hugeicons:bookmark-01" class="w-5 h-5" client:only="vue" />
                     <span>Save</span>
                 </button>
                 <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
-                    <Icon name="hugeicons:share-08" class="w-5 h-5" />
+                    <Icon icon="hugeicons:share-08" class="w-5 h-5" client:only="vue" />
                     <span>Share</span>
                 </button>
                 <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
-                    <Icon name="hugeicons:location-01" class="w-5 h-5" />
+                    <Icon icon="hugeicons:location-01" class="w-5 h-5" client:only="vue" />
                     <span>Map</span>
                 </button>
             </div>
@@ -129,12 +129,12 @@ const financialData = [
                     {/* Sección de características principales al estilo de Image 2 */}
                     <div class="grid grid-cols-3 gap-x-4 gap-y-2 mb-6">
                         <div class="flex flex-col items-center">
-                            <Icon name="hugeicons:bed-01" class="w-7 h-7 text-indigo-500 mb-1" />
+                            <Icon icon="hugeicons:bed-01" class="w-7 h-7 text-indigo-500 mb-1" client:only="vue" />
                             <p class="text-lg font-bold text-gray-800">{property.bedrooms}</p>
                             <p class="text-xs text-gray-500">Beds</p>
                         </div>
                         <div class="flex flex-col items-center">
-                            <Icon name="hugeicons:bath-tub-01" class="w-7 h-7 text-indigo-500 mb-1" />
+                            <Icon icon="hugeicons:bath-tub-01" class="w-7 h-7 text-indigo-500 mb-1" client:only="vue" />
                             <p class="text-lg font-bold text-gray-800">{property.bathrooms}</p>
                             <p class="text-xs text-gray-500">Baths</p>
                         </div>

@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@astrojs/vue";
-import icon from "astro-icon";
 
 import db from "@astrojs/db";
 
@@ -10,8 +9,8 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [vue(), icon(), db()],
-    adapter: cloudflare(),
+  integrations: [vue(), db()],
+  adapter: cloudflare(),
 
   vite: {
     plugins: [tailwindcss()],

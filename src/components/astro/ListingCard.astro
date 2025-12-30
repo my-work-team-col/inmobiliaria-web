@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from "@iconify/vue";
 import type { PropertiesWithImages } from "@/types";
 
 interface Props {
@@ -67,7 +67,7 @@ const image = images?.[0] ?? "/images/default.jpg";
 
     <!-- Ícono en la esquina -->
     <div class="absolute top-3 left-3 bg-primary rounded-md p-1.5">
-      <Icon name="bathroom" class="text-white w-4 h-4" />
+      <Icon icon="bathroom" class="text-white w-4 h-4" client:only="vue" />
     </div>
   </div>
 
@@ -88,17 +88,17 @@ const image = images?.[0] ?? "/images/default.jpg";
     <div class="flex items-center gap-6 text-gray-600 text-sm mb-3">
 
       <span class="flex items-center gap-1">
-        <Icon name="ruler" class="w-4 h-4" />
+        <Icon icon="ruler" class="w-4 h-4" client:only="vue" />
         {area} m²
       </span>
 
       <span class="flex items-center gap-1">
-        <Icon name="bedroom" class="w-4 h-4" />
+        <Icon icon="bedroom" class="w-4 h-4" client:only="vue" />
         {bedrooms} Ha.
       </span>
 
       <span class="flex items-center gap-1">
-        <Icon name="bathroom" class="w-4 h-4" />
+        <Icon icon="bathroom" class="w-4 h-4" client:only="vue" />
         {bathrooms} Ba.
       </span>
     </div>
@@ -108,7 +108,7 @@ const image = images?.[0] ?? "/images/default.jpg";
       <span>Participación: <strong>{participation}</strong></span>
 
       <span class="flex items-center gap-1">
-        <Icon name="eye" class="w-4 h-4" />
+        <Icon icon="eye" class="w-4 h-4" client:only="vue" />
         174
       </span>
     </div>
