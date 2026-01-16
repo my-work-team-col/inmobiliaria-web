@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import { Icon, addCollection } from '@iconify/vue';
 import type { Filters } from '@/composables/usePropertyFilters';
 
-// Cargar colección hugeicons offline
+// Cargar colección hugeicons offline.
 import hugeiconsData from '@iconify-json/hugeicons/icons.json';
 addCollection(hugeiconsData);
 
