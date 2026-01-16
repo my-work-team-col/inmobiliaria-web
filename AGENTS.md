@@ -125,23 +125,34 @@ getCategoriesByProperty(propertyId)
 **En archivos .astro:**
 ```astro
 ---
-import { Icon } from '@iconify/vue';
+import { Icon } from 'astro-icon/components';
 ---
-<Icon icon="hugeicons:home-01" class="w-6 h-6" client:only="vue" />
+<Icon name="hugeicons:home-01" class="w-6 h-6" />
+<Icon name="hugeicons:building-03" class="w-5 h-5" />
 ```
 
 **En archivos .vue:**
 ```vue
 <script setup>
-import { Icon } from '@iconify/vue';
+import { Icon, addCollection } from '@iconify/vue';
+import hugeiconsData from '@iconify-json/hugeicons/icons.json';
+
+// Cargar colección offline
+addCollection(hugeiconsData);
 </script>
 <template>
-  <Icon icon="hugeicons:building-03" class="w-5 h-5" />
+  <Icon :icon="'hugeicons:building-03'" class="w-5 h-5" />
+  <Icon :icon="'hugeicons:home-01'" class="w-6 h-6" />
 </template>
 ```
 
+**Dependencias:**
+- `astro-icon` → Para componentes `.astro`
+- `@iconify/vue` → Para componentes `.vue`
+- `@iconify-json/hugeicons` → Set de iconos Hugeicons
+
 **Set de iconos:** Hugeicons (`@iconify-json/hugeicons`)  
-**19+ iconos implementados:** home, building, bed, bath, menu, bookmark, share, location, etc.
+**20+ iconos implementados:** home, building, bed, bath, menu, bookmark, share, location, office, package, tree, store, grid, plant, tag, key, refresh, etc.
 
 ## Sistema de Colores
 
@@ -246,5 +257,5 @@ Para contexto detallado, consulta:
 
 ---
 
-**Última actualización:** 6 de enero de 2026  
+**Última actualización:** 16 de enero de 2026  
 **Mantenedores:** Didier Méndez, Yormi Altamiranda
