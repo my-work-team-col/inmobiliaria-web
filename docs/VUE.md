@@ -1322,6 +1322,97 @@ const categories = [
 - ⚠️ **Tailwind Warnings**: `flex-shrink-0` → usar `shrink-0` (cosmético)
 - ⚠️ **z-[999]**: Puede usar `z-999` si se configura en Tailwind (cosmético)
 
+### 🎨 Sistema de Iconos en Vue
+
+#### Dependencias
+
+```bash
+pnpm add @iconify/vue @iconify-json/hugeicons
+```
+
+#### Uso en Componentes Vue
+
+En archivos `.vue`, importa y carga la colección de iconos:
+
+```vue
+<script setup lang="ts">
+import { Icon, addCollection } from '@iconify/vue';
+import hugeiconsData from '@iconify-json/hugeicons/icons.json';
+
+// Cargar colección offline (una vez por componente)
+addCollection(hugeiconsData);
+</script>
+
+<template>
+  <!-- Sintaxis con prop icon -->
+  <Icon icon="hugeicons:home-01" class="w-6 h-6" />
+  <Icon icon="hugeicons:building-03" class="w-5 h-5" />
+  <Icon icon="hugeicons:bed-01" class="w-4 h-4" />
+  
+  <!-- Con binding dinámico -->
+  <Icon :icon="iconName" class="w-5 h-5" />
+</template>
+```
+
+#### Beneficios
+
+✅ **Offline-first** - No requiere CDN, iconos incluidos en el bundle  
+✅ **Type-safe** - TypeScript intellisense completo  
+✅ **Optimizado** - Solo incluye los iconos usados  
+✅ **Consistente** - Mismo sistema en toda la aplicación  
+
+#### Ejemplo Completo: PropertyCard.vue
+
+```vue
+<script setup lang="ts">
+import type { PropertiesWithImages } from '@/types';
+import { Icon, addCollection } from '@iconify/vue';
+import hugeiconsData from '@iconify-json/hugeicons/icons.json';
+
+addCollection(hugeiconsData);
+
+defineProps<{
+  property: PropertiesWithImages;
+}>();
+</script>
+
+<template>
+  <article class="property-card">
+    <!-- Características con iconos -->
+    <div class="flex items-center gap-4">
+      <span class="flex items-center gap-1">
+        <Icon icon="hugeicons:square" class="w-4 h-4" />
+        {{ property.area }} m²
+      </span>
+      
+      <span v-if="property.bedrooms > 0" class="flex items-center gap-1">
+        <Icon icon="hugeicons:bed-01" class="w-4 h-4" />
+        {{ property.bedrooms }} Ha.
+      </span>
+      
+      <span v-if="property.bathrooms > 0" class="flex items-center gap-1">
+        <Icon icon="hugeicons:bath-01" class="w-4 h-4" />
+        {{ property.bathrooms }} Ba.
+      </span>
+    </div>
+  </article>
+</template>
+```
+
+#### Iconos Disponibles
+
+Set de iconos: **Hugeicons** (`@iconify-json/hugeicons`)  
+**Ver catálogo completo:** [Iconify - Hugeicons](https://icon-sets.iconify.design/hugeicons/)
+
+**20+ iconos implementados:**
+- `hugeicons:home-01`, `hugeicons:building-03`, `hugeicons:bed-01`
+- `hugeicons:bath-01`, `hugeicons:bathtub`, `hugeicons:square`
+- `hugeicons:menu-01`, `hugeicons:bookmark-01`, `hugeicons:share-01`
+- `hugeicons:location-01`, `hugeicons:office`, `hugeicons:package`
+- Y más...
+
+---
+
 ### 🔮 Mejoras Futuras
 
 **Planificadas:**

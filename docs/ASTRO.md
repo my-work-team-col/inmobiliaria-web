@@ -568,14 +568,12 @@ const { title, description = "Default" } = Astro.props;
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@astrojs/vue";
-import icon from "astro-icon";
 import db from "@astrojs/db";
 import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
   integrations: [
     vue(),           // Vue.js Islands
-    icon(),          // Sistema de iconos
     db()             // Astro DB
   ],
   adapter: cloudflare(),  // Deployment en Cloudflare
@@ -591,6 +589,60 @@ export default defineConfig({
   },
 });
 ```
+
+---
+
+## 🎨 Sistema de Iconos
+
+### Dependencias
+
+```bash
+pnpm add @iconify/vue @iconify-json/hugeicons
+```
+
+### Uso en Componentes Astro
+
+En archivos `.astro`, usa `@iconify/vue` con la directiva `client:only="vue"`:
+
+```astro
+---
+import { Icon } from '@iconify/vue';
+---
+
+<!-- Requiere client:only="vue" porque es un componente Vue -->
+<Icon icon="hugeicons:home-01" class="w-6 h-6" client:only="vue" />
+<Icon icon="hugeicons:building-03" class="w-5 h-5" client:only="vue" />
+<Icon icon="hugeicons:bed-01" class="w-4 h-4" client:only="vue" />
+```
+
+**⚠️ Importante:** `@iconify/vue` es un componente Vue, por lo que necesita `client:only="vue"` en archivos `.astro` para funcionar correctamente.
+
+### Iconos Hugeicons Disponibles
+
+Set de iconos implementado: **Hugeicons** (`@iconify-json/hugeicons`)
+
+**20+ iconos en uso:**
+- `hugeicons:home-01` - Casa/Inicio
+- `hugeicons:building-03` - Edificio
+- `hugeicons:bed-01` - Cama/Habitación
+- `hugeicons:bath-01` - Baño
+- `hugeicons:bathtub` - Bañera
+- `hugeicons:square` - Área/Metros cuadrados
+- `hugeicons:menu-01` - Menú
+- `hugeicons:bookmark-01` - Favoritos
+- `hugeicons:share-01` - Compartir
+- `hugeicons:location-01` - Ubicación
+- `hugeicons:office` - Oficina
+- `hugeicons:package` - Bodega
+- `hugeicons:tree-01` - Terreno rural
+- `hugeicons:store-01` - Local comercial
+- `hugeicons:grid` - Vista de cuadrícula
+- `hugeicons:plant-01` - Finca
+- `hugeicons:tag-01` - Etiqueta
+- `hugeicons:key-01` - Llave/Propiedad
+- `hugeicons:refresh` - Actualizar
+
+**Ver más iconos:** [Iconify - Hugeicons](https://icon-sets.iconify.design/hugeicons/)
 
 ---
 

@@ -103,6 +103,43 @@ inmobiliaria-web/
 
 ---
 
+## 🎨 Sistema de Iconos
+
+### Iconify + Hugeicons
+
+El proyecto usa **@iconify/vue** con el set de iconos **Hugeicons** para un sistema de iconos consistente y optimizado.
+
+**En componentes Vue:**
+```vue
+<script setup>
+import { Icon, addCollection } from '@iconify/vue';
+import hugeiconsData from '@iconify-json/hugeicons/icons.json';
+
+addCollection(hugeiconsData);
+</script>
+<template>
+  <Icon icon="hugeicons:home-01" class="w-6 h-6" />
+</template>
+```
+
+**En componentes Astro:**
+```astro
+---
+import { Icon } from '@iconify/vue';
+---
+<Icon icon="hugeicons:home-01" class="w-6 h-6" client:only="vue" />
+```
+
+**Beneficios:**
+- ✅ Offline-first (sin CDN)
+- ✅ Type-safe con TypeScript
+- ✅ Solo incluye iconos usados
+- ✅ 20+ iconos implementados
+
+**Ver catálogo:** [Iconify - Hugeicons](https://icon-sets.iconify.design/hugeicons/)
+
+---
+
 ## 🛠️ Stack Tecnológico
 
 ### Backend

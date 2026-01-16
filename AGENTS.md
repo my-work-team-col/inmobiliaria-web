@@ -125,10 +125,11 @@ getCategoriesByProperty(propertyId)
 **En archivos .astro:**
 ```astro
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from '@iconify/vue';
 ---
-<Icon name="hugeicons:home-01" class="w-6 h-6" />
-<Icon name="hugeicons:building-03" class="w-5 h-5" />
+<!-- Requiere client:only="vue" porque @iconify/vue es un componente Vue -->
+<Icon icon="hugeicons:home-01" class="w-6 h-6" client:only="vue" />
+<Icon icon="hugeicons:building-03" class="w-5 h-5" client:only="vue" />
 ```
 
 **En archivos .vue:**
@@ -141,15 +142,14 @@ import hugeiconsData from '@iconify-json/hugeicons/icons.json';
 addCollection(hugeiconsData);
 </script>
 <template>
-  <Icon :icon="'hugeicons:building-03'" class="w-5 h-5" />
-  <Icon :icon="'hugeicons:home-01'" class="w-6 h-6" />
+  <Icon icon="hugeicons:building-03" class="w-5 h-5" />
+  <Icon icon="hugeicons:home-01" class="w-6 h-6" />
 </template>
 ```
 
 **Dependencias:**
-- `astro-icon` → Para componentes `.astro`
-- `@iconify/vue` → Para componentes `.vue`
-- `@iconify-json/hugeicons` → Set de iconos Hugeicons
+- `@iconify/vue` → Para componentes `.vue` y `.astro` (con `client:only="vue"`)
+- `@iconify-json/hugeicons` → Set de iconos Hugeicons (offline)
 
 **Set de iconos:** Hugeicons (`@iconify-json/hugeicons`)  
 **20+ iconos implementados:** home, building, bed, bath, menu, bookmark, share, location, office, package, tree, store, grid, plant, tag, key, refresh, etc.
@@ -174,9 +174,9 @@ Variables CSS disponibles en Tailwind:
    → Usa Astro DB con queries o Actions
 
 ❌ No uses emojis para iconos
-   → Usa Iconify con Hugeicons
+   → Usa @iconify/vue con Hugeicons
 
-❌ No importes `astro-icon` en archivos .vue
+❌ No uses `astro-icon` (deprecado)
    → Usa `@iconify/vue` en Vue, `@iconify/vue` + `client:only="vue"` en Astro
 
 ❌ No mezcles el campo `gallery` (legacy)
