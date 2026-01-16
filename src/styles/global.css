@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import "tailwindcss";
 
 /* swiper */
@@ -8,8 +8,8 @@
 @import "swiper/css/scrollbar";
 
 @theme {
-  --font-primary: "Hammersmith One", sans-serif;
-  --font-secondary: "Inter", sans-serif;
+  --font-primary: "DM Sans", sans-serif;
+  --font-secondary: "DM Sans", sans-serif;
   --color-primary: #2c42d0;
   --color-primary-dark: #0e1d37;
   --color-secondary: #005b9c;
