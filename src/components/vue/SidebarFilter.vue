@@ -71,9 +71,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-white rounded-lg p-6 sticky top-4">
-    <!-- Header -->
-    <div class="flex items-center justify-between mb-6">
+  <div class="bg-white rounded-lg h-full flex flex-col">
+    <!-- Header fijo -->
+    <div class="flex items-center justify-between p-6 pb-4 shrink-0">
       <h2 class="text-xl font-bold text-gray-800">Filtros</h2>
       <button 
         v-if="activeCount > 0"
@@ -84,15 +84,19 @@ onMounted(() => {
       </button>
     </div>
     
-    <!-- Contador de resultados -->
-    <div class="mb-6 p-3 bg-gray-50 rounded-lg">
-      <p class="text-sm text-gray-600">
-        <span class="font-bold text-primary text-lg">{{ total }}</span>
-        {{ total === 1 ? 'propiedad encontrada' : 'propiedades encontradas' }}
-      </p>
+    <!-- Contador de resultados fijo -->
+    <div class="px-6 pb-4 shrink-0">
+      <div class="p-3 bg-gray-50 rounded-lg">
+        <p class="text-sm text-gray-600">
+          <span class="font-bold text-primary text-lg">{{ total }}</span>
+          {{ total === 1 ? 'propiedad encontrada' : 'propiedades encontradas' }}
+        </p>
+      </div>
     </div>
 
-    <div class="space-y-6">
+    <!-- Contenido con scroll -->
+    <div class="flex-1 overflow-y-auto px-6 pb-6">
+      <div class="space-y-6">
       <!-- CATEGORÍAS -->
       <div>
         <h3 class="font-semibold mb-3 text-gray-800">Tipo de Propiedad</h3>
@@ -235,6 +239,7 @@ onMounted(() => {
             </button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>

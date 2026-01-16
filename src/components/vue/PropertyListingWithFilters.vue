@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
+import { Icon, addCollection } from '@iconify/vue';
+import hugeiconsData from '@iconify-json/hugeicons/icons.json';
 import SidebarFilter from './SidebarFilter.vue';
 import PropertyGrid from './PropertyGrid.vue';
 import { usePropertyFilters } from '@/composables/usePropertyFilters';
 import { useUrlSync } from '@/composables/useUrlSync';
 import type { PropertiesWithImages } from '@/types';
 
+addCollection(hugeiconsData);
+
 const props = defineProps<{
   properties: PropertiesWithImages[];
 }>();
 
 const propertiesRef = computed(() => props.properties);
-const showMobileFilters = ref(false);
+const showFilters = ref(false);
 
 const {
   filters,
@@ -31,20 +35,9 @@ onMounted(() => {
 
 <template>
   <div class="w-full">
-    <!-- Desktop: Sidebar visible -->
-    <div class="flex gap-6">
-      <aside class="hidden lg:block lg:w-80 flex-shrink-0">
-        <SidebarFilter 
-          v-model="filters"
-          :total="resultCount"
-          :active-count="activeFilterCount"
-          :get-category-count="getPropertiesByCategory"
-          @reset="resetFilters"
-        />
-      </aside>
-
-      <!-- Grid principal -->
-      <main class="flex-1 min-w-0">
+    <!-- Grid principal (sin sidebar visible) -->
+    <div class="w-full">
+      <main class="w-full">
         <PropertyGrid 
           :properties="filteredProperties"
           :total-properties="properties.length"
@@ -52,46 +45,49 @@ onMounted(() => {
       </main>
     </div>
 
-    <!-- Mobile: Botón flotante -->
-    <div class="lg:hidden fixed bottom-6 right-6 z-50">
+    <!-- Botón flotante izquierdo - Siempre visible -->
+    <div class="fixed left-6 bottom-6 z-50">
       <button 
-        @click="showMobileFilters = true"
-        class="bg-primary text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
+        @click="showFilters = true"
+        class="bg-primary text-white rounded-full p-4 shadow-lg hover:shadow-xl hover:scale-110 transition-all flex items-center gap-2 group"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-        </svg>
-        <span class="font-medium">Filtros</span>
-        <span v-if="activeFilterCount > 0" class="bg-white text-primary rounded-full px-2 py-0.5 text-xs font-bold">
+        <Icon icon="hugeicons:filter" class="w-6 h-6" />
+        <span class="font-medium hidden sm:inline">Filtros</span>
+        <span 
+          v-if="activeFilterCount > 0" 
+          class="bg-white text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold"
+        >
           {{ activeFilterCount }}
         </span>
       </button>
     </div>
 
-    <!-- Mobile: Drawer (Teleport) -->
+    <!-- Drawer desde la izquierda (Teleport) -->
     <Teleport to="body">
       <Transition name="drawer">
         <div 
-          v-show="showMobileFilters"
-          class="lg:hidden fixed inset-0 z-[999] flex justify-end"
+          v-show="showFilters"
+          class="fixed inset-0 z-[999] flex"
         >
           <!-- Overlay -->
           <div 
-            @click="showMobileFilters = false"
-            class="absolute inset-0 bg-black/50"
+            @click="showFilters = false"
+            class="absolute inset-0 bg-black/50 backdrop-blur-sm"
           ></div>
           
-          <!-- Drawer -->
+          <!-- Drawer desde la izquierda -->
           <div class="relative w-11/12 max-w-md bg-white h-full overflow-y-auto shadow-2xl">
             <div class="sticky top-0 bg-white z-10 p-4 border-b flex items-center justify-between">
-              <h2 class="text-xl font-bold">Filtros</h2>
+              <div class="flex items-center gap-2">
+                <Icon icon="hugeicons:filter" class="w-6 h-6 text-primary" />
+                <h2 class="text-xl font-bold">Filtros</h2>
+              </div>
               <button 
-                @click="showMobileFilters = false"
+                @click="showFilters = false"
                 class="p-2 hover:bg-gray-100 rounded-lg transition"
+                aria-label="Cerrar filtros"
               >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <Icon icon="hugeicons:cancel-01" class="w-6 h-6" />
               </button>
             </div>
             
@@ -112,9 +108,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/* Transición del overlay */
 .drawer-enter-active,
 .drawer-leave-active {
-  transition: opacity 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .drawer-enter-from,
@@ -122,13 +119,26 @@ onMounted(() => {
   opacity: 0;
 }
 
-.drawer-enter-active .relative,
+/* Transición del drawer desde la izquierda */
+.drawer-enter-active .relative {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 .drawer-leave-active .relative {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.drawer-enter-from .relative {
+  transform: translateX(-100%);
+}
+
+.drawer-leave-to .relative {
+  transform: translateX(-100%);
+}
+</style>
+cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .drawer-enter-from .relative,
 .drawer-leave-to .relative {
-  transform: translateX(100%);
-}
-</style>
+  transform: translateX(-
