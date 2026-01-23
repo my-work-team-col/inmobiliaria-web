@@ -5,6 +5,15 @@ import Footer from "@/components/astro/Footer.astro";
 import Hero from "@/components/astro/PageHeader.astro";
 import PageHeader from "@/components/astro/PageHeader.astro";
 import bgHeader from "@/assets/images/bg-listingProperties.jpg";
+
+import CategoriesNavbar from "@/components/vue/CategoriesNavbar.vue";
+import { getCategoryTree } from "@/lib/db/categoryQueries";
+import { mapCategoryTreeArray } from "@/mappers/category.mapper";
+
+const rawCategoryTree = await getCategoryTree();
+const categoryTree = mapCategoryTreeArray(rawCategoryTree);
+
+
 ---
 
 <!doctype html>
@@ -24,6 +33,10 @@ import bgHeader from "@/assets/images/bg-listingProperties.jpg";
     title="Propiedades" 
     subtitle="Encuentra tu hogar ideal" 
    />
+    <CategoriesNavbar 
+    client:load 
+      categoryTree={categoryTree} 
+      />
     <!-- body-->
     <div class="w-full px-2 lg:px-0 py-8">
       <div class="px-4 lg:px-40">
