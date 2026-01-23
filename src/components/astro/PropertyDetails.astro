@@ -4,6 +4,12 @@ import DetailLayout from '@/layouts/DetailLayout.astro';
 import { Icon } from '@iconify/vue';
 
 // Define la interfaz de la propiedad para tipado
+interface PropertyImage {
+    id: string;
+    image: string;
+    propertyId: string;
+}
+
 interface Property {
     id: string;
     title: string;
@@ -33,9 +39,10 @@ interface Category {
     icon: string;
 }
 
-const { property, categories = [] } = Astro.props as { 
+const { property, categories = [], images = [] } = Astro.props as { 
     property: Property; 
     categories: Category[];
+    images: PropertyImage[];
 };
 
 // Formateo del precio para la etiqueta de "Best Price"
@@ -82,34 +89,53 @@ const financialData = [
             <div class="mt-2 md:mt-0 text-right">
                 <p class="text-sm text-gray-500">Best Price</p>
                 <p class="text-3xl font-bold text-gray-900">{formattedPrice}</p>
-                <p> test data -> id ({property.id}) </p>
+                <!-- <p> test data -> id ({property.id}) </p> -->
                 <button class="text-sm text-indigo-600 hover:underline">Simulate mu loan</button>
             </div>
         </div>
 
         <section class="relative mb-10">
-            <img 
-                src={property.gallery[0] || 'https://via.placeholder.com/1200x600?text=Property+Image'} 
-                alt={property.title}
-                class="w-full h-96 object-cover rounded-xl shadow-lg"
-            />
-            
-            <div class="absolute top-4 left-4 flex space-x-2">
-                <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
-                    <Icon icon="hugeicons:bookmark-01" class="w-5 h-5" client:only="vue" />
-                    <span>Save</span>
-                </button>
-                <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
-                    <Icon icon="hugeicons:share-08" class="w-5 h-5" client:only="vue" />
-                    <span>Share</span>
-                </button>
-                <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
-                    <Icon icon="hugeicons:location-01" class="w-5 h-5" client:only="vue" />
-                    <span>Map</span>
-                </button>
+            <!-- Main Image -->
+            <div class="relative">
+                <img 
+                    src={images.length > 0 ? images[0].image : 'https://via.placeholder.com/1200x600?text=Property+Image'} 
+                    alt={property.title}
+                    class="w-full h-96 object-cover rounded-xl shadow-lg"
+                />
+                
+                <div class="absolute top-4 left-4 flex space-x-2">
+                    <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
+                        <Icon icon="hugeicons:bookmark-01" class="w-5 h-5" client:only="vue" />
+                        <span>Save</span>
+                    </button>
+                    <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
+                        <Icon icon="hugeicons:share-08" class="w-5 h-5" client:only="vue" />
+                        <span>Share</span>
+                    </button>
+                    <button class="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-md hover:bg-gray-100 transition">
+                        <Icon icon="hugeicons:location-01" class="w-5 h-5" client:only="vue" />
+                        <span>Map</span>
+                    </button>
+                </div>
             </div>
-            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/70 rounded-full shadow-md text-gray-800 hover:bg-white transition">❮</button>
-            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-white/70 rounded-full shadow-md text-gray-800 hover:bg-white transition">❯</button>
+            
+            <!-- Thumbnail Gallery -->
+            {images.length > 1 && (
+                <div class="flex space-x-2 mt-4 overflow-x-auto pb-2">
+                    {images.slice(0, 6).map((img, index) => (
+                        <img 
+                            src={img.image} 
+                            alt={`${property.title} - Image ${index + 1}`}
+                            class="w-20 h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition flex-shrink-0"
+                        />
+                    ))}
+                    {images.length > 6 && (
+                        <div class="w-20 h-20 bg-gray-200 rounded-lg flex items-center justify-center text-sm font-medium text-gray-600 flex-shrink-0">
+                            +{images.length - 6}
+                        </div>
+                    )}
+                </div>
+            )}
         </section>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
