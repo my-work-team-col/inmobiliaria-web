@@ -3,13 +3,14 @@ import ListingLayout from '@/layouts/ListingLayout.astro';
 import PropertyListingWithFilters from '@/components/vue/PropertyListingWithFilters.vue';
 import { db, Properties, PropertiesImages, PropertyCategories, Categories, eq, sql } from 'astro:db';
 import type { PropertiesWithImages } from '@/types';
+import { resolveImage } from '@/lib/helpers/resolveImage';
 
 // Query directa a Astro DB con JOIN para obtener imágenes y categorías agrupadas
 const propertiesQuery = sql`
   SELECT 
     p.*,
     json_group_array(
-      DISTINCT json_object('id', pi.id, 'image', pi.image)
+      DISTINCT json_object('id', pi.id, 'image', pi.image, 'cloudinaryUrl', pi.cloudinaryUrl, 'propertyId', pi.propertyId)
     ) FILTER (WHERE pi.id IS NOT NULL) as images,
     json_group_array(
       DISTINCT json_object(
@@ -33,7 +34,7 @@ const { rows } = await db.run(propertiesQuery);
 // Parsear y mapear datos
 const listings = rows.map((row: any) => ({
   ...row,
-  images: JSON.parse(row.images || '[]').map((img: any) => img.image),
+  images: JSON.parse(row.images || '[]').map(resolveImage),
   categories: JSON.parse(row.categories || '[]'),
   featured: Boolean(row.featured),
   isActive: Boolean(row.isActive),
@@ -41,7 +42,6 @@ const listings = rows.map((row: any) => ({
 ---
 
 <ListingLayout>
-
   <!-- Sistema de filtros Vue - Ahora incluye sidebar móvil + grid -->
   <PropertyListingWithFilters 
     client:load 

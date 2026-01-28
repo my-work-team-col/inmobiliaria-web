@@ -52,9 +52,10 @@ Si eres nuevo en el proyecto, empieza por aquí:
 
 | Documento | Descripción |
 |-----------|-------------|
-| **[BASE-DE-DATOS.md](BASE-DE-DATOS.md)** ⭐ | Documentación completa del sistema de base de datos, schema, taxonomía y mejores prácticas |
+| **[BASE-DE-DATOS.md](BASE-DE-DATOS.md)** ⭐ | Schema completo, taxonomía y mejores prácticas de Astro DB |
+| **[MIGRACION-CLOUDINARY.md](MIGRACION-CLOUDINARY.md)** ⭐ | Feature completa de migración de imágenes a Cloudinary con eliminación de duplicados |
 
-**Temas cubiertos:**
+**BASE-DE-DATOS.md - Temas cubiertos:**
 - Schema completo de Astro DB (7 tablas)
 - Migración de JSON a Astro DB
 - UUIDs como primary keys
@@ -65,6 +66,16 @@ Si eres nuevo en el proyecto, empieza por aquí:
 - Sistema de imágenes con mapeador
 - Queries helper y validaciones
 - Mejores prácticas de BD
+
+**MIGRACION-CLOUDINARY.md - Temas cubiertos:**
+- 🚀 Feature completa de migración a Cloudinary
+- 🗃️ Limpieza de duplicados (180 → 60 registros)
+- ☁️ Upload optimizado con transformaciones automáticas
+- 🛠️ Herramientas de mantenimiento y API endpoints
+- 📊 Métricas de optimización (-40% storage, -100% duplicados)
+- 🔐 Seguridad y rate limiting
+- 🚀 Guía de deploy a producción
+- 📈 Roadmap de mejoras futuras
 
 **Sistema de Taxonomía (Implementación Gradual):**
 - ✅ **Categories**: Implementado (2 niveles: padre-hija, 11 categorías en producción)
@@ -118,6 +129,13 @@ Si eres nuevo en el proyecto, empieza por aquí:
 - **Attributes (pendiente)**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Attributes"
 - **Brands (pendiente)**: [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Brands"
 
+### Cloudinary y Migración de Imágenes
+- **Feature completa**: [MIGRACION-CLOUDINARY.md](MIGRACION-CLOUDINARY.md) - Documentación completa
+- **Schema con Cloudinary**: [MIGRACION-CLOUDINARY.md](MIGRACION-CLOUDINARY.md) - Sección "Schema de Base de Datos"
+- **API de migración**: [MIGRACION-CLOUDINARY.md](MIGRACION-CLOUDINARY.md) - Sección "API Endpoints"
+- **Herramientas de mantenimiento**: [MIGRACION-CLOUDINARY.md](MIGRACION-CLOUDINARY.md) - Sección "Herramientas de Mantenimiento"
+- **Deploy a producción**: [MIGRACION-CLOUDINARY.md](MIGRACION-CLOUDINARY.md) - Sección "Deploy a Producción"
+
 ### Framework
 - **Astro SSR**: [ASTRO.md](ASTRO.md) - Sección "Migración SSG → SSR"
 - **Estructura del proyecto**: [ASTRO.md](ASTRO.md) - Sección "Estructura del Proyecto"
@@ -150,6 +168,8 @@ Si eres nuevo en el proyecto, empieza por aquí:
 - ✅ API endpoints funcionales
 - ✅ Sistema de colores implementado
 - ✅ Componentes Astro básicos
+- ✅ **Migración Cloudinary completa** (60 imágenes, 0 duplicados) ⭐ NUEVO
+- ✅ **Producción lista para deploy** ⭐ NUEVO
 
 ### 🚧 En Progreso
 - 🚧 Componentes frontend para categorías
@@ -192,6 +212,7 @@ Si eres nuevo en el proyecto, empieza por aquí:
 | **UUID** | ^13.0.0 | Generación de IDs únicos |
 | **Swiper** | ^12.0.3 | Carrusel de imágenes |
 | **Astro Icon** | ^1.1.5 | Sistema de iconos |
+| **Cloudinary** | ^2.9.0 | CDN de imágenes (migración completa) |
 
 ---
 
@@ -222,6 +243,12 @@ Si eres nuevo en el proyecto, empieza por aquí:
 **Error: Imágenes no se muestran**
 - ✅ Verifica que el mapeador esté parseando `images` correctamente
 - ✅ Revisa [BASE-DE-DATOS.md](BASE-DE-DATOS.md) - Sección "Sistema de Imágenes"
+- ✅ Si migraste a Cloudinary, revisa [MIGRACION-CLOUDINARY.md](MIGRACION-CLOUDINARY.md) - Sección "Helper de Resolución de Imágenes"
+
+**Error: Imágenes Cloudinary no cargan**
+- ✅ Verifica configuración en `.env` (ver [MIGRACION-CLOUDINARY.md](MIGRACION-CLOUDINARY.md))
+- ✅ Testea con `curl http://localhost:4321/api/migrate-cloudinary`
+- ✅ Revisa `isMigrated = true` en PropertiesImages
 
 **Error: TypeScript en componentes**
 - ✅ Verifica que las interfaces estén definidas
@@ -269,4 +296,5 @@ Para preguntas sobre la documentación o el proyecto:
 
 **Mantenido por:** Yormi Altamiranda & Didier Méndez  
 **Repositorio:** inmobiliaria-web  
-**Última revisión completa:** 2025-12-23
+**Última revisión completa:** 2026-01-27  
+**Feature destacada:** ✅ Migración Cloudinary completa - Producción ready

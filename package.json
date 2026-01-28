@@ -10,7 +10,9 @@
     "db:push": "astro db push --force-reset",
     "db:studio": "astro db studio",
     "db:change-category": "tsx db/scripts/change-category.ts",
-    "db:search-change": "tsx db/scripts/search-and-change.ts"
+    "db:search-change": "tsx db/scripts/search-and-change.ts",
+    "migrate:cloudinary": "tsx db/scripts/migrate-images-astro-db.ts",
+    "migrate:cloudinary:test": "tsx db/scripts/migrate-images-astro-db.ts --test-only"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
@@ -21,6 +23,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "@vueuse/core": "^14.1.0",
     "astro": "^5.16.0",
+    "cloudinary": "^2.9.0",
     "swipe": "^1.7.7",
     "swiper": "^12.0.3",
     "tailwindcss": "^4.1.17",

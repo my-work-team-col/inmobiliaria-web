@@ -15,7 +15,7 @@ defineProps<{
     <!-- Imagen -->
     <div class="relative h-48 overflow-hidden rounded-xl">
       <img
-        :src="property.images?.[0] || '/images/default.jpg'"
+        :src="property.images?.[0]?.image || '/images/default.jpg'"
         :alt="property.title"
         class="w-full h-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-110"
         loading="lazy"

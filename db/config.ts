@@ -60,15 +60,23 @@ const Properties = defineTable({
 });
 
 // ============================================
-// TABLA: PropertiesImages (Sin cambios)
+// TABLA: PropertiesImages (Con cambios -> Cloudinary)
 // ============================================
 const PropertiesImages = defineTable({
   columns: {
     id: column.text({ primaryKey: true, unique: true }),
     propertyId: column.text({ optional: true, references: () => Properties.columns.id }),
     image: column.text(),
+
+    // Campos Cloudinary
+    cloudinaryPublicId: column.text({ optional: true }),
+    cloudinaryUrl: column.text({ optional: true }),
+    cloudinaryMetadata: column.json({ optional: true }),
+    isMigrated: column.boolean({ default: false }),
   },
 });
+
+
 
 // https://astro.build/db/config
 export default defineDb({

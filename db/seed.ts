@@ -274,12 +274,12 @@ export default async function seed() {
     );
     
     // Generar 3 imágenes por propiedad usando imágenes reales (property-1-1.jpg hasta property-20-3.jpg)
-    const propertyImageNum = faker.number.int({ min: 1, max: 20 });
+    const baseImageNum = ((i % 20) + 1); // Cada propiedad usa set diferente
     for (let j = 1; j <= 3; j++) {
       imageQueries.push(
         db.insert(PropertiesImages).values({
           id: uuidv4(),
-          image: `/images/properties/property-${propertyImageNum}-${j}.jpg`,
+          image: `/images/properties/property-${baseImageNum}-${j}.jpg`,
           propertyId,
         })
       );

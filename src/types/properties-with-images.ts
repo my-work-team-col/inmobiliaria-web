@@ -1,3 +1,14 @@
+export interface PropertyImage {
+    id: string;
+    image: string;
+    cloudinaryUrl?: string;
+    cloudinaryPublicId?: string;
+    cloudinaryMetadata?: any;
+    propertyId: string;
+    isCloudinary?: boolean;
+    optimizedUrl?: string;
+}
+
 export interface PropertiesWithImages {
     id: string;
     title: string;
@@ -18,5 +29,5 @@ export interface PropertiesWithImages {
     participation: string;
     address: string;
     observations: string;
-    images: string[] | null; // 👈 YA NORMALIZADO
+    images: PropertyImage[] | null; // Updated to match resolveImage structure
 }
