@@ -6,11 +6,11 @@ import PageHeader from "@/components/astro/PageHeader.astro";
 import SearchFilter from "@/components/vue/SearchFilter.vue";
 import ListingSection from "@/components/astro/ListingSection.astro";
 import bgHeader from "@/assets/images/bg-hero.jpg";
-import { actions } from "astro:actions";
+import { getPropertiesByPage } from "@/actions/properties/get-properties-by-page";
 import { astroCalledServerError } from "astro:actions";
 
 // test properties
-const {data, error}= await Astro.callAction(actions.getPropertiesByPage, { limit: 4 });
+const {data, error}= await Astro.callAction(getPropertiesByPage, { limit: 4 });
 
 const properties = data?.properties ?? [];
 

@@ -1,6 +1,20 @@
 import type { PropertyRow, PropertiesWithImages } from "@/types";
+import { getImageUrl, isCloudinaryImage } from "@/lib/db/propertyQueries";
 
 export const mapPropertyRow = (row: PropertyRow): PropertiesWithImages => {
+  // Parse images from JSON string and map to proper format
+  const rawImages = JSON.parse(row.images ?? "[]");
+  
+  // Map images to include proper URL resolution
+  const mappedImages = rawImages.map((img: any) => ({
+    id: img.id,
+    image: img.image,
+    cloudinaryUrl: getImageUrl(img),
+    propertyId: img.propertyId || row.id,
+    isMigrated: img.isMigrated || false,
+    isCloudinary: isCloudinaryImage(img)
+  }));
+
   return {
     id: row.id,
     title: row.title,
@@ -28,7 +42,7 @@ export const mapPropertyRow = (row: PropertyRow): PropertiesWithImages => {
     featured: Boolean(row.featured),
     isActive: Boolean(row.isActive),
 
-    // 🔑 AQUÍ resolvemos el problema de las imágenes
-    images: JSON.parse(row.images ?? "[]"),
+    // ✅ FIXED: Images now properly mapped with URL resolution
+    images: mappedImages,
   };
 };

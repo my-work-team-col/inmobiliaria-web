@@ -1,4 +1,4 @@
-import { cloudinaryService } from '../../src/lib/cloudinary';
+import { cloudinaryService } from '@/lib/cloudinary';
 
 export async function GET({ request }: { request: Request }) {
   try {

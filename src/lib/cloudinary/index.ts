@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
+import path from 'path';
 
 // Configure Cloudinary with hardcoded values for testing
 cloudinary.config({

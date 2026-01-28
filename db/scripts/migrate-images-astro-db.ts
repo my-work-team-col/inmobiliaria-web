@@ -1,6 +1,6 @@
 import { db, PropertiesImages } from 'astro:db';
 import { eq } from 'astro:db';
-import { cloudinaryService } from '../../src/lib/cloudinary';
+import { cloudinaryService } from '@/lib/cloudinary';
 import fs from 'fs/promises';
 import path from 'path';
 

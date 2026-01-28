@@ -1,4 +1,4 @@
-import { uploadImage } from '../../src/lib/cloudinary/index';
+import { uploadImage } from '@/lib/cloudinary/index';
 import { db, PropertiesImages } from 'astro:db';
 import path from 'path';
 import { eq } from 'astro:db';

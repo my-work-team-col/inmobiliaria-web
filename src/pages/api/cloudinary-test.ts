@@ -1,4 +1,4 @@
-import { cloudinaryService } from '../../../src/lib/cloudinary';
+import { cloudinaryService } from '@/lib/cloudinary';
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async () => {
