@@ -8,15 +8,15 @@ Guía para agentes de IA trabajando en el proyecto Inmobiliaria Web.
 # Instalar dependencias
 pnpm install
 
-# Configurar base de datos local (primera vez)
-pnpm astro db push --force-reset
+# Crear datos locales (solo primera vez)
+pnpm seed:force
 
-# Servidor de desarrollo
+# Servidor de desarrollo (NO ejecuta seed automáticamente)
 pnpm dev
 # → http://localhost:4321
 
 # Build para producción
-pnpm build
+pnpm build:remote
 
 # Preview del build
 pnpm preview
@@ -25,7 +25,13 @@ pnpm preview
 ## Comandos de Base de Datos
 
 ```bash
-# Push schema a BD local (con reset y seed)
+# Crear datos locales + subir a Cloudinary
+pnpm seed:force
+
+# Crear datos en Turso remoto
+pnpm seed:force:remote
+
+# Push schema a BD local (sin seed)
 pnpm astro db push --force-reset
 
 # Abrir GUI de BD
@@ -38,6 +44,8 @@ pnpm astro db push --remote
 pnpm db:change-category    # Cambiar categorías de propiedades
 pnpm db:search-change      # Buscar y cambiar datos
 ```
+
+**⚠️ Importante:** `pnpm dev` NO ejecuta seed automáticamente desde esta actualización.
 
 ## Estructura del Proyecto
 

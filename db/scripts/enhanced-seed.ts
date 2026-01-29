@@ -27,7 +27,11 @@ if (fs.existsSync(envPath)) {
   });
 }
 
+<<<<<<< HEAD
 import { seed } from '../seed';
+=======
+import seed from '../seed';
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
 
 async function main() {
   console.log('🚀 Enhanced Seed - Turso Cloud Synchronization');
@@ -136,7 +140,11 @@ async function main() {
       
       if (result.warnings.length > 0) {
         console.log('\n⚠️  Warnings (non-critical):');
+<<<<<<< HEAD
         result.warnings.forEach(warning => console.log(`   • ${warning}`));
+=======
+        result.warnings.forEach((warning: string) => console.log(`   • ${warning}`));
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
       }
       
       process.exit(0);
@@ -151,7 +159,11 @@ async function main() {
       
       if (result.errors.length > 0) {
         console.log('\n❌ Errors:');
+<<<<<<< HEAD
         result.errors.forEach(error => console.log(`   • ${error}`));
+=======
+        result.errors.forEach((error: string) => console.log(`   • ${error}`));
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
       }
       
       process.exit(1);

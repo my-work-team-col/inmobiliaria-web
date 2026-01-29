@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { uploadImage } from '@/lib/cloudinary/index';
+=======
+import { cloudinaryService } from '@/lib/cloudinary/index';
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
 import { db, PropertiesImages } from 'astro:db';
 import path from 'path';
 import { eq } from 'astro:db';
@@ -12,7 +16,7 @@ export async function migrateImages() {
     const localPath = path.join(process.cwd(), 'public', image.image);
 
     try {
-      const result: any = await uploadImage(localPath, image.propertyId);
+      const result = await cloudinaryService.uploadImage(localPath, { folder: image.propertyId });
 
       await db.update(PropertiesImages)
         .set({

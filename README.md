@@ -17,28 +17,43 @@
 - Node.js 18+
 - pnpm 8+
 
-### Instalación
+### Instalación y Desarrollo
 
 ```bash
-# Clonar el repositorio
-git clone <repository-url>
-
-# Navegar al directorio
-cd inmobiliaria-web
-
-# Instalar dependencias
+# 1. Instalar dependencias
 pnpm install
 
-# Configurar base de datos (primera vez)
-pnpm astro db push --force-reset
+# 2. Copiar archivo de variables de entorno
+cp .env.example .env
+# Editar .env con tus credenciales de Cloudinary
 
-# Iniciar servidor de desarrollo
+# 3. Crear datos locales (solo primera vez)
+pnpm seed:force
+
+# 4. Servidor de desarrollo
 pnpm dev
+# → http://localhost:4321
 ```
 
-El sitio estará disponible en `http://localhost:4321`
+**📖 Guía completa de desarrollo:** [DEVELOPMENT-GUIDE.md](DEVELOPMENT-GUIDE.md)  
+**🤖 Para AI Agents:** [AGENTS.md](AGENTS.md)
 
-> **Nota:** El comando `pnpm astro db push --force-reset` crea la base de datos local y la llena con datos de ejemplo (categorías y propiedades).
+> **⚠️ Importante:** `pnpm dev` NO ejecuta seed automáticamente. Solo consume datos locales existentes.
+
+---
+
+## 🗄️ Gestión de Datos
+
+```bash
+# Crear datos locales + subir imágenes a Cloudinary
+pnpm seed:force
+
+# Crear datos en Turso (producción)
+pnpm seed:force:remote
+
+# Ver datos en GUI
+pnpm db:studio
+```
 
 ---
 

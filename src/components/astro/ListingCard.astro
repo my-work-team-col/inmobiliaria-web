@@ -39,7 +39,10 @@ const {
 
 // const image = parsedImages[0] ?? "/images/default.jpg";
 // set default image 
-const image = images?.[0] ?? "/images/default.jpg";
+const imageData = images?.[0];
+const image: string = typeof imageData === 'string' 
+  ? imageData 
+  : imageData?.cloudinaryUrl || imageData?.image || '/images/default.jpg';
 ---
 
 <article

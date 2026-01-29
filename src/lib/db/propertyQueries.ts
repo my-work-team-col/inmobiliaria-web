@@ -81,7 +81,10 @@ export async function getAllProperties(options: {
     
     return {
       ...property,
+<<<<<<< HEAD
       categories: JSON.parse(property.categories || '[]'),
+=======
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
       images: propertyImages
     };
   });
@@ -125,7 +128,10 @@ export async function getPropertyById(id: string) {
   
   return {
     ...property,
+<<<<<<< HEAD
     categories: JSON.parse(property.categories || '[]'),
+=======
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
     images: propertyImages
   };
 }

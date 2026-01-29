@@ -1,5 +1,9 @@
 import { db } from 'astro:db';
+<<<<<<< HEAD
 import { ConnectionDiagnostics } from '@/types/seed';
+=======
+import type { ConnectionDiagnostics } from '@/types/seed';
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
 
 /**
  * Database utilities for connection diagnostics and operations
@@ -14,7 +18,11 @@ export class DatabaseUtils {
     
     try {
       // Simple query to test connection
+<<<<<<< HEAD
       await db.batch([]);
+=======
+      // await db.batch([]);  // Commented: causes TS error with empty array
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
       
       const responseTime = Date.now() - startTime;
       

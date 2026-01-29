@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "dev:remote": "astro dev --remote",
     "build": "astro build --remote",
+    "build:remote": "astro build --remote",
     "preview": "astro preview",
     "astro": "astro",
     "db:push": "astro db push --force-reset",

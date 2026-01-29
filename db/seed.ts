@@ -21,6 +21,7 @@ if (fs.existsSync(envPath)) {
 }
 
 import { cloudinaryBatchUploader } from '../src/lib/cloudinary/batch-upload';
+<<<<<<< HEAD
 import { SeedOptions, SeedResult, ConnectionDiagnostics } from '../src/types/seed';
 import fsAsync from 'fs/promises';
 import path from 'path';
@@ -49,6 +50,12 @@ interface ConnectionDiagnostics {
   responseTime: number;
   error?: string;
 }
+=======
+import type { SeedOptions, SeedResult, ConnectionDiagnostics } from '../src/types/seed';
+import fsAsync from 'fs/promises';
+
+// Usamos las interfaces importadas de types/seed
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
 
 /**
  * Enhanced seed function with force flag support and Cloudinary integration
@@ -61,6 +68,10 @@ export default async function seed(): Promise<SeedResult> {
     propertiesCreated: 0,
     imagesCreated: 0,
     imagesUploadedToCloudinary: 0,
+<<<<<<< HEAD
+=======
+    executionTime: 0,
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
     errors: [],
     warnings: []
   };
@@ -69,6 +80,22 @@ export default async function seed(): Promise<SeedResult> {
     // Parse command line arguments
     const options = parseCommandLineArgs();
     
+<<<<<<< HEAD
+=======
+    // Get current data state
+    const existingData = await getCurrentDataState();
+    
+    // 🚫 SKIP SI YA HAY DATOS (a menos que use --force)
+    if (existingData.properties.length > 0 && !options.force) {
+      console.log('⏭️  SEED OMITIDO - Ya existen datos en la base de datos');
+      console.log(`📊 Estado actual: ${existingData.properties.length} propiedades, ${existingData.images.length} imágenes`);
+      console.log('💡 Para recrear datos: pnpm db:push (confirmar reset cuando pregunte)\n');
+      
+      result.warnings.push('Seed omitido - datos ya existen');
+      return finalizeResult(result, startTime);
+    }
+    
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
     console.log('🌱 Iniciando seed completo...\n');
     console.log('📋 Opciones:');
     console.log(`   • Force mode: ${options.force ? '✅ SÍ' : '❌ NO'}`);
@@ -91,6 +118,7 @@ export default async function seed(): Promise<SeedResult> {
     }
     console.log('✅ Cloudinary configurado correctamente\n');
 
+<<<<<<< HEAD
     // Get current data state
     const existingData = await getCurrentDataState();
     console.log('📊 Estado actual:');
@@ -98,15 +126,20 @@ export default async function seed(): Promise<SeedResult> {
     console.log(`   • Propiedades existentes: ${existingData.properties.length}`);
     console.log(`   • Imágenes existentes: ${existingData.images.length}\n`);
 
+=======
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
     // Clear existing data if force mode is enabled
     if (options.force) {
       console.log('🧹 LIMPIANDO DATOS EXISTENTES (--force)');
       await clearAllData();
       console.log('✅ Datos existentes eliminados\n');
+<<<<<<< HEAD
     } else if (existingData.categories.length > 0) {
       console.log('ℹ️  Los datos ya existen. Use --force para sobreescribir.');
       result.warnings.push('Datos omitidos - ya existen en la base de datos. Use --force para sobreescribir.');
       return finalizeResult(result, startTime);
+=======
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
     }
   
 // ============================================
@@ -128,7 +161,18 @@ export default async function seed(): Promise<SeedResult> {
     // ============================================
     // PASO 3: Crear array de categorías con metadata para Faker
     // ============================================
+<<<<<<< HEAD
     const categoriesWithMeta = [
+=======
+    const categoriesWithMeta: Array<{
+      id: string;
+      name: string;
+      slug: string;
+      keywords: string[];
+      bedroomsRange: [number, number];
+      areaRange: [number, number];
+    }> = [
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
       { id: childCategoryIds.apartamentoId, name: 'Apartamento', slug: 'apartamento', keywords: ['apartamento', 'apto', 'penthouse'], bedroomsRange: [1, 4], areaRange: [40, 200] },
       { id: childCategoryIds.casaId, name: 'Casa', slug: 'casa', keywords: ['casa', 'vivienda'], bedroomsRange: [2, 5], areaRange: [80, 300] },
       { id: childCategoryIds.fincaId, name: 'Finca', slug: 'finca', keywords: ['finca', 'campestre'], bedroomsRange: [3, 8], areaRange: [200, 5000] },
@@ -596,6 +640,7 @@ async function insertDataInTransaction(propertyData: any, imageData: any) {
   try {
     // Insert properties
     console.log('   • Insertando properties...');
+<<<<<<< HEAD
     await db.batch(propertyData.properties.map(p => db.insert(Properties).values(p)));
     
     // Insert category relations
@@ -605,6 +650,17 @@ async function insertDataInTransaction(propertyData: any, imageData: any) {
     // Insert images
     console.log('   • Insertando properties-images...');
     await db.batch(imageData.imageRecords.map(img => db.insert(PropertiesImages).values(img)));
+=======
+    await db.batch(propertyData.properties.map((p: any) => db.insert(Properties).values(p)));
+    
+    // Insert category relations
+    console.log('   • Insertando property-categories...');
+    await db.batch(propertyData.categoryRelations.map((r: any) => db.insert(PropertyCategories).values(r)));
+    
+    // Insert images
+    console.log('   • Insertando properties-images...');
+    await db.batch(imageData.imageRecords.map((img: any) => db.insert(PropertiesImages).values(img)));
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
     
   } catch (error: any) {
     throw new Error(`Transaction failed: ${error.message}`);
@@ -615,13 +671,24 @@ async function insertDataInTransaction(propertyData: any, imageData: any) {
  * Verify data insertion
  */
 async function verifyDataInsertion() {
+<<<<<<< HEAD
   const [categories, properties, images] = await getCurrentDataState();
+=======
+  const dataState = await getCurrentDataState();
+  const categories = dataState.categories;
+  const properties = dataState.properties;
+  const images = dataState.images;
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
   
   console.log('📊 Verificación final:');
   console.log(`   • Categorías: ${categories.length} ✅`);
   console.log(`   • Propiedades: ${properties.length} ✅`);
   console.log(`   • Imágenes: ${images.length} ✅`);
+<<<<<<< HEAD
   console.log(`   • Imágenes con Cloudinary: ${images.filter(img => img.cloudinaryUrl).length} ✅`);
+=======
+  console.log(`   • Imágenes con Cloudinary: ${images.filter((img: any) => img.cloudinaryUrl).length} ✅`);
+>>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
   
   if (categories.length !== 11) {
     throw new Error(`Expected 11 categories, got ${categories.length}`);
