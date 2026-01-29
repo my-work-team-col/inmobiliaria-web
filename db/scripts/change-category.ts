@@ -94,7 +94,7 @@ async function main() {
       .where(and(isNull(Categories.parentId), eq(Categories.isActive, true)))
       .all();
     
-    const allCategories = [];
+    const allCategories: any[] = [];
     
     for (const parent of parentCategories) {
       console.log(`${parent.icon} ${parent.name}`);

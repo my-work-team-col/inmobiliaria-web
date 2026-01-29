@@ -11,6 +11,7 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   integrations: [vue(), db()],
   adapter: cloudflare(),
+  output: 'server', // SSR required for Astro DB + Cloudflare
 
   vite: {
     plugins: [tailwindcss()],

@@ -190,7 +190,7 @@ export async function changePropertyCategoryBySlug(
  * Cambia categorías de múltiples propiedades en batch
  * @param updates - Array de { propertyId, categoryId }
  */
-export async function batchChangeCate gories(
+export async function batchChangeCategories(
   updates: Array<{ propertyId: string; categoryId: string }>
 ): Promise<{ success: boolean; updated: number; errors: number }> {
   let updated = 0;

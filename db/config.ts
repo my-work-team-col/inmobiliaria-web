@@ -8,7 +8,7 @@ const Categories = defineTable({
     id: column.text({ primaryKey: true }), // UUID
     name: column.text(), // "Residencial", "Apartamento"
     slug: column.text({ unique: true }), // "residencial", "apartamento"
-    parentId: column.text({ optional: true, references: () => Categories.columns.id }), // null = nivel 0 (padre), valor = nivel 1 (hija)
+    parentId: column.text({ optional: true }), // null = nivel 0 (padre), valor = nivel 1 (hija) - Self-reference
     description: column.text({ optional: true }),
     icon: column.text({ optional: true }), // emoji o nombre de icono
     displayOrder: column.number({ default: 0 }),
