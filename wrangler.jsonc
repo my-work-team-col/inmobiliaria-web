@@ -12,5 +12,14 @@
 	},
 	"observability": {
     "enabled": true
-  }
+  },
+	"vars": {
+		"ASTRO_DB_REMOTE_URL": "libsql://inmobiliaria-db-criba833.aws-us-east-1.turso.io",
+		"ASTRO_DB_APP_TOKEN": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Njk2MTQ1MTYsImlkIjoiNDY0NzcxMmItMjg1ZC00ZDk1LTgyMWQtMWE5MTFhZTFmMDJhIiwicmlkIjoiNTMxYTk0OTQtMGUzZi00OWJhLThhMGQtNTAwY2FkYjEwNmI5In0.Ei1usEVKPT4fCAcCTVMUcvrwOycN5J2_P3kfdpYEU4-XKm_qL4vIYNN3Auj7bTTVUUnD6vA61_bIhMQHxOQICQ",
+		"CLOUDINARY_CLOUD_NAME": "criba833",
+		"CLOUDINARY_API_KEY": "699845276937428",
+		"CLOUDINARY_API_SECRET": "1ulKPV4R0boXUGSqStF1VNtQNFM",
+		"CLOUDINARY_FOLDER": "inmobiliaria/properties",
+		"NODE_ENV": "production"
+	}
 }
