@@ -1,8 +1,6 @@
 [build]
   command = "pnpm build:remote"
-  publish = "dist"
+  publish = ".netlify/functions-internal"
 
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/entry"
-  status = 200
+[functions]
+  directory = ".netlify/functions-internal"
