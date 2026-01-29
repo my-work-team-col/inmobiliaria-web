@@ -2,17 +2,20 @@
 import PropertyDetails from "@/components/astro/PropertyDetails.astro";
 import { db, Properties, Categories, PropertyCategories, PropertiesImages, eq } from "astro:db";
 
-export async function getStaticPaths() {
-  // obtener todos los slugs desde Astro DB
-  const all = await db.select().from(Properties);
+// Obtener el slug desde los params (SSR)
+const { slug } = Astro.params;
 
-  return all.map((p) => ({
-    params: { slug: p.slug },
-    props: { property: p }, // se envía al componente
-  }));
+// Buscar la propiedad por slug
+const property = await db
+  .select()
+  .from(Properties)
+  .where(eq(Properties.slug, slug as string))
+  .get();
+
+// Si no existe, retornar 404
+if (!property) {
+  return Astro.redirect('/404');
 }
-
-const { property } = Astro.props;
 
 // Obtener categorías de la propiedad
 const propertyCategories = await db
