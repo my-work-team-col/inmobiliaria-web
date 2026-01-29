@@ -5,13 +5,13 @@ import vue from "@astrojs/vue";
 
 import db from "@astrojs/db";
 
-import cloudflare from "@astrojs/cloudflare";
+import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue(), db()],
-  adapter: cloudflare(),
-  output: 'server', // SSR required for Astro DB + Cloudflare
+  adapter: netlify(),
+  output: 'server', // SSR required for Astro DB + Netlify
 
   vite: {
     plugins: [tailwindcss()],
