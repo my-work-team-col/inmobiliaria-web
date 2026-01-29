@@ -1,6 +1,2 @@
 [build]
   command = "pnpm build:remote"
-  publish = ".netlify/functions-internal"
-
-[functions]
-  directory = ".netlify/functions-internal"
