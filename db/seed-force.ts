@@ -1,11 +1,7 @@
 import { db, Properties, PropertiesImages, Categories, PropertyCategories } from 'astro:db';
 import { v4 as uuidv4 } from "uuid";
 import { faker } from '@faker-js/faker';
-<<<<<<< HEAD
-import { SeedOptions, SeedResult } from '@/types/seed';
-=======
 import type { SeedOptions, SeedResult } from '@/types/seed';
->>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
 import { cloudinaryBatchUploader } from '@/lib/cloudinary/batch-upload';
 import { databaseUtils } from '@/lib/db/database-utils';
 import fs from 'fs/promises';
@@ -381,13 +377,6 @@ export async function seedWithForce(options: SeedOptions = {}): Promise<SeedResu
     }
 
     // Execute property and category queries
-<<<<<<< HEAD
-    await db.batch(propertyQueries);
-    console.log('✅ 60 properties inserted');
-    
-    await db.batch(categoryQueries);
-    console.log('✅ 60 property-category relations created');
-=======
     if (propertyQueries.length > 0) {
       await db.batch(propertyQueries as any);
       console.log('✅ 60 properties inserted');
@@ -397,7 +386,6 @@ export async function seedWithForce(options: SeedOptions = {}): Promise<SeedResu
       await db.batch(categoryQueries as any);
       console.log('✅ 60 property-category relations created');
     }
->>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
     
     await db.insert(PropertiesImages).values(imageRecords);
     console.log(`✅ ${imageRecords.length} image records created`);

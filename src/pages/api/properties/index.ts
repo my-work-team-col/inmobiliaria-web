@@ -15,11 +15,7 @@ export const GET: APIRoute = async ({ url }) => {
     const result = await getAllProperties({
       page,
       limit,
-<<<<<<< HEAD
-      category,
-=======
       category: category || undefined,
->>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
       featured: featured === 'true' ? true : featured === 'false' ? false : undefined,
       search: search || undefined
     });

@@ -1,10 +1,7 @@
 import { cloudinaryService } from './index';
 import { v2 as cloudinary } from 'cloudinary';
 import path from 'path';
-<<<<<<< HEAD
-=======
 import fs from 'fs/promises';
->>>>>>> 1cc2763 (feat: Implement Turso Cloud Data Synchronization Fix)
 
 // Custom timeout function to avoid import issues
 function delay(ms: number): Promise<void> {
